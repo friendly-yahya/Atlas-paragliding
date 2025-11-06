@@ -43,3 +43,61 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+# Dart/Flutter
+**.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+build/
+.dart_tool/
+.idea/
+.libraries
+pubspec.lock
+pubspec.override.yaml
+
+# Android
+/.android/
+/android/app/build/
+/android/.gradle/
+/android/captures/
+/android/gradle/
+/android/local.properties
+/android/**/local.properties
+/android/**/build/
+/android/**/generated/
+
+# iOS (if applicable)
+/ios/.symlinks/
+/ios/Flutter/App.framework
+/ios/Flutter/Flutter.framework
+/ios/Flutter/Generated.xcconfig
+/ios/Flutter/app.flx
+/ios/Flutter/app.zip
+/ios/Flutter/Flutter.podspec
+/ios/ServiceDefinitions.json
+/ios/Runner/GeneratedPluginRegistrant.*
+
+# VS Code
+.vscode/
+history/
+
+# IntelliJ/Android Studio
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Environment files
+.env
+.env.local
+.env*.local
+
+# Gradle
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+
+# System files
+.DS_Store
+Thumbs.db
