@@ -101,3 +101,9 @@ out/
 # System files
 .DS_Store
 Thumbs.db
+# Firebase
+firebase/app/id
+firebase/crashlytics-mapping.json
+# Local databases
+*.db
+*.sqlite
