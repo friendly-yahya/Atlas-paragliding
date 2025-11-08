@@ -20,7 +20,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(), // Remove the `title` parameter
+      home: const MyHomePage(), 
+      // Remove the `title` parameter
     );
   }
 }
@@ -32,77 +33,122 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsetsGeometry.all(24),
-        child: 
-          Row(
-            children: [
-              
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: Center(
+        
+        child: Padding(
+          padding: EdgeInsets.all(16),  
+          child: 
+            IntrinsicHeight(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  
+                  Expanded(
+                    flex: 1,
+                    child: Column(
+                      //mainAxisAlignment: MainAxisAlignment.center,
+                      //mainAxisSize: MainAxisSize.min,
                       children: [
-                        Row(
-                          children: [
-                            Icon(Icons.star_rate_rounded),
-                            Text('4.9')
-                          ],
+                        AspectRatio(
+                          aspectRatio: 1,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image.asset(
+                              'assets/images/hicham.png',
+                              
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
-                        Icon(Icons.circle),
-                        Row(
-                          children: [
-                            Text('150 flights')
-                          ],
+                        SizedBox(height: 8,),
+                        DefaultTextStyle(
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black),
+                          child: Column(
+                            children: [
+                              
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Icon(Icons.star_rate_rounded,
+                                      size: 16,),
+                                      Text('4.9')
+                                    ],
+                                  ),
+                                  Icon(
+                                    Icons.circle,
+                                    size: 4,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text('150 flights')
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text('Certified & Insured ')),
+                            ],
+                          ),
                         ),
                       ],
-                    ),
-                  ],
-                ) 
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(
+                    ) 
+                  ),
+                  SizedBox(
+                    width: 16,
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Hicham'),
-                        Icon(Icons.favorite_border),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Text('Hicham'),
+                            Icon(Icons.favorite_border),
+                          ],
+                          
+                        ),
+                        Divider(
+                          color: Colors.grey,
+                          thickness: 1,
+                    
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text('\$85/Essential Flight'),
+                            Transform.rotate(
+                              angle: -pi / 2,
+                              child: Icon(Icons.chevron_left_rounded)),
+                          ],
+                          
+                        ),
+                        TextButton(onPressed: (){
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Ain\'t no party like a diddy party')),
+                          );
+                        }, 
+                        child: Text('Book Flight Now'))
                       ],
-                      
                     ),
-                    Divider(
-                      color: Colors.grey,
-                      thickness: 1,
-                
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('\$85/Essential Flight'),
-                        Transform.rotate(
-                          angle: -pi / 2,
-                          child: Icon(Icons.chevron_left_rounded)),
-                      ],
-                      
-                    ),
-                    TextButton(onPressed: (){
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Ain\'t no party like a diddy party')),
-                      );
-                    }, 
-                    child: Text('Book Flight Now'))
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+        ),
       ),
     );
   }
