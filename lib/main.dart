@@ -1,3 +1,4 @@
+import 'package:atlas_paragliding/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'widgets/pilot_service_card.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -17,11 +18,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'My Clean App',
+      title: 'Atlas Paragliding',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(), 
+      home: const MainScreen(), 
     );
   }
 }
