@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'widgets/pilot_service_card.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+// ignore: unused_import
+import 'theme/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
