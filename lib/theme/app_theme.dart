@@ -59,4 +59,41 @@ class AppTheme {
     color: textPrimary,
     letterSpacing: -0.5,
   );  
+  //Body text
+  static const TextStyle paragraphSmRegular = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: textPrimary,
+    letterSpacing: -0.5,
+  );
+  static const TextStyle paragraphSmMedium = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: textPrimary,
+    letterSpacing: -0.5,
+  );
+  static const TextStyle paragraphMiniRegular = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    color: textPrimary,
+    letterSpacing: -0.5,
+  );
+  static const TextStyle paragraphMiniMedium = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: textPrimary,
+    letterSpacing: -0.5,
+  );
+  static const TextStyle micro = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: textPrimary,
+    letterSpacing: -0.5,
+  );
+  static const TextStyle paragraphMedium = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: textPrimary,
+    letterSpacing: -0.5,
+  );
 }
