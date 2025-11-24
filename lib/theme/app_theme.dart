@@ -96,4 +96,16 @@ class AppTheme {
     color: textPrimary,
     letterSpacing: -0.5,
   );
+  // ========================================
+  // 5. COMPONENT STYLES
+  // ========================================
+  static final ButtonStyle primaryButtton = ElevatedButton.styleFrom(
+    backgroundColor: primaryColor,
+    foregroundColor: backgroundColor,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(rounded8)
+    ),
+    elevation: 0,
+    textStyle: paragraphSmMedium,
+    );
 }
