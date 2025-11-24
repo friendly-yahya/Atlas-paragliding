@@ -85,13 +85,13 @@ class AppTheme {
     letterSpacing: -0.5,
   );
   static const TextStyle micro = TextStyle(
-    fontSize: 12,
+    fontSize: 10,
     fontWeight: FontWeight.w500,
     color: textPrimary,
     letterSpacing: -0.5,
   );
   static const TextStyle paragraphMedium = TextStyle(
-    fontSize: 12,
+    fontSize: 16,
     fontWeight: FontWeight.w500,
     color: textPrimary,
     letterSpacing: -0.5,
@@ -99,7 +99,7 @@ class AppTheme {
   // ========================================
   // 5. COMPONENT STYLES
   // ========================================
-  static final ButtonStyle primaryButtton = ElevatedButton.styleFrom(
+  static final ButtonStyle primaryButton = ElevatedButton.styleFrom(
     backgroundColor: primaryColor,
     foregroundColor: backgroundColor,
     shape: RoundedRectangleBorder(
@@ -108,4 +108,90 @@ class AppTheme {
     elevation: 0,
     textStyle: paragraphSmMedium,
     );
+  static final ButtonStyle browsingButtonDark = ElevatedButton.styleFrom(
+    backgroundColor: textPrimary,
+    foregroundColor: backgroundColor,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(rounded8)
+    ),
+    elevation: 0,
+    textStyle: paragraphSmMedium,
+    padding :const EdgeInsets.symmetric(
+      horizontal: space24,
+      vertical: 9.5,
+    ),
+
+    );
+  static final ButtonStyle browsingButtonLight = ElevatedButton.styleFrom(
+    backgroundColor: primaryColor,
+    foregroundColor: backgroundColor,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(rounded8)
+    ),
+    elevation: 0,
+    textStyle: paragraphSmMedium,
+    padding: EdgeInsets.symmetric(
+      horizontal: space24,
+      vertical: 9.5,
+    ),
+    
+    );
+  static final ButtonStyle bookingButtonLight = ElevatedButton.styleFrom(
+    backgroundColor: textPrimary,
+    foregroundColor: backgroundColor,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(99)//might cause an error later on
+    ),
+    elevation: 0,
+    textStyle: paragraphSmMedium,
+    padding: EdgeInsets.symmetric(
+      horizontal: space24,
+      vertical: 9.5,
+    ),
+    
+    );
+    static ThemeData get lightTheme{
+      return ThemeData(
+        primaryColor: primaryColor,
+        scaffoldBackgroundColor: backgroundColor,
+
+        colorScheme: const ColorScheme.light(
+          primary: primaryColor,
+          error: errorColor,
+          surface: backgroundColor,
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(style: primaryButton),
+        dividerTheme: DividerThemeData(
+          color: strokeColor,
+          thickness: 1,
+        ),
+
+      textTheme: const TextTheme(
+      // Display (largest text)
+      displayLarge: heading1,          // 30px
+      displayMedium: heading2,         // 24px
+      displaySmall: heading3,          // 20px
+      
+      // Headlines
+      headlineMedium: heading4,        // 16px
+      
+      // Titles
+      titleLarge: heading3,            // 20px
+      titleMedium: heading4,           // 16px
+      titleSmall: paragraphMedium,     // 16px medium
+      
+      // Body text
+      bodyLarge: paragraphMedium,      // 16px medium
+      bodyMedium: paragraphSmRegular,  // 14px regular
+      bodySmall: paragraphMiniRegular, // 12px regular
+      
+      // Labels (buttons, badges)
+      labelLarge: paragraphSmMedium,   // 14px medium
+      labelMedium: paragraphMiniMedium,// 12px medium
+      labelSmall: micro,               // 10px medium
+    ),
+
+        useMaterial3: true,
+        );
+    }
 }
