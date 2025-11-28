@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:atlas_paragliding/widgets/pilot_service_card.dart';
+import 'package:atlas_paragliding/widgets/search_list_widget.dart';
 
 
 
@@ -11,13 +12,19 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Home'),
       ),
-      body: Center(
-        child: ListView.builder(
-          itemCount: 3,
-          itemBuilder: (context, index) {
-            return PilotServiceCard();
-          },
-        ),
+      body: Column(
+        children: [
+          const SearchListWidget(),
+          const SizedBox(height: 16,),
+          Expanded(
+            child: ListView.builder(
+              itemCount: 3,
+              itemBuilder: (context, index) {
+                return PilotServiceCard();
+              },
+            ),
+          ),
+        ],
       )
     );
     

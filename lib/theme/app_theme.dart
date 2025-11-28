@@ -5,6 +5,7 @@ class AppTheme {
   //COLORS  
   //======================================
   static const Color backgroundColor = Color(0xFFFAFAFA);
+  static const Color searchBackgroundColor = Color(0xFFF5F5F5);
   static const Color textPrimary = Color(0xFF0A0A0A);
   static const Color textSecondary = Color(0xFF404040);
   static const Color strokeColor = Color(0xFFE5E5E5);

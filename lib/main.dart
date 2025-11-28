@@ -1,6 +1,6 @@
 import 'package:atlas_paragliding/main_screen.dart';
 import 'package:flutter/material.dart';
-import 'widgets/pilot_service_card.dart';
+//import 'widgets/pilot_service_card.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 // ignore: unused_import
@@ -28,20 +28,25 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-class MyHomePage extends StatelessWidget {
+/**class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: ListView.builder(
-          itemCount: 3,
-          itemBuilder: (context, index) {
-            return PilotServiceCard();
-          },
-        ),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: 3,
+              itemBuilder: (context, index) {
+                return const PilotServiceCard();
+              },
+            ),
+          ),
+        ],
       )
     );
     
   }
 }
+**/
