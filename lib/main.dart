@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 //import 'widgets/pilot_service_card.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-// ignore: unused_import
 import 'theme/app_theme.dart';
 
 void main() async {
@@ -21,9 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Atlas Paragliding',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
+      theme: AppTheme.lightTheme,
       home: const MainScreen(), 
     );
   }

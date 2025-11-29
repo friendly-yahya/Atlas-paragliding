@@ -9,22 +9,22 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-      ),
-      body: Column(
-        children: [
-          const SearchListWidget(),
-          const SizedBox(height: 16,),
-          Expanded(
-            child: ListView.builder(
-              itemCount: 3,
-              itemBuilder: (context, index) {
-                return PilotServiceCard();
-              },
+
+      body: SafeArea(
+        child: Column(
+          children: [
+            const SearchListWidget(),
+            const SizedBox(height: 16,),
+            Expanded(
+              child: ListView.builder(
+                itemCount: 3,
+                itemBuilder: (context, index) {
+                  return PilotServiceCard();
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       )
     );
     

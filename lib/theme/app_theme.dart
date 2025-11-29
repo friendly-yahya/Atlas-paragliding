@@ -12,6 +12,7 @@ class AppTheme {
   static const Color primaryColor = Color(0xFF3B82F6);
   static const Color successColor = Color(0xFF22C55E);
   static const Color errorColor = Color(0xFFEF4444);
+  static const Color starColor = Color(0xFFFACC15);
   //======================================
   //SPACING  
   //======================================
@@ -89,7 +90,7 @@ class AppTheme {
     fontSize: 10,
     fontWeight: FontWeight.w500,
     color: textPrimary,
-    letterSpacing: -0.5,
+    letterSpacing: 0.05,
   );
   static const TextStyle paragraphMedium = TextStyle(
     fontSize: 16,
@@ -153,6 +154,7 @@ class AppTheme {
     );
     static ThemeData get lightTheme{
       return ThemeData(
+        fontFamily: 'Geist',
         primaryColor: primaryColor,
         scaffoldBackgroundColor: backgroundColor,
 
