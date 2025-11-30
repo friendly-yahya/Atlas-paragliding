@@ -41,50 +41,50 @@ class AppTheme {
     fontSize: 30,
     fontWeight: FontWeight.w600,
     color: textPrimary,
-    letterSpacing: -0.5,
+    letterSpacing: 0.05,
   );
   static const TextStyle heading2 = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.w600,
     color: textPrimary,
-    letterSpacing: -0.5,
+    letterSpacing: 0.05,
   );  
   static const TextStyle heading3 = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w600,
     color: textPrimary,
-    letterSpacing: -0.5,
+    letterSpacing: 0.05,
   );  
   static const TextStyle heading4 = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w600,
     color: textPrimary,
-    letterSpacing: -0.5,
+    letterSpacing: 0.05,
   );  
   //Body text
   static const TextStyle paragraphSmRegular = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w400,
     color: textPrimary,
-    letterSpacing: -0.5,
+    letterSpacing: 0.05,
   );
   static const TextStyle paragraphSmMedium = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w500,
     color: textPrimary,
-    letterSpacing: -0.5,
+    letterSpacing: 0.05,
   );
   static const TextStyle paragraphMiniRegular = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w400,
     color: textPrimary,
-    letterSpacing: -0.5,
+    letterSpacing: 0.05,
   );
   static const TextStyle paragraphMiniMedium = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w500,
     color: textPrimary,
-    letterSpacing: -0.5,
+    letterSpacing: 0.05,
   );
   static const TextStyle micro = TextStyle(
     fontSize: 10,
@@ -96,7 +96,7 @@ class AppTheme {
     fontSize: 16,
     fontWeight: FontWeight.w500,
     color: textPrimary,
-    letterSpacing: -0.5,
+    letterSpacing: 0.05,
   );
   // ========================================
   // 5. COMPONENT STYLES
