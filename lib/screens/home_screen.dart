@@ -12,27 +12,39 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
 
       body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppTheme.space16,
-                vertical: AppTheme.space8,
+        child: GestureDetector(
+          behavior: HitTestBehavior.translucent,
+          onTap: (){
+            FocusScope.of(context).unfocus();
+          },
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppTheme.space16,
+                  vertical: AppTheme.space8,
+                ),
+                child: WeatherHeader(),
               ),
-              child: WeatherHeader(),
-            ),
-            const SizedBox(height: AppTheme.space48,),
-            const SearchListWidget(),
-            const SizedBox(height: AppTheme.space48,),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 3,
-                itemBuilder: (context, index) {
-                  return PilotServiceCard();
-                },
+              const SizedBox(height: AppTheme.space16,),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppTheme.space16,
+                  
+                ),
+                child: const SearchListWidget(),
               ),
-            ),
-          ],
+              const SizedBox(height: AppTheme.space24,),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: 3,
+                  itemBuilder: (context, index) {
+                    return PilotServiceCard();
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       )
     );

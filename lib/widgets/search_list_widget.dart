@@ -51,23 +51,96 @@ class _SearchListWidgetState extends State<SearchListWidget> {
       children: [
         TextField(
           controller: _searchController,
-          decoration: const InputDecoration(
+          decoration: InputDecoration(
             hintText: 'Find your pilot',
-            prefixIcon: Icon(Icons.search),
+            hintStyle: AppTheme.paragraphSmMedium.copyWith(color: AppTheme.textSecondary,),
+            prefixIcon: Icon(Icons.search, color: AppTheme.textSecondary,),
+            suffixIcon: _searchController.text.isNotEmpty
+              ? IconButton(
+                icon: const Icon(Icons.close_rounded,color: AppTheme.textSecondary,),
+                
+                onPressed: () {
+                  _searchController.clear();
+                  _filterItems('');
+                  setState(() {});
+                  FocusScope.of(context).unfocus();
+                },
+              )
+              : null,  
+            filled: true,
+            fillColor: AppTheme.searchBackgroundColor,
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: AppTheme.space16,
+              vertical: AppTheme.space16,
+            ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(AppTheme.rounded8),
+              borderSide: const BorderSide(
+                color: AppTheme.strokeColor,
+                width: 1,
+              )
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(AppTheme.rounded8),
+              borderSide: const BorderSide(
+                color: AppTheme.strokeColor,
+                width: 1,
+              )
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(AppTheme.rounded8),
+              borderSide: const BorderSide(
+                color: AppTheme.primaryColor,
+                width: 1.5,
+              )
+            ),
           ),
         ),
         const SizedBox(height: 16),
-
-        ListView.builder(
+        if(_searchController.text.isNotEmpty)
+          Container(
+            decoration: BoxDecoration(
+              color: AppTheme.searchBackgroundColor,
+              border: Border.all(
+                color: AppTheme.strokeColor,
+                width: 1,
+              ),
+              borderRadius: BorderRadius.circular(AppTheme.rounded8),
+            ),
+            child: ListView.builder(
           
-          itemCount: _filteredItems.length,
-          shrinkWrap: true,
-          itemBuilder: (context, index){
-            return ListTile(
-              title: Text(_filteredItems[index]),
-            );
-          },
-        ) ,
+              itemCount: _filteredItems.length,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index){
+                return Container(
+                  decoration: BoxDecoration(
+                    border: index < _filteredItems.length - 1
+                      ? const Border(
+                        bottom: BorderSide(
+                          color: AppTheme.strokeColor,
+                          width: 1,
+                        ),
+                      )
+                      : null,
+                  ),
+                  child: ListTile(
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: AppTheme.space12,
+                      vertical: AppTheme.space4,
+                    ),
+                    title: Text(_filteredItems[index],
+                    style: AppTheme.paragraphSmRegular,),
+                    onTap: () {
+                      _searchController.text = _filteredItems[index];
+                      FocusScope.of(context).unfocus();
+                    },
+                  ),
+                );
+              },
+            ) ,
+          ),
+        
           
        
       ],
