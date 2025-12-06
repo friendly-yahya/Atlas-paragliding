@@ -1,4 +1,5 @@
 import 'package:atlas_paragliding/theme/app_theme.dart';
+import 'package:atlas_paragliding/screens/booking_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 class PilotServiceCard extends StatefulWidget {
@@ -142,6 +143,10 @@ class _PilotServiceCardState extends State<PilotServiceCard> {
                           ),
                           
                           TextButton(onPressed: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context)=>  BookingDetailScreen())
+                              );
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(content: Text('Ain\'t no party like a diddy party')),
                             );

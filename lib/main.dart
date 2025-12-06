@@ -25,25 +25,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-/**class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: 3,
-              itemBuilder: (context, index) {
-                return const PilotServiceCard();
-              },
-            ),
-          ),
-        ],
-      )
-    );
-    
-  }
-}
-**/
