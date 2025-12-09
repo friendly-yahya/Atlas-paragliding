@@ -1,6 +1,5 @@
 import 'package:atlas_paragliding/main_screen.dart';
 import 'package:flutter/material.dart';
-//import 'widgets/pilot_service_card.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'theme/app_theme.dart';
