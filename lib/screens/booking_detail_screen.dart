@@ -2,6 +2,7 @@ import 'package:atlas_paragliding/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:atlas_paragliding/widgets/window_img.dart';
 import 'package:atlas_paragliding/widgets/booking_header.dart';
+import 'package:atlas_paragliding/widgets/about_info.dart';
 import 'package:atlas_paragliding/widgets/booking_info.dart';
 class BookingDetailScreen extends StatelessWidget {
   const BookingDetailScreen({super.key});
@@ -24,7 +25,7 @@ class BookingDetailScreen extends StatelessWidget {
               rating: 4.8, 
               years: 8, 
               flights: 516),
-              
+            AboutInfo()
 
           ],
         )
