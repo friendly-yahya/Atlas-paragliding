@@ -52,7 +52,7 @@ class BookingDetailScreen extends StatelessWidget {
                       const AboutInfo(),
                       const SizedBox(height: 16),
               
-                      //const ParaAccordion(),
+                      const ParaAccordion(),
               
                       const SizedBox(height: 32),
                     ],
