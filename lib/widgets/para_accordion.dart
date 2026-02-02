@@ -1,15 +1,37 @@
 import 'package:atlas_paragliding/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+class AccordionItem {
+  final IconData icon;
+  final String text;
 
+  AccordionItem({
+    required this.icon,
+    required this.text,
+  });
+}
 class ParaAccordion extends StatefulWidget {
-  const ParaAccordion({super.key});
+  final List<AccordionItem> items;
+  final String title;
+  final bool initiallyExpanded;
+
+  const ParaAccordion({
+    super.key,
+    required this.title,
+    required this.items,
+    this.initiallyExpanded = false,
+    });
 
   @override
   State<ParaAccordion> createState() => _ParaAccordionState();
 }
 
 class _ParaAccordionState extends State<ParaAccordion> {
-  bool _isExpanded = false;
+  late bool _isExpanded;
+  @override
+  void initState() {
+    super.initState();
+    _isExpanded = widget.initiallyExpanded;
+  }
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -46,20 +68,22 @@ class _ParaAccordionState extends State<ParaAccordion> {
                       child: _isExpanded 
                         ? Column(
                           mainAxisSize: MainAxisSize.min,
-                          children: [
-                            ListTile(
+                          children: widget.items.map((item){
+
+                            return ListTile(
                                 contentPadding: EdgeInsets.zero,
-                                leading: Icon(Icons.camera_alt_outlined, size: 24,color: AppTheme.textPrimary,),
-                                title: Text('Professional video recording', style: AppTheme.paragraphSmMedium,),
-                              ),
-                          ],
+                                leading: Icon(item.icon, size: 24,color: AppTheme.textPrimary,),
+                                title: Text(item.text, style: AppTheme.paragraphSmMedium,),
+                              );
+                          }).toList(),
+                            
+                          
                         )
                         : SizedBox.shrink(), 
-                        // empty when collapsed
                 ),
-                SizedBox(height: 16), // Space before divider
+                SizedBox(height: 16), 
                 Divider(
-                  color: AppTheme.textSecondary.withValues(alpha: 0.3), // Customize color
+                  color: AppTheme.textSecondary.withValues(alpha: 0.3), // 
                   thickness: 1,
                   height: 1,
                 )

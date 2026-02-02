@@ -5,6 +5,7 @@ import 'package:atlas_paragliding/widgets/booking_header.dart';
 import 'package:atlas_paragliding/widgets/about_info.dart';
 import 'package:atlas_paragliding/widgets/booking_info.dart';
 import 'package:atlas_paragliding/widgets/para_accordion.dart';
+import 'package:atlas_paragliding/widgets/para_bullet_accordion.dart';
 class BookingDetailScreen extends StatelessWidget {
   const BookingDetailScreen({super.key});
 
@@ -52,8 +53,34 @@ class BookingDetailScreen extends StatelessWidget {
                       const AboutInfo(),
                       const SizedBox(height: 16),
               
-                      const ParaAccordion(),
-              
+                      ParaAccordion(title: "What this pack includes", items: [
+                        AccordionItem(icon: Icons.camera_alt_outlined, text: 'Professional video recording'),
+                        AccordionItem(icon: Icons.paragliding_outlined, text: 'Tandem paragliding flight (15 min)'),
+                        AccordionItem(icon: Icons.shield_outlined, text: 'Insurance coverage'),
+                        AccordionItem(icon: Icons.local_cafe_outlined, text: 'Traditional tea pause'),
+                        AccordionItem(icon: Icons.photo_camera_outlined, text: 'Photos & memories')
+                      ]),
+                      const SizedBox(height: 16),
+                      ParaBulletAccordion(
+                        title: "Certifications & Safety",
+                        bulletPoints: [
+                          'FFVL Certified Instructor (French Federation)',
+                          'IPPI Level 4 Pilot',
+                          'First Aid Certified',
+                          'Commercial Pilot License #MA-2018-0847',
+                          'Fully insured flights',
+                          'Safety equipment inspected monthly',
+                        ],
+                        linkText: 'Find out more about certifications & safety',
+                        onLinkTap: () {
+                          print('Navigate to certifications page');
+                        },
+                      ),
+                      const SizedBox(height: 16),
+                      ParaBulletAccordion(title: "Equipement", bulletPoints: [
+                        'Ozone paraglider (2023 model)',
+                        'GoPro video included',
+                      ]),
                       const SizedBox(height: 32),
                     ],
                   ),
