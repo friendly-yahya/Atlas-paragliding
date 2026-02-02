@@ -6,13 +6,13 @@ class WindowImg extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ClipRRect(
+    return ClipRRect(
         borderRadius: BorderRadius.circular(AppTheme.rounded40),
         child: GridView.builder(
           itemCount: 4,
           padding: EdgeInsets.all(0),
           shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount:2,
             mainAxisSpacing: 8, 
@@ -37,8 +37,8 @@ class WindowImg extends StatelessWidget {
           },
           
           ),
-      ),
-    );
+      );
+    
   }
   
 }
