@@ -38,7 +38,7 @@ class BookingInfo extends StatelessWidget {
           children: [
             _StatItem(
               icon: Icons.star_rounded , 
-              label: '${rating.toStringAsFixed(1)}',
+              label: rating.toStringAsFixed(1),
               iconColor: AppTheme.starColor,),
                       const SizedBox(width: 16),
             _StatItem(

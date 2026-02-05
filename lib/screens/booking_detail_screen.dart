@@ -6,6 +6,7 @@ import 'package:atlas_paragliding/widgets/about_info.dart';
 import 'package:atlas_paragliding/widgets/booking_info.dart';
 import 'package:atlas_paragliding/widgets/para_accordion.dart';
 import 'package:atlas_paragliding/widgets/para_bullet_accordion.dart';
+import 'package:atlas_paragliding/widgets/reviews.dart';
 class BookingDetailScreen extends StatelessWidget {
   const BookingDetailScreen({super.key});
 
@@ -82,6 +83,9 @@ class BookingDetailScreen extends StatelessWidget {
                         'GoPro video included',
                       ]),
                       const SizedBox(height: 32),
+                      Reviews(),
+                      const SizedBox(height: 32),
+
                     ],
                   ),
                 ),

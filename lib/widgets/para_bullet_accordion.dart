@@ -87,7 +87,7 @@ class _ParaBulletAccordionState extends State<ParaBulletAccordion> {
                                 ],
                               ),
                             );
-                          }).toList(),
+                          }),
                           
                           // Optional link at the bottom
                           if (widget.linkText != null) ...[
