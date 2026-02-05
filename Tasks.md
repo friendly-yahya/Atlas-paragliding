@@ -1,4 +1,4 @@
-# 05/02/2026 -07/02/2026 Tasks:
+# 05/02/2026 - 07/02/2026 Tasks:
 - ## [ ] Build reviews and scroll behavior from scratch.
     - [x] Build layout.
     - [x] Build review card.
