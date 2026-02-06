@@ -82,7 +82,29 @@ class BookingDetailScreen extends StatelessWidget {
                         'Ozone paraglider (2023 model)',
                         'GoPro video included',
                       ]),
-                      const SizedBox(height: 32),
+                      const SizedBox(height: 16),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                '4.8',
+                                style: AppTheme.heading3,
+                              ),
+                              Icon(Icons.star_rounded,color: AppTheme.starColor, size: 26,)
+                            ],
+                            
+                          ),
+                          const SizedBox(width: 6,),
+                          const Icon(Icons.circle, size: 8, color: AppTheme.textPrimary),
+                          const SizedBox(width: 8,),
+                          Text('127 reviews',style: AppTheme.heading3,)
+
+                        ],
+                      ),
+                      const SizedBox(height: 16),
                       Reviews(),
                       const SizedBox(height: 32),
 

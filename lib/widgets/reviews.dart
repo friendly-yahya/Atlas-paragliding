@@ -1,6 +1,7 @@
+import 'package:atlas_paragliding/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 //import 'package:atlas_paragliding/theme/app_theme.dart';
-
+import 'package:atlas_paragliding/widgets/review_details.dart';
 
 class Reviews extends StatelessWidget {
   const Reviews({super.key});
@@ -8,19 +9,23 @@ class Reviews extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 165,
+      height: 180,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 20,
+        itemCount: 10,
         itemBuilder: (context, index) {
           return Container(
             width: 300,
+
+            padding: EdgeInsets.only(right: 21),
             margin: EdgeInsets.only(right: 20),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Colors.primaries[index % Colors.primaries.length].withOpacity(0.2)
+              border: Border(right: BorderSide(
+                color: AppTheme.textPrimary,
+                width: 1.0,
+              ))
             ),
-            child: Center(child: Text("Card ${index + 1}")),
+            child: ReviewDetails(),
           );
         },
       ),

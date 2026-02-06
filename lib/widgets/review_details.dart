@@ -8,7 +8,8 @@ class ReviewDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _ReviewMetaRow(timeAgo: '2 weeks ago', rating: 5),
         Text(
@@ -46,8 +47,8 @@ class _ReviewMetaRow extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 8),
-            const Icon(Icons.circle, size: 8, color: AppTheme.textPrimary),
+            const SizedBox(width: 4),
+            const Icon(Icons.circle, size: 6, color: AppTheme.textPrimary),
             const SizedBox(width: 6),
             Text(timeAgo, style: AppTheme.paragraphSmMedium),
           ],
@@ -80,6 +81,7 @@ class _ReviewProfile extends StatelessWidget {
         SizedBox(width: 12),
         Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               name,

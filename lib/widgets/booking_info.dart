@@ -40,7 +40,7 @@ class BookingInfo extends StatelessWidget {
               icon: Icons.star_rounded , 
               label: rating.toStringAsFixed(1),
               iconColor: AppTheme.starColor,),
-                      const SizedBox(width: 16),
+              const SizedBox(width: 16),
             _StatItem(
               label: '+$years Years\nFlying',
               icon: Icons.flight_takeoff,
