@@ -104,9 +104,24 @@ class BookingDetailScreen extends StatelessWidget {
 
                         ],
                       ),
-                      const SizedBox(height: 16),
                       Reviews(),
-                      const SizedBox(height: 32),
+                      const SizedBox(height: 16),
+                      SizedBox(
+                        width: double.infinity,
+                        child: TextButton(onPressed: () => print("works fine"), 
+                                  
+                                  style: AppTheme.primaryButton,
+                                  
+                                  child: Text('View all reviews'),
+                                
+                                  ),
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        'Check availability',
+                        style: AppTheme.heading3,
+                      ),
+                      const SizedBox(height: 16),    
 
                     ],
                   ),
