@@ -1,9 +1,8 @@
-import 'package:atlas_paragliding/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:atlas_paragliding/widgets/review_details.dart';
-
-class Reviews extends StatelessWidget {
-  const Reviews({super.key});
+import 'package:atlas_paragliding/theme/app_theme.dart';
+import 'package:atlas_paragliding/widgets/availability_details.dart';
+class AvailabityCard extends StatelessWidget {
+  const AvailabityCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +23,7 @@ class Reviews extends StatelessWidget {
                 width: 1.0,
               ))
             ),
-            child: ReviewDetails(),
+            child: AvailabityDetails(),
           );
         },
       ),
