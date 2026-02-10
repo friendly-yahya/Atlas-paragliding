@@ -14,10 +14,10 @@ class AvailabityCard extends StatelessWidget {
         itemBuilder: (context, index) {
           return Container(
             width: 240,
-
             padding: EdgeInsets.symmetric(vertical: 8,horizontal: 16),
             margin: EdgeInsets.only(right: 20),
             decoration: BoxDecoration(
+              color: AppTheme.backgroundColor,
               boxShadow: [BoxShadow(
                 color: AppTheme.textPrimary.withValues(alpha: 0.1),
                 offset: const Offset(0, 1),
