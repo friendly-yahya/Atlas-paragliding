@@ -7,6 +7,7 @@ import 'package:atlas_paragliding/widgets/booking_info.dart';
 import 'package:atlas_paragliding/widgets/para_accordion.dart';
 import 'package:atlas_paragliding/widgets/para_bullet_accordion.dart';
 import 'package:atlas_paragliding/widgets/reviews.dart';
+import 'package:atlas_paragliding/widgets/availabity_card.dart';
 class BookingDetailScreen extends StatelessWidget {
   const BookingDetailScreen({super.key});
 
@@ -122,6 +123,7 @@ class BookingDetailScreen extends StatelessWidget {
                         style: AppTheme.heading3,
                       ),
                       const SizedBox(height: 16),    
+                      AvailabityCard()
 
                     ],
                   ),
