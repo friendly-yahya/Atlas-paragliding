@@ -1,4 +1,4 @@
-# 05/02/2026 - 09/02/2026 Tasks:
+# 05/02/2026 - 10/02/2026 Tasks:
 - ## [x] Build reviews and scroll behavior from scratch.
     - [x] Build layout.
     - [x] Build review card.
@@ -7,6 +7,8 @@
 - ## [x] Build trip schedule.
     - [x] Build trip cards.
     - [x] Add basic styling.
-# UP NEXT:
+# 11/02/2026
 - ## [ ] Build map.
+    - [x] Research.
+# UP NEXT:
 - ## [ ] Build footer.
