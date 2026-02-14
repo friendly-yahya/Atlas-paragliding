@@ -126,7 +126,9 @@ class BookingDetailScreen extends StatelessWidget {
                       const SizedBox(height: 16),    
                       AvailabityCard(),
                       const SizedBox(height: 16),
-                      MeetingSpotMap(longitude: 31.6295, latitude: -7.9811)
+
+                      MeetingSpotMap(longitude: 31.6295, latitude: -7.9811),
+                      
 
                     ],
                   ),
