@@ -8,7 +8,11 @@
     - [x] Build trip cards.
     - [x] Add basic styling.
 # 11/02/2026
-- ## [ ] Build map.
+- ## [x] Build map.
     - [x] Research.
-# UP NEXT:
+    - [x] Build map widget.
+    - [x] Finish meeting spot section.
+# 16/02/2026
 - ## [ ] Build footer.
+- ## [ ] Build things to know section
+- ## [ ] rebuild the bottom navigation bar(the hardest)

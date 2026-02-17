@@ -98,6 +98,7 @@ class MeetingSpotMap extends StatelessWidget {
           thickness: 1,
           height: 1,
         ),
+        SizedBox(height: 16),
       ],
     );
   }
