@@ -107,6 +107,7 @@ class BookingDetailScreen extends StatelessWidget {
                         ],
                       ),
                       Reviews(),
+                      
                       const SizedBox(height: 16),
                       SizedBox(
                         width: double.infinity,
@@ -125,6 +126,12 @@ class BookingDetailScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),    
                       AvailabityCard(),
+                      const SizedBox(height: 16),
+                      Divider(
+                        color: AppTheme.textSecondary.withValues(alpha: 0.3),
+                        thickness: 1,
+                        height: 1,
+                      ),
                       const SizedBox(height: 16),
 
                       MeetingSpotMap(longitude: 31.6295, latitude: -7.9811),

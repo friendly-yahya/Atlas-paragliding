@@ -81,6 +81,23 @@ class MeetingSpotMap extends StatelessWidget {
             ),
           ),
         ),
+        SizedBox(height: 16),
+        SizedBox(
+          width: double.infinity,
+          child: TextButton(onPressed: () => print("works fine"), 
+                    
+                    style: AppTheme.primaryButton,
+                    
+                    child: Text('Whatsapp Pilot'),
+                  
+                    ),
+        ),
+        SizedBox(height: 16),
+        Divider(
+          color: AppTheme.textSecondary.withValues(alpha: 0.3),
+          thickness: 1,
+          height: 1,
+        ),
       ],
     );
   }
