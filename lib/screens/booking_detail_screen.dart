@@ -1,4 +1,5 @@
 import 'package:atlas_paragliding/theme/app_theme.dart';
+import 'package:atlas_paragliding/widgets/policies.dart';
 import 'package:flutter/material.dart';
 import 'package:atlas_paragliding/widgets/window_img.dart';
 import 'package:atlas_paragliding/widgets/booking_header.dart';
@@ -106,6 +107,7 @@ class BookingDetailScreen extends StatelessWidget {
 
                         ],
                       ),
+                      SizedBox(height: 16),
                       Reviews(),
                       
                       const SizedBox(height: 16),
@@ -135,6 +137,9 @@ class BookingDetailScreen extends StatelessWidget {
                       const SizedBox(height: 16),
 
                       MeetingSpotMap(longitude: 31.6295, latitude: -7.9811),
+
+                      const SizedBox(height: 16),
+                      Policies()
                       
 
                     ],
