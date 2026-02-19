@@ -13,6 +13,6 @@
     - [x] Build map widget.
     - [x] Finish meeting spot section.
 # 18/02/2026
-- ## [ ] Build footer.
+- ## [x] Build footer.
 - ## [x] Build things to know section
 - ## [ ] rebuild the bottom navigation bar(the hardest)

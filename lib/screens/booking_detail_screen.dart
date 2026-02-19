@@ -10,6 +10,7 @@ import 'package:atlas_paragliding/widgets/para_bullet_accordion.dart';
 import 'package:atlas_paragliding/widgets/reviews.dart';
 import 'package:atlas_paragliding/widgets/availabity_card.dart';
 import 'package:atlas_paragliding/widgets/meeting_spot_map.dart';
+import 'package:atlas_paragliding/widgets/booking_footer.dart';
 class BookingDetailScreen extends StatelessWidget {
   const BookingDetailScreen({super.key});
 
@@ -139,7 +140,9 @@ class BookingDetailScreen extends StatelessWidget {
                       MeetingSpotMap(longitude: 31.6295, latitude: -7.9811),
 
                       const SizedBox(height: 16),
-                      Policies()
+                      Policies(),
+                      const SizedBox(height: 16),
+                      BookingFooter(),
                       
 
                     ],
