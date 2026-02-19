@@ -16,3 +16,11 @@
 - ## [x] Build footer.
 - ## [x] Build things to know section
 - ## [ ] rebuild the bottom navigation bar(the hardest)
+# UP NEXT - 19/02/2026
+- ## [x] Add user flow.
+- ## [x] Add profile
+- ## [x] Add Liked pilots 
+- ## [x] Backend prep
+    - ### [x] Style final touches and rework
+- ## [x] backend hook
+- # [x] part 1 ends 
