@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:atlas_paragliding/theme/app_theme.dart';
+import 'package:atlas_paragliding/screens/review_and_continue.dart';
 
 class SafetyHealthCheck extends StatefulWidget {
   const SafetyHealthCheck({super.key});
@@ -362,9 +363,10 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
               child: Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
-                  onPressed: () {
-                    // navigate to next step
-                  },
+                  onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const ReviewAndContinue()),
+                ),
                   style: AppTheme.bookMainButtonLight,
                   child: const Text('Next'),
                 ),
