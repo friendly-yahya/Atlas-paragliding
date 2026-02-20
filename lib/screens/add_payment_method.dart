@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:atlas_paragliding/theme/app_theme.dart';
+import 'package:atlas_paragliding/screens/add_card_details.dart';
 
 class AddPaymentMethod extends StatefulWidget {
   const AddPaymentMethod({super.key});
@@ -129,9 +130,8 @@ class _AddPaymentMethodState extends State<AddPaymentMethod> {
               child: Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
-                  onPressed: () {
-                    // navigate to confirmation screen
-                  },
+                  onPressed: () => showAddCardDetails(context),
+
                   style: AppTheme.bookMainButtonLight,
                   child: const Text('Next'),
                 ),
