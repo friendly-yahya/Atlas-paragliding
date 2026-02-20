@@ -56,12 +56,12 @@
 ## ✅ 18/02/2026
 - [x] Build footer
 - [x] Build things to know section
-- [ ] Rebuild the bottom navigation bar
+- [x] Rebuild the bottom navigation bar
 
 ---
 
 ## TO-DO 19/02/2026
-- [ ] Add user flow
+- [x] Add user flow
 - [ ] Add profile
 - [ ] Add liked pilots
 - [ ] Backend prep
