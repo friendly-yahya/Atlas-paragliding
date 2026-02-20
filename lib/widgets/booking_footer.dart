@@ -1,4 +1,5 @@
 import 'package:atlas_paragliding/theme/app_theme.dart';
+import 'package:atlas_paragliding/screens/safety_health_check.dart';
 import 'package:flutter/material.dart';
 class BookingFooter extends StatelessWidget {
   const BookingFooter({super.key});
@@ -34,7 +35,9 @@ class BookingFooter extends StatelessWidget {
         ),
         Spacer(),
         TextButton(
-          onPressed: () => print('aint no party like a diddy party!'),
+          onPressed: () => Navigator.push(
+            context, 
+            MaterialPageRoute(builder: (_) => const SafetyHealthCheck())),
           style: AppTheme.bookMainButtonLight,
           child: Text(
             'Book',
