@@ -39,7 +39,14 @@ class HomeScreen extends StatelessWidget {
                 child: ListView.builder(
                   itemCount: 3,
                   itemBuilder: (context, index) {
-                    return PilotServiceCard();
+                    return Padding(
+                      padding: const EdgeInsets.only(
+                        bottom: AppTheme.space12,
+                        left: AppTheme.space16,
+                        right: AppTheme.space16,
+                      ),
+                      child: PilotServiceCard(),
+                    );
                   },
                 ),
               ),
