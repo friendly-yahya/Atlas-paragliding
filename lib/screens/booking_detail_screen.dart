@@ -142,14 +142,16 @@ class BookingDetailScreen extends StatelessWidget {
                       const SizedBox(height: 16),
                       Policies(),
                       const SizedBox(height: 16),
-                      BookingFooter(),
+                      
                       
 
                     ],
                   ),
                 ),
               ),
+              
             ),
+            BookingFooter(),
           ],
         ),
       ),

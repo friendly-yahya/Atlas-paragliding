@@ -15,7 +15,7 @@ class BookingInfo extends StatelessWidget {
     required this.rating,
     required this.years,
     required this.flights,
-    });
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,65 +24,91 @@ class BookingInfo extends StatelessWidget {
       children: [
         Text(
           title,
-          style: AppTheme.heading1,
+          style: AppTheme.heading2,
           textAlign: TextAlign.center,
         ),
-        const SizedBox(height: AppTheme.space8,),
+        const SizedBox(height: AppTheme.space4),
         Text(
           subtitle,
-          style: AppTheme.paragraphSmMedium,
+          style: AppTheme.paragraphSmMedium.copyWith(
+            color: AppTheme.textSecondary,
+          ),
           textAlign: TextAlign.center,
         ),
+        const SizedBox(height: AppTheme.space24),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _StatItem(
-              icon: Icons.star_rounded , 
-              label: rating.toStringAsFixed(1),
-              iconColor: AppTheme.starColor,),
-              const SizedBox(width: 16),
-            _StatItem(
-              label: '+$years Years\nFlying',
-              icon: Icons.flight_takeoff,
+              icon: Icons.star_rounded,
+              value: rating.toStringAsFixed(1),
+              label: 'Rating',
+              iconColor: AppTheme.starColor,
             ),
-            const SizedBox(width: 16),
+            _Divider(),
             _StatItem(
-              label: '+$flights Flights',
-              icon: Icons.airplanemode_active,
+              icon: Icons.flight_takeoff_rounded,
+              value: '$years years',
+              label: 'Experience',
+            ),
+            _Divider(),
+            _StatItem(
+              icon: Icons.airplanemode_active_rounded,
+              value: '+$flights',
+              label: 'Flights done',
             ),
           ],
-        )
+        ),
       ],
     );
   }
 }
+
+class _Divider extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 40,
+      width: 1,
+      margin: const EdgeInsets.symmetric(horizontal: AppTheme.space24),
+      color: AppTheme.strokeColor,
+    );
+  }
+}
+
 class _StatItem extends StatelessWidget {
   final IconData icon;
+  final String value;
   final String label;
   final Color iconColor;
 
   const _StatItem({
     required this.icon,
-    this.iconColor = AppTheme.textPrimary,
+    required this.value,
     required this.label,
-
+    this.iconColor = AppTheme.textPrimary,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
+    return Column(
       children: [
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Icon(icon, size: 22, color: iconColor),
+            const SizedBox(width: AppTheme.space4),
+            Text(value, style: AppTheme.heading3),
+          ],
+        ),
+        const SizedBox(height: AppTheme.space4),
         Text(
           label,
-          style: AppTheme.heading4,
+          style: AppTheme.paragraphMiniRegular.copyWith(
+            color: AppTheme.textSecondary,
+          ),
         ),
-        SizedBox(width: 4),
-        Icon(
-          icon,
-          size: 24,
-          color: iconColor,
-        )
       ],
     );
   }
