@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:atlas_paragliding/theme/app_theme.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  final VoidCallback onSwitchToPilot;
+  const ProfileScreen({super.key, required this.onSwitchToPilot});
 
   @override
   Widget build(BuildContext context) {
@@ -176,6 +177,7 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
+  // ── Lives on ProfileScreen, has access to onSwitchToPilot ──────────────
   void _handlePilotSwitch(BuildContext context) {
     showModalBottomSheet(
       context: context,
@@ -201,7 +203,7 @@ class ProfileScreen extends StatelessWidget {
               child: TextButton(
                 onPressed: () {
                   Navigator.pop(context);
-                  // TODO: swap to pilot UI
+                  onSwitchToPilot(); // 🔑 the bridge
                 },
                 style: AppTheme.primaryButton,
                 child: const Text('I have a pilot account'),
@@ -364,6 +366,7 @@ class _BookingHistoryCard extends StatelessWidget {
   }
 }
 
+// ── _PilotModeCard — clean, no extra methods ────────────────────────────────
 class _PilotModeCard extends StatelessWidget {
   final VoidCallback onSwitch;
   const _PilotModeCard({required this.onSwitch});

@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'screens/flight_screen.dart';
 import 'screens/home_screen.dart';
+import 'screens/pilot_main_screen.dart';
 import 'screens/messaging_screen.dart';
 import 'screens/profile_screen.dart';
 import 'package:atlas_paragliding/theme/app_theme.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+  final VoidCallback onSwitchToPilot; 
+  const MainScreen({super.key, required this.onSwitchToPilot});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -42,7 +44,8 @@ class _MainScreenState extends State<MainScreen> {
           _buildNavigator(0, const HomeScreen()),
           _buildNavigator(1, const MessagingScreen()),
           _buildNavigator(2, const FlightScreen()),
-          _buildNavigator(3, const ProfileScreen()),
+          _buildNavigator(3, ProfileScreen(onSwitchToPilot: widget.onSwitchToPilot)),
+
         ],
       ),
       bottomNavigationBar: _CleanNavBar(

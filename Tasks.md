@@ -62,10 +62,10 @@
 
 ## TO-DO 19/02/2026
 - [x] Add user flow
-- [ ] Add profile
+- [x] Add profile
 - [ ] Add liked pilots
 - [ ] Backend prep
-  - [ ] Style final touches and rework
+  - [x] Style final touches and rework
 - [ ] Backend hook
 
 ---
