@@ -1,12 +1,232 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:atlas_paragliding/theme/app_theme.dart';
 
-class PilotMainScreen extends StatelessWidget {
+const Color _kBgDeep  = Color(0xFF040713);
+const Color _kBgCard  = Color(0xFF191C28);
+const Color _kPrimary = Color(0xFF3198FF);
+
+class PilotMainScreen extends StatefulWidget {
   const PilotMainScreen({super.key, required this.onSwitchToClient});
   final VoidCallback onSwitchToClient;
 
   @override
+  State<PilotMainScreen> createState() => _PilotMainScreenState();
+}
+
+class _PilotMainScreenState extends State<PilotMainScreen> {
+  int _currentIndex = 0;
+
+  final List<GlobalKey<NavigatorState>> _navigatorKeys = List.generate(
+    5,
+    (_) => GlobalKey<NavigatorState>(),
+  );
+
+  static const _items = [
+    _NavItem(icon: Icons.home_rounded,           label: 'Home'),
+    _NavItem(icon: Icons.chat_bubble_rounded,    label: 'Messages'),
+    _NavItem(icon: Icons.flight_rounded,         label: 'Flights'),
+    _NavItem(icon: Icons.calendar_month_rounded, label: 'Schedule'),
+    _NavItem(icon: Icons.person_rounded,         label: 'Profile'),
+  ];
+
+  Future<bool> _onWillPop() async {
+    final canPop = _navigatorKeys[_currentIndex].currentState?.canPop() ?? false;
+    if (canPop) {
+      _navigatorKeys[_currentIndex].currentState?.pop();
+      return false;
+    }
+    return true;
+  }
+
+  Widget _buildTabScreen(int index) {
+    const screens = [
+      _PilotPlaceholder(label: 'Home',     icon: Icons.home_rounded),
+      _PilotPlaceholder(label: 'Messages', icon: Icons.chat_bubble_rounded),
+      _PilotPlaceholder(label: 'Flights',  icon: Icons.flight_rounded),
+      _PilotPlaceholder(label: 'Schedule', icon: Icons.calendar_month_rounded),
+      _PilotPlaceholder(label: 'Profile',  icon: Icons.person_rounded),
+    ];
+
+    return Navigator(
+      key: _navigatorKeys[index],
+      onGenerateRoute: (_) => MaterialPageRoute(
+        builder: (_) => screens[index],
+      ),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, _) async {
+        if (!didPop) await _onWillPop();
+      },
+      child: Scaffold(
+        backgroundColor: _kBgDeep,
+        body: IndexedStack(
+          index: _currentIndex,
+          children: List.generate(5, _buildTabScreen),
+        ),
+        bottomNavigationBar: _PilotBottomNavBar(
+          currentIndex: _currentIndex,
+          items: _items,
+          onTap: (i) => setState(() => _currentIndex = i),
+        ),
+      ),
+    );
+  }
+}
+
+// ── Nav bar ────────────────────────────────────────────────
+class _PilotBottomNavBar extends StatelessWidget {
+  final int currentIndex;
+  final List<_NavItem> items;
+  final ValueChanged<int> onTap;
+
+  const _PilotBottomNavBar({
+    required this.currentIndex,
+    required this.items,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final bottomPadding = MediaQuery.of(context).padding.bottom;
+
+    return Container(
+      color: _kBgDeep,
+      padding: EdgeInsets.fromLTRB(12, 10, 12, bottomPadding + 14),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 7),
+        decoration: BoxDecoration(
+          color: _kBgCard,
+          borderRadius: BorderRadius.circular(40),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.max,
+          children: List.generate(
+            items.length,
+            (i) => _NavTile(
+              item: items[i],
+              isActive: i == currentIndex,
+              onTap: () {
+                HapticFeedback.lightImpact();
+                onTap(i);
+              },
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ── Tile ───────────────────────────────────────────────────
+class _NavTile extends StatelessWidget {
+  final _NavItem item;
+  final bool isActive;
+  final VoidCallback onTap;
+
+  const _NavTile({
+    required this.item,
+    required this.isActive,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      behavior: HitTestBehavior.opaque,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 280),
+        curve: Curves.easeInOut,
+        height: 54,
+        padding: EdgeInsets.all(isActive ? 4 : 0),
+        decoration: BoxDecoration(
+          color: isActive ? _kPrimary : Colors.transparent,
+          borderRadius: BorderRadius.circular(99),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 42,
+              height: 42,
+              decoration: BoxDecoration(
+                color: isActive ? Colors.white : const Color(0xFF252834),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                item.icon,
+                size: 20,
+                color: isActive ? _kPrimary : Colors.white.withOpacity(0.55),
+              ),
+            ),
+            AnimatedSize(
+              duration: const Duration(milliseconds: 280),
+              curve: Curves.easeInOut,
+              child: isActive
+                  ? Padding(
+                      padding: const EdgeInsets.only(left: 8, right: 10),
+                      child: Text(
+                        item.label,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Geist',
+                          letterSpacing: 0.1,
+                        ),
+                      ),
+                    )
+                  : const SizedBox.shrink(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ── Data class ─────────────────────────────────────────────
+class _NavItem {
+  final IconData icon;
+  final String label;
+  const _NavItem({required this.icon, required this.label});
+}
+
+// ── Placeholders (swap with real pilot screens) ────────────
+class _PilotPlaceholder extends StatelessWidget {
+  final String label;
+  final IconData icon;
+  const _PilotPlaceholder({required this.label, required this.icon});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: _kBgDeep,
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, size: 48, color: _kPrimary),
+            const SizedBox(height: 12),
+            Text(
+              label,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+                fontFamily: 'Geist',
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
