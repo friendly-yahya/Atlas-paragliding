@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:atlas_paragliding/theme/app_theme.dart';
 
-const Color _kBgDeep  = Color(0xFF040713);
-const Color _kBgCard  = Color(0xFF191C28);
-const Color _kPrimary = Color(0xFF3198FF);
-
 class PilotMainScreen extends StatefulWidget {
   const PilotMainScreen({super.key, required this.onSwitchToClient});
   final VoidCallback onSwitchToClient;
@@ -64,7 +60,7 @@ class _PilotMainScreenState extends State<PilotMainScreen> {
         if (!didPop) await _onWillPop();
       },
       child: Scaffold(
-        backgroundColor: _kBgDeep,
+        backgroundColor: AppTheme.kBgDeep,
         body: IndexedStack(
           index: _currentIndex,
           children: List.generate(5, _buildTabScreen),
@@ -96,12 +92,12 @@ class _PilotBottomNavBar extends StatelessWidget {
     final bottomPadding = MediaQuery.of(context).padding.bottom;
 
     return Container(
-      color: _kBgDeep,
+      color: AppTheme.kBgDeep,
       padding: EdgeInsets.fromLTRB(12, 10, 12, bottomPadding + 14),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 7),
         decoration: BoxDecoration(
-          color: _kBgCard,
+          color: AppTheme.kBgCard,
           borderRadius: BorderRadius.circular(40),
         ),
         child: Row(
@@ -147,7 +143,7 @@ class _NavTile extends StatelessWidget {
         height: 54,
         padding: EdgeInsets.all(isActive ? 4 : 0),
         decoration: BoxDecoration(
-          color: isActive ? _kPrimary : Colors.transparent,
+          color: isActive ? AppTheme.kPrimary : Colors.transparent,
           borderRadius: BorderRadius.circular(99),
         ),
         child: Row(
@@ -163,7 +159,7 @@ class _NavTile extends StatelessWidget {
               child: Icon(
                 item.icon,
                 size: 20,
-                color: isActive ? _kPrimary : Colors.white.withOpacity(0.55),
+                color: isActive ? AppTheme.kPrimary : Colors.white.withOpacity(0.55),
               ),
             ),
             AnimatedSize(
@@ -208,12 +204,12 @@ class _PilotPlaceholder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: _kBgDeep,
+      backgroundColor: AppTheme.kBgDeep,
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, size: 48, color: _kPrimary),
+            Icon(icon, size: 48, color: AppTheme.kPrimary),
             const SizedBox(height: 12),
             Text(
               label,

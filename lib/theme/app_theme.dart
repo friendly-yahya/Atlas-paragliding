@@ -13,6 +13,9 @@ class AppTheme {
   static const Color successColor = Color(0xFF22C55E);
   static const Color errorColor = Color(0xFFEF4444);
   static const Color starColor = Color(0xFFFACC15);
+  static const Color kBgDeep  = Color(0xFF040713);
+  static const Color kBgCard  = Color(0xFF191C28);
+  static const Color kPrimary = Color(0xFF3198FF);
   //======================================
   //SPACING  
   //======================================
