@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:atlas_paragliding/theme/app_theme.dart';
-
+import 'package:atlas_paragliding/screens/pilot_home_screen.dart';
+import 'package:atlas_paragliding/screens/pilot_messages.dart';
+import 'package:atlas_paragliding/screens/pilot_booking.dart';
+import 'package:atlas_paragliding/screens/pilot_offer.dart';
+import 'package:atlas_paragliding/screens/pilot_profile.dart';
 class PilotMainScreen extends StatefulWidget {
   const PilotMainScreen({super.key, required this.onSwitchToClient});
   final VoidCallback onSwitchToClient;
@@ -37,11 +41,11 @@ class _PilotMainScreenState extends State<PilotMainScreen> {
 
   Widget _buildTabScreen(int index) {
     const screens = [
-      _PilotPlaceholder(label: 'Home',     icon: Icons.home_rounded),
-      _PilotPlaceholder(label: 'Messages', icon: Icons.chat_bubble_rounded),
-      _PilotPlaceholder(label: 'Flights',  icon: Icons.flight_rounded),
-      _PilotPlaceholder(label: 'Schedule', icon: Icons.calendar_month_rounded),
-      _PilotPlaceholder(label: 'Profile',  icon: Icons.person_rounded),
+      PilotHomeScreen(), 
+      PilotMessages(),      
+      PilotBooking(),       
+      PilotOffer(),        
+      PilotProfile(),       
     ];
 
     return Navigator(
@@ -195,34 +199,7 @@ class _NavItem {
   const _NavItem({required this.icon, required this.label});
 }
 
-// ── Placeholders (swap with real pilot screens) ────────────
-class _PilotPlaceholder extends StatelessWidget {
-  final String label;
-  final IconData icon;
-  const _PilotPlaceholder({required this.label, required this.icon});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppTheme.kBgDeep,
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, size: 48, color: AppTheme.kPrimary),
-            const SizedBox(height: 12),
-            Text(
-              label,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-                fontFamily: 'Geist',
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+
+
+
