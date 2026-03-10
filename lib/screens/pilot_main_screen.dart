@@ -148,7 +148,7 @@ class _NavTile extends StatelessWidget {
         padding: EdgeInsets.all(isActive ? 4 : 0),
         decoration: BoxDecoration(
           color: isActive ? AppTheme.kPrimary : Colors.transparent,
-          borderRadius: BorderRadius.circular(99),
+          borderRadius: BorderRadius.circular(999),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
