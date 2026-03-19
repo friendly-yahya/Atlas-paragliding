@@ -107,3 +107,6 @@ firebase/crashlytics-mapping.json
 # Local databases
 *.db
 *.sqlite
+
+# FVM Version Cache
+.fvm/
