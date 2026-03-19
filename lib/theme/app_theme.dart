@@ -15,6 +15,7 @@ class AppTheme {
   static const Color starColor = Color(0xFFFACC15);
   static const Color kBgDeep  = Color(0xFF040713);
   static const Color kBgCard  = Color(0xFF191C28);
+  static const Color kBgElevated = Color(0xFF252834);
   static const Color kPrimary = Color(0xFF3198FF);
   //======================================
   //SPACING  
