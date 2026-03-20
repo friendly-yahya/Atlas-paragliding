@@ -65,8 +65,27 @@ class PilotMessages extends StatelessWidget {
                           convo: convo,
                           onTap: () => Navigator.push(
                             context,
-                            MaterialPageRoute(
-                              builder: (_) => PilotChatScreen(name: convo['name']),
+                            PageRouteBuilder(
+                              pageBuilder: (context, animation, secondaryAnimation) =>
+                                  PilotChatScreen(name: convo['name']),
+                              transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                                final slideTween = Tween(
+                                  begin: const Offset(1.0, 0.0),
+                                  end: Offset.zero,
+                                ).chain(CurveTween(curve: Curves.easeOutCubic));
+                          
+                                final fadeTween = Tween(begin: 0.0, end: 1.0)
+                                    .chain(CurveTween(curve: Curves.easeOut));
+                          
+                                return SlideTransition(
+                                  position: animation.drive(slideTween),
+                                  child: FadeTransition(
+                                    opacity: animation.drive(fadeTween),
+                                    child: child,
+                                  ),
+                                );
+                              },
+                              transitionDuration: const Duration(milliseconds: 320),
                             ),
                           ),
                         );
