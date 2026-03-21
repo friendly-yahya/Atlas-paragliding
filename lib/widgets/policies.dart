@@ -12,10 +12,10 @@ class Policies extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
+      children: [
         Text(
           'Things to know',
-          style: AppTheme.heading3,
+          style:  AppTheme.heading3,
           ),
         SizedBox(height: 16,),
         Column(

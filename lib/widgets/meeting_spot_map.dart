@@ -20,7 +20,7 @@ class MeetingSpotMap extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Where you’\ll fly',
+          'Where you’ll fly',
           style: AppTheme.heading3,
         ),
         const SizedBox(height: 16),

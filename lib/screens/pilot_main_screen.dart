@@ -163,7 +163,7 @@ class _NavTile extends StatelessWidget {
               child: Icon(
                 item.icon,
                 size: 20,
-                color: isActive ? AppTheme.kPrimary : Colors.white.withOpacity(0.55),
+                color: isActive ? AppTheme.kPrimary : Colors.white.withValues(alpha: .55),
               ),
             ),
             AnimatedSize(

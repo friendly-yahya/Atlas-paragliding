@@ -29,7 +29,7 @@ class GreetingTitle extends StatelessWidget {
             Text(
               _getGreeting(),
               style: AppTheme.paragraphMiniRegular.copyWith(
-                color: Colors.white.withOpacity(0.5),
+                color: Colors.white.withValues(alpha: .5),
                 letterSpacing: 0.1,
               ),
             ),

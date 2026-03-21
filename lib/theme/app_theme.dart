@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   //======================================
@@ -22,6 +23,7 @@ class AppTheme {
   //======================================
   static const double space2 = 2.0;
   static const double space4 = 4.0;
+  static const double space6 = 6.0;
   static const double space8 = 8.0;
   static const double space12 = 12.0;
   static const double space16 = 16.0;
@@ -36,74 +38,80 @@ class AppTheme {
   static const double rounded8 = 8.0;
   static const double rounded10 = 10.0;
   static const double rounded12 = 12.0;
+  static const double rounded32 = 12.0;
   static const double rounded40 = 40.0;
-  //======================================
-  //TYPOGRAPHY  
-  //======================================
-  //Headings
-  static const TextStyle heading1 = TextStyle(
-    fontSize: 30,
-    fontWeight: FontWeight.w600,
-    color: textPrimary,
-    letterSpacing: 0.05,
-  );
-  static const TextStyle heading2 = TextStyle(
-    fontSize: 24,
-    fontWeight: FontWeight.w600,
-    color: textPrimary,
-    letterSpacing: 0.05,
-  );  
-  static const TextStyle heading3 = TextStyle(
-    fontSize: 20,
-    fontWeight: FontWeight.w600,
-    color: textPrimary,
-    letterSpacing: 0.05,
-  );  
-  static const TextStyle heading4 = TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.w600,
-    color: textPrimary,
-    letterSpacing: 0.05,
-  );  
-  //Body text
-  static const TextStyle paragraphSmRegular = TextStyle(
-    fontSize: 14,
-    fontWeight: FontWeight.w400,
-    color: textPrimary,
-    letterSpacing: 0.05,
-  );
-  static const TextStyle paragraphSmMedium = TextStyle(
-    fontSize: 14,
-    fontWeight: FontWeight.w500,
-    color: textPrimary,
-    letterSpacing: 0.05,
-  );
-  static const TextStyle paragraphMiniRegular = TextStyle(
-    fontSize: 12,
-    fontWeight: FontWeight.w400,
-    color: textPrimary,
-    letterSpacing: 0.05,
-  );
-  static const TextStyle paragraphMiniMedium = TextStyle(
-    fontSize: 12,
-    fontWeight: FontWeight.w500,
-    color: textPrimary,
-    letterSpacing: 0.05,
-  );
-  static const TextStyle micro = TextStyle(
-    fontSize: 10,
-    fontWeight: FontWeight.w500,
-    color: textPrimary,
-    letterSpacing: 0.05,
-  );
-  static const TextStyle paragraphMedium = TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.w500,
-    color: textPrimary,
-    letterSpacing: 0.05,
-  );
+//======================================
+//TYPOGRAPHY  
+//======================================
+static final TextStyle kDisplayHero = GoogleFonts.workSans(
+  fontSize: 48,
+  fontWeight: FontWeight.w800,
+  color: backgroundColor,
+);
+// Headings
+static final TextStyle heading1 = GoogleFonts.geist(
+  fontSize: 30, 
+  fontWeight: FontWeight.w600, 
+  color: textPrimary, 
+  letterSpacing: 0.05,
+);
+static final TextStyle heading2 = GoogleFonts.geist(
+  fontSize: 24, 
+  fontWeight: FontWeight.w600, 
+  color: textPrimary, 
+  letterSpacing: 0.05,
+);
+static final TextStyle heading3 = GoogleFonts.geist(
+  fontSize: 20, 
+  fontWeight: FontWeight.w600, 
+  color: textPrimary, 
+  letterSpacing: 0.05,
+);
+static final TextStyle heading4 = GoogleFonts.geist(
+  fontSize: 16, 
+  fontWeight: FontWeight.w600, 
+  color: textPrimary, 
+  letterSpacing: 0.05,
+);
+// Body
+static final TextStyle paragraphSmRegular = GoogleFonts.geist(
+  fontSize: 14, 
+  fontWeight: FontWeight.w400, 
+  color: textPrimary, 
+  letterSpacing: 0.05,
+);
+static final TextStyle paragraphSmMedium = GoogleFonts.geist(
+  fontSize: 14, 
+  fontWeight: FontWeight.w500, 
+  color: textPrimary, 
+  letterSpacing: 0.05,
+);
+static final TextStyle paragraphMiniRegular = GoogleFonts.geist(
+  fontSize: 12, 
+  fontWeight: FontWeight.w400, 
+  color: textPrimary, 
+  letterSpacing: 0.05,
+);
+static final TextStyle paragraphMiniMedium = GoogleFonts.geist(
+  fontSize: 12, 
+  fontWeight: FontWeight.w500, 
+  color: textPrimary, 
+  letterSpacing: 0.05,
+);
+static final TextStyle micro = GoogleFonts.geist(
+  fontSize: 10, 
+  fontWeight: FontWeight.w500, 
+  color: textPrimary, 
+  letterSpacing: 0.05,
+);
+static final TextStyle paragraphMedium = GoogleFonts.geist(
+  fontSize: 16, 
+  fontWeight: FontWeight.w500, 
+  color: textPrimary, 
+  letterSpacing: 0.05,
+);
   // ========================================
-  // 5. COMPONENT STYLES
+  // COMPONENT STYLES
   // ========================================
   static final ButtonStyle primaryButton = ElevatedButton.styleFrom(
     backgroundColor: primaryColor,
@@ -187,7 +195,7 @@ class AppTheme {
           thickness: 1,
         ),
 
-      textTheme: const TextTheme(
+      textTheme: TextTheme(
       // Display (largest text)
       displayLarge: heading1,          // 30px
       displayMedium: heading2,         // 24px
