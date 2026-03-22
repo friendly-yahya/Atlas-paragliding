@@ -5,6 +5,7 @@ import 'package:atlas_paragliding/widgets/earnings_widget.dart';
 import 'package:atlas_paragliding/widgets/messages_widget.dart';
 import 'package:atlas_paragliding/widgets/weather_widget.dart';
 import 'package:atlas_paragliding/widgets/arrival_countdown_card.dart';
+import 'package:atlas_paragliding/widgets/client_info_card.dart';
 class PilotHomeScreen extends StatelessWidget {
   const PilotHomeScreen({super.key});
 
@@ -84,7 +85,10 @@ class PilotHomeScreen extends StatelessWidget {
                     ),
                       child: Column(
                         children: [
-                          ArrivalCountdownCard()
+                          ArrivalCountdownCard(),
+                          SizedBox(height: AppTheme.space16,),
+                          ClientInfoCard(),
+
                         ],
                       ),
                     ),
