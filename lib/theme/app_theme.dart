@@ -48,6 +48,11 @@ static final TextStyle kDisplayHero = GoogleFonts.workSans(
   fontWeight: FontWeight.w800,
   color: backgroundColor,
 );
+static final TextStyle kDisplaySub = GoogleFonts.workSans(
+  fontSize: 18,
+  fontWeight: FontWeight.w400,
+  color: backgroundColor.withValues(alpha: 0.6),
+);
 // Headings
 static final TextStyle heading1 = GoogleFonts.geist(
   fontSize: 30, 

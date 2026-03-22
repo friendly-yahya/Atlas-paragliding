@@ -4,17 +4,29 @@ import 'package:atlas_paragliding/theme/app_theme.dart';
 class ElevatedCard extends StatelessWidget {
   final Column child;
   final EdgeInsetsGeometry? padding;
-
+  final double? minHeight;
+  final double? maxHeight;
+  final double? width;
   const ElevatedCard({
     super.key,
     required this.child,
     this.padding,
+    this.minHeight,
+    this.maxHeight,
+    this.width,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: width,
       padding: padding ?? const EdgeInsets.all(AppTheme.space16),
+      constraints: (minHeight != null || maxHeight != null)
+          ? BoxConstraints(
+              minHeight: minHeight ?? 0,
+              maxHeight: maxHeight ?? double.infinity,
+            )
+          : null,
       decoration: BoxDecoration(
         color: AppTheme.kBgElevated,
         border: Border.all(
