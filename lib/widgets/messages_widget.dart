@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:atlas_paragliding/theme/app_theme.dart';
 import 'package:atlas_paragliding/widgets/avatar.dart';
-
+import 'elevated_card.dart';
 class MessagesWidget extends StatelessWidget {
   const MessagesWidget({super.key});
 
@@ -12,23 +12,7 @@ class MessagesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(AppTheme.space16),
-      decoration: BoxDecoration(
-        color: AppTheme.kBgElevated,
-        border: Border.all(
-          color: AppTheme.backgroundColor.withValues(alpha: .1)
-        ),
-        borderRadius: BorderRadius.circular(AppTheme.space32),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.25),
-            offset: Offset(0, 4),
-            blurRadius: 20,
-            spreadRadius: 0,
-          ),
-        ],
-      ),
+    return ElevatedCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -69,12 +53,13 @@ class MessagesWidget extends StatelessWidget {
               ),
             ],
           ),
-
+          SizedBox(height: AppTheme.space4,),
           // ── Conversation tiles ──
           ..._conversations.map((convo) => _MiniConvoRow(convo: convo)),
-
+      
           // ── See all ──
           Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
                 'See all',
