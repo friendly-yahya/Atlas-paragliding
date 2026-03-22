@@ -98,66 +98,6 @@ class MessagesEarningsCard extends StatelessWidget {
                 ),
               ),
             ),
-            // ── Earnings side ──
-            Expanded(
-              flex: 4,
-              child: GestureDetector(
-                onTap: onEarningsTap,
-                child: Container(
-                  padding: const EdgeInsets.all(AppTheme.space12),
-                  decoration: BoxDecoration(
-                    color: AppTheme.kPrimary,
-                    borderRadius: BorderRadius.circular(AppTheme.rounded12),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Today',
-                        style: AppTheme.paragraphSmRegular.copyWith(
-                          color: Colors.white.withValues(alpha: 0.8),
-                        ),
-                      ),
-                      Text(
-                        '\$$todayEarnings',
-                        style: const TextStyle(
-                          fontSize: 36,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white,
-                          height: 1.1,
-                          fontFamily: 'Geist',
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            '$flightCount flights',
-                            style: AppTheme.paragraphMiniRegular.copyWith(
-                              color: Colors.white.withValues(alpha: 0.75),
-                            ),
-                          ),
-                          Text(
-                            ' • ',
-                            style: AppTheme.paragraphMiniRegular.copyWith(
-                              color: Colors.white.withValues(alpha: 0.45),
-                            ),
-                          ),
-                          Icon(Icons.star_rounded, size: 13, color: AppTheme.starColor),
-                          const SizedBox(width: 2),
-                          Text(
-                            '$rating',
-                            style: AppTheme.paragraphMiniRegular.copyWith(
-                              color: Colors.white.withValues(alpha: 0.75),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
           ],
         ),
       ),

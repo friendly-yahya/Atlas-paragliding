@@ -20,8 +20,8 @@ class PilotHomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(AppTheme.space12),
                 child: Column(
                   children: [
-                    SizedBox(
-                      height: 175,
+                    ConstrainedBox(
+                      constraints: BoxConstraints(maxHeight: 175),
                       child: Row(
                         children: [
                           Expanded(
