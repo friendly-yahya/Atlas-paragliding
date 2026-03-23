@@ -40,12 +40,12 @@ class _PilotMainScreenState extends State<PilotMainScreen> {
   }
 
   Widget _buildTabScreen(int index) {
-    const screens = [
-      PilotHomeScreen(), 
-      PilotMessages(),      
-      PilotBooking(),       
-      PilotOffer(),        
-      PilotProfile(),       
+    final screens = [
+      const PilotHomeScreen(), 
+      const PilotMessages(),      
+      const PilotBooking(),       
+      const PilotOffer(),        
+      PilotProfile(onSwitchToClient: widget.onSwitchToClient),       
     ];
 
     return Navigator(
