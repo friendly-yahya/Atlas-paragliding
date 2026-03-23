@@ -6,11 +6,21 @@ import 'package:atlas_paragliding/widgets/messages_widget.dart';
 import 'package:atlas_paragliding/widgets/weather_widget.dart';
 import 'package:atlas_paragliding/widgets/arrival_countdown_card.dart';
 import 'package:atlas_paragliding/widgets/client_info_card.dart';
-class PilotHomeScreen extends StatelessWidget {
+import 'package:atlas_paragliding/widgets/flight_progress_slider.dart';
+class PilotHomeScreen extends StatefulWidget {
   const PilotHomeScreen({super.key});
 
   @override
+  State<PilotHomeScreen> createState() => _PilotHomeScreenState();
+}
+
+class _PilotHomeScreenState extends State<PilotHomeScreen> {
+  
+  double _progress = 0.4;
+  
+  @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
               backgroundColor: AppTheme.kBgDeep,
               appBar: AppBar(
@@ -88,7 +98,8 @@ class PilotHomeScreen extends StatelessWidget {
                           ArrivalCountdownCard(),
                           SizedBox(height: AppTheme.space16,),
                           ClientInfoCard(),
-
+                          SizedBox(height: AppTheme.space16,),
+                          FlightProgressSlider(value: _progress, onChanged: (v) => setState(() => _progress =v))
                         ],
                       ),
                     ),

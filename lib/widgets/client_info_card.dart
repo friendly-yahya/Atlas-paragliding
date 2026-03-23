@@ -20,7 +20,7 @@ class ClientInfoCard extends StatelessWidget {
                 color: AppTheme.backgroundColor,
               ),
             ),
-            SizedBox(height: AppTheme.space4,),
+            //SizedBox(height: AppTheme.space2,),
             Row(
 
               children: [
