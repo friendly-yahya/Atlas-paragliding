@@ -6,8 +6,8 @@ class AsymmetricTrackShape extends RoundedRectSliderTrackShape {
   final double inactiveHeight;
 
   const AsymmetricTrackShape({
-    this.activeHeight = 3,
-    this.inactiveHeight = 3,
+    this.activeHeight = 4,
+    this.inactiveHeight = 4,
   });
 
   @override
@@ -137,9 +137,10 @@ class _FlightProgressSliderState extends State<FlightProgressSlider> {
   Widget build(BuildContext context) {
     return SliderTheme(
       data: SliderThemeData(
+        trackHeight: 4,
         trackShape: const AsymmetricTrackShape(
-          activeHeight: 3,
-          inactiveHeight: 3,
+          activeHeight: 4,
+          inactiveHeight: 4,
         ),
         activeTrackColor: AppTheme.kPrimary,
         inactiveTrackColor: AppTheme.backgroundColor.withValues(alpha: 0.6),

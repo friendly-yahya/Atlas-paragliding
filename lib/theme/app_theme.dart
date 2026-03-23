@@ -169,6 +169,20 @@ static final TextStyle paragraphMedium = GoogleFonts.geist(
     ),
     
     );
+  static final ButtonStyle bookingButtonDark = ElevatedButton.styleFrom(
+    backgroundColor: backgroundColor,
+    foregroundColor: textPrimary,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(99)//might cause an error later on
+    ),
+    elevation: 0,
+    textStyle: paragraphSmMedium,
+    padding: EdgeInsets.symmetric(
+      horizontal: space24,
+      vertical: 9.5,
+    ),
+    
+    );
     static final ButtonStyle bookMainButtonLight = ElevatedButton.styleFrom(
     backgroundColor: primaryColor,
     foregroundColor: backgroundColor,

@@ -99,7 +99,32 @@ class _PilotHomeScreenState extends State<PilotHomeScreen> {
                           SizedBox(height: AppTheme.space16,),
                           ClientInfoCard(),
                           SizedBox(height: AppTheme.space16,),
-                          FlightProgressSlider(value: _progress, onChanged: (v) => setState(() => _progress =v))
+                          FlightProgressSlider(value: _progress, onChanged: (v) => setState(() => _progress =v)),
+                          SizedBox(height: AppTheme.space16,),
+                          Row(
+                            children: [
+                              /* TextButton(
+                                onPressed: () => print('o'),
+                                style: AppTheme.bookingButtonDark,
+                                child: const Text('Send Reminder'),
+                              ), */
+                              
+                              
+                              TextButton(
+                                onPressed: () => print('o'),
+                                style: AppTheme.bookingButtonDark,
+                                child: const Text('Confirm Arrival'),
+                              ),
+                              Spacer(),
+                              TextButton(
+                                onPressed: () => print('o'),
+                                style: AppTheme.bookMainButtonLight.copyWith(
+                                  backgroundColor: WidgetStatePropertyAll(AppTheme.kPrimary),
+                                ),
+                                child: const Text('Prepay'),
+                              ),
+                            ],
+                          )
                         ],
                       ),
                     ),
