@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:atlas_paragliding/theme/app_theme.dart';
 import 'package:atlas_paragliding/widgets/settings_tile.dart';
 import 'package:atlas_paragliding/widgets/settings_tile_group.dart';
+import 'package:atlas_paragliding/widgets/profile_header.dart';
 
 class _TileData {
   const _TileData({
@@ -77,7 +78,10 @@ class PilotProfile extends StatelessWidget {
           padding: const EdgeInsets.all(AppTheme.space16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: sections.map((section) => Padding(
+            children:[ 
+              const ProfileHeader(),
+              const SizedBox(height: AppTheme.space24),
+              ...sections.map((section) => Padding(
               padding: const EdgeInsets.only(bottom: AppTheme.space24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,6 +103,7 @@ class PilotProfile extends StatelessWidget {
                 ],
               ),
             )).toList(),
+          ]
           ),
         ),
       ),

@@ -34,7 +34,7 @@ class SettingsTile extends StatelessWidget {
               Expanded(
                 child: Text(
                   label,
-                  style: AppTheme.paragraphMedium.copyWith(color: AppTheme.kTextPrimary),
+                  style: AppTheme.paragraphSmMedium.copyWith(color: AppTheme.kTextPrimary),
                 )
               ),
               Icon(Icons.chevron_right_rounded, color: AppTheme.kTextPrimary,)

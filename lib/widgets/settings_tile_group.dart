@@ -43,7 +43,7 @@ class SettingsTileGroup extends StatelessWidget {
                         Expanded(
                           child: Text(
                             tiles[i].label,
-                            style: AppTheme.paragraphMedium.copyWith(
+                            style: AppTheme.paragraphSmMedium.copyWith(
                               color: AppTheme.kTextPrimary,
                             ),
                           ),
