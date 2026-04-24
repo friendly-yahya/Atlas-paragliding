@@ -3,7 +3,6 @@ import 'package:atlas_paragliding/theme/app_theme.dart';
 import 'package:atlas_paragliding/widgets/settings_tile.dart';
 import 'package:atlas_paragliding/widgets/settings_tile_group.dart';
 
-// ── Data models ────────────────────────────────────────────
 class _TileData {
   const _TileData({
     required this.icon,
@@ -24,7 +23,6 @@ class _SectionData {
   final List<_TileData> tiles;
 }
 
-// ── Screen ─────────────────────────────────────────────────
 class PilotProfile extends StatelessWidget {
   const PilotProfile({super.key, required this.onSwitchToClient});
   final VoidCallback onSwitchToClient;
@@ -84,7 +82,6 @@ class PilotProfile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Title from the data
                   Padding(
                     padding: const EdgeInsets.only(bottom: AppTheme.space12),
                     child: Text(
@@ -92,7 +89,6 @@ class PilotProfile extends StatelessWidget {
                       style: AppTheme.heading4.copyWith(color: AppTheme.kTextPrimary),
                     ),
                   ),
-                  // Tiles
                   SettingsTileGroup(
                     tiles: section.tiles.map((t) => SettingsTile(
                       icon: t.icon,
