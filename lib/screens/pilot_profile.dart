@@ -3,6 +3,7 @@ import 'package:atlas_paragliding/theme/app_theme.dart';
 import 'package:atlas_paragliding/widgets/settings_tile.dart';
 import 'package:atlas_paragliding/widgets/settings_tile_group.dart';
 import 'package:atlas_paragliding/widgets/profile_header.dart';
+import 'package:atlas_paragliding/screens/language_screen.dart';
 
 class _TileData {
   const _TileData({
@@ -39,7 +40,10 @@ class PilotProfile extends StatelessWidget {
           _TileData(icon: Icons.phone_outlined,             label: 'Phone Numbers',    onTap: () {}),
           _TileData(icon: Icons.description_outlined,       label: 'About/bio',        onTap: () {}),
           _TileData(icon: Icons.card_membership_outlined,   label: 'Certificates',     onTap: () {}),
-          _TileData(icon: Icons.record_voice_over_outlined, label: 'Languages Spoken', onTap: () {}),
+          _TileData(icon: Icons.record_voice_over_outlined, label: 'Languages Spoken', onTap: () => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => const LanguagesScreen()),
+  ),),
           _TileData(icon: Icons.location_on_outlined,       label: 'Base Location',    onTap: () {}),
           _TileData(icon: Icons.construction_outlined,      label: 'Equipment',        onTap: () {}),
           _TileData(icon: Icons.more_horiz,                 label: 'More',             onTap: () {}),
