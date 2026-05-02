@@ -6,11 +6,15 @@ class SettingsTile extends StatelessWidget {
     super.key,
     required this.icon,
     required this.label,
+    this.subtitle,
     this.onTap,
-    });
+  });
+
   final IconData icon;
   final String label;
+  final String? subtitle; // optional line below the label
   final VoidCallback? onTap;
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -23,22 +27,28 @@ class SettingsTile extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: AppTheme.space16,
-            vertical: AppTheme.space12
+            vertical: AppTheme.space12,
           ),
           child: Row(
             children: [
-              Icon(icon,color: AppTheme.kTextPrimary, size: 20),
-              const SizedBox(width: AppTheme.space12,),
+              Icon(icon, color: AppTheme.kTextPrimary, size: 20),
+              const SizedBox(width: AppTheme.space12),
               Expanded(
-                child: Text(
-                  label,
-                  style: AppTheme.paragraphSmMedium.copyWith(color: AppTheme.kTextPrimary),
-                )
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(label,
+                        style: AppTheme.paragraphMedium.copyWith(color: AppTheme.kTextPrimary)),
+                    if (subtitle != null)
+                      Text(subtitle!,
+                          style: AppTheme.paragraphMiniRegular.copyWith(color: AppTheme.kTextSecondary)),
+                  ],
+                ),
               ),
-              Icon(Icons.chevron_right_rounded, color: AppTheme.kTextPrimary,)
+              Icon(Icons.chevron_right_rounded, color: AppTheme.kTextPrimary),
             ],
           ),
-             ),
+        ),
       ),
     );
   }

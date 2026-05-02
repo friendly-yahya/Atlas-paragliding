@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:atlas_paragliding/theme/app_theme.dart';
 
 const List<Map<String, String>> kFluencyLevels = [
-  {'level': 'Beginner',     'desc': 'I know a few words',          'emoji': '🌱'},
-  {'level': 'Intermediate', 'desc': 'I can hold a conversation',   'emoji': '📈'},
-  {'level': 'Fluent',       'desc': 'I speak it comfortably',      'emoji': '⚡'},
-  {'level': 'Native',       'desc': 'It\'s my first language',     'emoji': '🏆'},
+  {'level': 'Beginner',     'desc': 'I know a few words',        'emoji': '🌱'},
+  {'level': 'Intermediate', 'desc': 'I can hold a conversation', 'emoji': '📈'},
+  {'level': 'Fluent',       'desc': 'I speak it comfortably',    'emoji': '⚡'},
+  {'level': 'Native',       'desc': 'It\'s my first language',   'emoji': '🏆'},
 ];
 
 class FluencyScreen extends StatefulWidget {
@@ -30,20 +30,15 @@ class _FluencyScreenState extends State<FluencyScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
 
-              // Header
+              // ── Header ───────────────────────
               Row(
                 children: [
                   GestureDetector(
-                    onTap: () => Navigator.pop(context),
+                    onTap: () => Navigator.pop(context), // pop with no result = cancelled
                     child: Container(
-                      width: 40,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        color: AppTheme.kBgCard,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Icon(Icons.arrow_back_ios_new_rounded,
-                          color: AppTheme.kTextPrimary, size: 16),
+                      width: 40, height: 40,
+                      decoration: BoxDecoration(color: AppTheme.kBgCard, shape: BoxShape.circle),
+                      child: Icon(Icons.arrow_back_ios_new_rounded, color: AppTheme.kTextPrimary, size: 16),
                     ),
                   ),
                   const SizedBox(width: 16),
@@ -54,10 +49,8 @@ class _FluencyScreenState extends State<FluencyScreen> {
 
               const SizedBox(height: 32),
 
-              Text(
-                'What\'s your fluency level?',
-                style: AppTheme.heading2.copyWith(color: AppTheme.kTextPrimary),
-              ),
+              Text('What\'s your fluency level?',
+                  style: AppTheme.heading2.copyWith(color: AppTheme.kTextPrimary)),
               const SizedBox(height: 8),
               Text(
                 'This helps clients know how well you can communicate.',
@@ -66,7 +59,7 @@ class _FluencyScreenState extends State<FluencyScreen> {
 
               const SizedBox(height: 32),
 
-              // Fluency options
+              // ── Options ──────────────────────
               ...kFluencyLevels.map((f) {
                 final isSelected = _selected == f['level'];
                 return GestureDetector(
@@ -78,10 +71,6 @@ class _FluencyScreenState extends State<FluencyScreen> {
                     decoration: BoxDecoration(
                       color: isSelected ? AppTheme.kPrimary : AppTheme.kBgCard,
                       borderRadius: BorderRadius.circular(AppTheme.rounded12),
-                      border: Border.all(
-                        color: isSelected ? AppTheme.kPrimary : Colors.transparent,
-                        width: 1.5,
-                      ),
                     ),
                     child: Row(
                       children: [
@@ -91,21 +80,17 @@ class _FluencyScreenState extends State<FluencyScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                f['level']!,
-                                style: AppTheme.paragraphMedium.copyWith(
-                                  color: AppTheme.kTextPrimary,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              Text(
-                                f['desc']!,
-                                style: AppTheme.paragraphSmRegular.copyWith(
-                                  color: isSelected
-                                      ? AppTheme.kTextPrimary.withValues(alpha: 0.7)
-                                      : AppTheme.kTextSecondary,
-                                ),
-                              ),
+                              Text(f['level']!,
+                                  style: AppTheme.paragraphMedium.copyWith(
+                                    color: AppTheme.kTextPrimary,
+                                    fontWeight: FontWeight.w600,
+                                  )),
+                              Text(f['desc']!,
+                                  style: AppTheme.paragraphSmRegular.copyWith(
+                                    color: isSelected
+                                        ? AppTheme.kTextPrimary.withValues(alpha: 0.7)
+                                        : AppTheme.kTextSecondary,
+                                  )),
                             ],
                           ),
                         ),
@@ -119,17 +104,14 @@ class _FluencyScreenState extends State<FluencyScreen> {
 
               const Spacer(),
 
-              //Confirm button 
+              // ── Confirm ──────────────────────
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: _selected == null
                       ? null
-                      : () {
-                          // TODO: save language + fluency
-                          Navigator.pop(context); // back to languages
-                          Navigator.pop(context); // back to profile
-                        },
+                      // pop WITH the selected fluency string back to LanguagesScreen
+                      : () => Navigator.pop(context, _selected),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppTheme.kPrimary,
                     disabledBackgroundColor: AppTheme.kBgCard,
@@ -139,13 +121,10 @@ class _FluencyScreenState extends State<FluencyScreen> {
                     ),
                     elevation: 0,
                   ),
-                  child: Text(
-                    'Confirm',
-                    style: AppTheme.paragraphMedium.copyWith(color: Colors.white),
-                  ),
+                  child: Text('Confirm',
+                      style: AppTheme.paragraphMedium.copyWith(color: Colors.white)),
                 ),
               ),
-
             ],
           ),
         ),
