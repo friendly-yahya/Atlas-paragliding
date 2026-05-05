@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:atlas_paragliding/core/theme/app_theme.dart';
-
+//import 'package:atlas_paragliding/core/widgets/avatar.dart';
+import 'package:atlas_paragliding/core/widgets/conversation_tile.dart';
 class MessagingScreen extends StatelessWidget {
   const MessagingScreen({super.key});
 
@@ -54,8 +55,13 @@ class MessagingScreen extends StatelessWidget {
                       separatorBuilder: (_, __) => const Divider(height: 1, color: AppTheme.strokeColor),
                       itemBuilder: (context, index) {
                         final convo = _conversations[index];
-                        return _ConversationTile(
-                          convo: convo,
+                        return ConversationTile(
+                          name: convo['name'],
+                          lastMessage: convo['lastMessage'],
+                          time: convo['time'],
+                          unreadCount: convo['unread'],
+                          isOnline: convo['isOnline'],
+                          tileTheme: ConversationTileTheme.light(),   // ← light
                           onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -63,6 +69,7 @@ class MessagingScreen extends StatelessWidget {
                             ),
                           ),
                         );
+
                       },
                     ),
             ),
@@ -83,122 +90,6 @@ class MessagingScreen extends StatelessWidget {
           const SizedBox(height: AppTheme.space4),
           Text('Book a flight to start chatting', style: AppTheme.paragraphSmRegular.copyWith(color: AppTheme.textSecondary)),
         ],
-      ),
-    );
-  }
-}
-
-class _ConversationTile extends StatelessWidget {
-  final Map<String, dynamic> convo;
-  final VoidCallback onTap;
-
-  const _ConversationTile({required this.convo, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    final hasUnread = (convo['unread'] as int) > 0;
-
-    return GestureDetector(
-      onTap: onTap,
-      behavior: HitTestBehavior.opaque,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: AppTheme.space12),
-        child: Row(
-          children: [
-            // Avatar
-            Stack(
-              children: [
-                Container(
-                  width: 48,
-                  height: 48,
-                  decoration: BoxDecoration(
-                    color: AppTheme.primaryColor.withValues(alpha: 0.1),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Center(
-                    child: Text(
-                      (convo['name'] as String)[0],
-                      style: AppTheme.paragraphMedium.copyWith(color: AppTheme.primaryColor),
-                    ),
-                  ),
-                ),
-                if (convo['isOnline'] as bool)
-                  Positioned(
-                    bottom: 1,
-                    right: 1,
-                    child: Container(
-                      width: 11,
-                      height: 11,
-                      decoration: BoxDecoration(
-                        color: AppTheme.successColor,
-                        shape: BoxShape.circle,
-                        border: Border.all(color: AppTheme.backgroundColor, width: 2),
-                      ),
-                    ),
-                  ),
-              ],
-            ),
-            const SizedBox(width: AppTheme.space12),
-            // Content
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        convo['name'],
-                        style: hasUnread
-                            ? AppTheme.paragraphSmMedium
-                            : AppTheme.paragraphSmRegular,
-                      ),
-                      Text(
-                        convo['time'],
-                        style: AppTheme.micro.copyWith(
-                          color: hasUnread ? AppTheme.primaryColor : AppTheme.textSecondary,
-                          fontWeight: hasUnread ? FontWeight.w600 : FontWeight.w400,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 2),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          convo['lastMessage'],
-                          style: AppTheme.paragraphMiniRegular.copyWith(
-                            color: hasUnread ? AppTheme.textPrimary : AppTheme.textSecondary,
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      if (hasUnread)
-                        Container(
-                          margin: const EdgeInsets.only(left: AppTheme.space8),
-                          width: 18,
-                          height: 18,
-                          decoration: const BoxDecoration(
-                            color: AppTheme.primaryColor,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Center(
-                            child: Text(
-                              '${convo['unread']}',
-                              style: AppTheme.micro.copyWith(color: Colors.white, fontWeight: FontWeight.w700),
-                            ),
-                          ),
-                        ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:atlas_paragliding/core/theme/app_theme.dart';
 import 'package:atlas_paragliding/core/widgets/avatar.dart';
+import 'package:atlas_paragliding/core/widgets/conversation_tile.dart';
 
 class PilotMessages extends StatelessWidget {
   const PilotMessages({super.key});
@@ -61,22 +62,25 @@ class PilotMessages extends StatelessWidget {
                       ),
                       itemBuilder: (context, index) {
                         final convo = _conversations[index];
-                        return _ConversationTile(
-                          convo: convo,
+                        return ConversationTile(
+                          name: convo['name'],
+                          lastMessage: convo['lastMessage'],
+                          time: convo['time'],
+                          unreadCount: convo['unread'],
+                          isOnline: convo['isOnline'],
+                          tileTheme: ConversationTileTheme.dark(),
                           onTap: () => Navigator.push(
                             context,
                             PageRouteBuilder(
                               pageBuilder: (context, animation, secondaryAnimation) =>
                                   PilotChatScreen(name: convo['name']),
-                              transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                              transitionsBuilder: (context, animation, secondaryAnimation, child)                         {
                                 final slideTween = Tween(
                                   begin: const Offset(1.0, 0.0),
                                   end: Offset.zero,
                                 ).chain(CurveTween(curve: Curves.easeOutCubic));
-                          
                                 final fadeTween = Tween(begin: 0.0, end: 1.0)
                                     .chain(CurveTween(curve: Curves.easeOut));
-                          
                                 return SlideTransition(
                                   position: animation.drive(slideTween),
                                   child: FadeTransition(
@@ -89,6 +93,8 @@ class PilotMessages extends StatelessWidget {
                             ),
                           ),
                         );
+ 
+
                       },
                     ),
             ),
@@ -119,97 +125,6 @@ class PilotMessages extends StatelessWidget {
             style: AppTheme.paragraphSmRegular.copyWith(color: Colors.white.withValues(alpha: 0.25)),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _ConversationTile extends StatelessWidget {
-  final Map<String, dynamic> convo;
-  final VoidCallback onTap;
-
-  const _ConversationTile({required this.convo, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    final hasUnread = (convo['unread'] as int) > 0;
-
-    return GestureDetector(
-      onTap: onTap,
-      behavior: HitTestBehavior.opaque,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: AppTheme.space12),
-        child: Row(
-          children: [
-            Avatar(name: convo['name'], isOnline: convo['isOnline']),
-            const SizedBox(width: AppTheme.space12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        convo['name'],
-                        style: (hasUnread
-                                ? AppTheme.paragraphSmMedium
-                                : AppTheme.paragraphSmRegular)
-                            .copyWith(color: Colors.white),
-                      ),
-                      Text(
-                        convo['time'],
-                        style: AppTheme.micro.copyWith(
-                          color: hasUnread
-                              ? AppTheme.kPrimary
-                              : Colors.white.withValues(alpha: 0.3),
-                          fontWeight: hasUnread ? FontWeight.w600 : FontWeight.w400,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 2),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          convo['lastMessage'],
-                          style: AppTheme.paragraphMiniRegular.copyWith(
-                            color: hasUnread
-                                ? Colors.white.withValues(alpha: 0.85)
-                                : Colors.white.withValues(alpha: 0.35),
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      if (hasUnread)
-                        Container(
-                          margin: const EdgeInsets.only(left: AppTheme.space8),
-                          width: 18,
-                          height: 18,
-                          decoration: const BoxDecoration(
-                            color: AppTheme.kPrimary,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Center(
-                            child: Text(
-                              '${convo['unread']}',
-                              style: AppTheme.micro.copyWith(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                        ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
