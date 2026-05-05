@@ -9,15 +9,15 @@ import 'messages/messaging_screen.dart';
 import 'profile/profile_screen.dart';
 import 'package:atlas_paragliding/core/theme/app_theme.dart';
 
-class MainScreen extends StatefulWidget {
+class ClientMainScreen extends StatefulWidget {
   final VoidCallback onSwitchToPilot; 
-  const MainScreen({super.key, required this.onSwitchToPilot});
+  const ClientMainScreen({super.key, required this.onSwitchToPilot});
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<ClientMainScreen> createState() => _ClientMainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _ClientMainScreenState extends State<ClientMainScreen> {
   int _selectedIndex = 0;
 
   final List<GlobalKey<NavigatorState>> _navigatorKeys = [
