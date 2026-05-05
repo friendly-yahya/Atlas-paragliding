@@ -1,5 +1,5 @@
 import 'package:atlas_paragliding/core/theme/app_theme.dart';
-import 'package:atlas_paragliding/features/client/safety%20and%20health%20check/safety_health_check.dart';
+import 'package:atlas_paragliding/features/client/safety_and_health_check/safety_health_check.dart';
 import 'package:flutter/material.dart';
 
 class BookingFooter extends StatelessWidget {
