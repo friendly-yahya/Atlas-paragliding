@@ -1,9 +1,9 @@
-import 'package:atlas_paragliding/main_screen.dart';
+import 'package:atlas_paragliding/features/client/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'theme/app_theme.dart';
-import 'package:atlas_paragliding/screens/pilot_main_screen.dart'; 
+import 'core/theme/app_theme.dart';
+import 'package:atlas_paragliding/features/pilot/pilot_main_screen.dart'; 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
