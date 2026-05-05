@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:atlas_paragliding/core/theme/app_theme.dart';
 //import 'package:atlas_paragliding/core/widgets/avatar.dart';
 import 'package:atlas_paragliding/core/widgets/conversation_tile.dart';
+import 'package:atlas_paragliding/features/shared/chat_screen.dart';
 class MessagingScreen extends StatelessWidget {
   const MessagingScreen({super.key});
 
@@ -61,13 +62,25 @@ class MessagingScreen extends StatelessWidget {
                           time: convo['time'],
                           unreadCount: convo['unread'],
                           isOnline: convo['isOnline'],
-                          tileTheme: ConversationTileTheme.light(),   // ← light
+                          tileTheme: ConversationTileTheme.light(),  
                           onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (_) => ChatScreen(name: convo['name']),
+                              builder: (_) => ChatScreen(
+                                name: convo['name'],
+                                isOnline: convo['isOnline'],
+                                chatTheme: ChatScreenTheme.light(),
+                                initialMessages: const [
+                                  {'text': 'Hey! I booked your Essential Flight for Oct 19 🪂',                           'isMe': true,  'time': '10:20 AM'},
+                                  {'text': 'Perfect! See you at Aguergour launch site.',                                  'isMe': false, 'time': '10:22 AM'},
+                                  {'text': 'What should I wear?',                                                           'isMe': true,  'time': '10:25 AM'},
+                                  {'text': "Comfortable clothes and closed shoes. I'll handle the                           rest!", 'isMe': false, 'time': '10:28 AM'},
+                                  {'text': 'See you at the launch site at 10!',                                             'isMe': false, 'time': '10:32 AM'},
+                                ],
+                              ),
                             ),
                           ),
+
                         );
 
                       },
@@ -89,204 +102,6 @@ class MessagingScreen extends StatelessWidget {
           Text('No messages yet', style: AppTheme.paragraphMedium.copyWith(color: AppTheme.textSecondary)),
           const SizedBox(height: AppTheme.space4),
           Text('Book a flight to start chatting', style: AppTheme.paragraphSmRegular.copyWith(color: AppTheme.textSecondary)),
-        ],
-      ),
-    );
-  }
-}
-
-// ── Chat screen ──────────────────────────────────────────────────────────────
-
-class ChatScreen extends StatefulWidget {
-  final String name;
-  const ChatScreen({super.key, required this.name});
-
-  @override
-  State<ChatScreen> createState() => _ChatScreenState();
-}
-
-class _ChatScreenState extends State<ChatScreen> {
-  final TextEditingController _controller = TextEditingController();
-  final ScrollController _scrollController = ScrollController();
-
-  final List<Map<String, dynamic>> _messages = [
-    {'text': 'Hey! I booked your Essential Flight for Oct 19 🪂', 'isMe': true, 'time': '10:20 AM'},
-    {'text': 'Perfect! See you at Aguergour launch site.', 'isMe': false, 'time': '10:22 AM'},
-    {'text': 'What should I wear?', 'isMe': true, 'time': '10:25 AM'},
-    {'text': 'Comfortable clothes and closed shoes. I\'ll handle the rest!', 'isMe': false, 'time': '10:28 AM'},
-    {'text': 'See you at the launch site at 10!', 'isMe': false, 'time': '10:32 AM'},
-  ];
-
-  void _sendMessage() {
-    if (_controller.text.trim().isEmpty) return;
-    setState(() {
-      _messages.add({'text': _controller.text.trim(), 'isMe': true, 'time': 'Now'});
-      _controller.clear();
-    });
-    Future.delayed(const Duration(milliseconds: 100), () {
-      _scrollController.animateTo(
-        _scrollController.position.maxScrollExtent,
-        duration: const Duration(milliseconds: 200),
-        curve: Curves.easeOut,
-      );
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppTheme.backgroundColor,
-      appBar: AppBar(
-        backgroundColor: AppTheme.backgroundColor,
-        elevation: 0,
-        surfaceTintColor: Colors.transparent,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_rounded, size: 20, color: AppTheme.textPrimary),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Row(
-          children: [
-            Container(
-              width: 34,
-              height: 34,
-              decoration: BoxDecoration(
-                color: AppTheme.primaryColor.withValues(alpha: 0.1),
-                shape: BoxShape.circle,
-              ),
-              child: Center(
-                child: Text(widget.name[0], style: AppTheme.paragraphSmMedium.copyWith(color: AppTheme.primaryColor)),
-              ),
-            ),
-            const SizedBox(width: AppTheme.space8),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(widget.name, style: AppTheme.paragraphSmMedium),
-                Text('Online', style: AppTheme.micro.copyWith(color: AppTheme.successColor)),
-              ],
-            ),
-          ],
-        ),
-        bottom: const PreferredSize(
-          preferredSize: Size.fromHeight(1),
-          child: Divider(height: 1, color: AppTheme.strokeColor),
-        ),
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              controller: _scrollController,
-              padding: const EdgeInsets.all(AppTheme.space16),
-              itemCount: _messages.length,
-              itemBuilder: (context, index) {
-                final msg = _messages[index];
-                return _MessageBubble(
-                  text: msg['text'],
-                  isMe: msg['isMe'],
-                  time: msg['time'],
-                );
-              },
-            ),
-          ),
-          // Input bar
-          Container(
-            padding: const EdgeInsets.fromLTRB(
-              AppTheme.space16,
-              AppTheme.space8,
-              AppTheme.space16,
-              AppTheme.space16,
-            ),
-            decoration: const BoxDecoration(
-              border: Border(top: BorderSide(color: AppTheme.strokeColor)),
-              color: AppTheme.backgroundColor,
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: AppTheme.space16),
-                    decoration: BoxDecoration(
-                      color: AppTheme.searchBackgroundColor,
-                      borderRadius: BorderRadius.circular(AppTheme.rounded40),
-                    ),
-                    child: TextField(
-                      controller: _controller,
-                      decoration: InputDecoration(
-                        hintText: 'Message ${widget.name.split(' ')[0]}...',
-                        hintStyle: AppTheme.paragraphSmRegular.copyWith(color: AppTheme.textSecondary),
-                        border: InputBorder.none,
-                        isDense: true,
-                        contentPadding: const EdgeInsets.symmetric(vertical: AppTheme.space12),
-                      ),
-                      style: AppTheme.paragraphSmRegular,
-                      onSubmitted: (_) => _sendMessage(),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: AppTheme.space8),
-                GestureDetector(
-                  onTap: _sendMessage,
-                  child: Container(
-                    width: 42,
-                    height: 42,
-                    decoration: const BoxDecoration(
-                      color: AppTheme.primaryColor,
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(Icons.arrow_upward_rounded, color: Colors.white, size: 20),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _MessageBubble extends StatelessWidget {
-  final String text;
-  final bool isMe;
-  final String time;
-
-  const _MessageBubble({required this.text, required this.isMe, required this.time});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: AppTheme.space8),
-      child: Column(
-        crossAxisAlignment: isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-        children: [
-          Container(
-            constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.72),
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppTheme.space16,
-              vertical: AppTheme.space12,
-            ),
-            decoration: BoxDecoration(
-              color: isMe ? AppTheme.primaryColor : AppTheme.searchBackgroundColor,
-              borderRadius: BorderRadius.only(
-                topLeft: const Radius.circular(AppTheme.rounded12),
-                topRight: const Radius.circular(AppTheme.rounded12),
-                bottomLeft: Radius.circular(isMe ? AppTheme.rounded12 : AppTheme.rounded4),
-                bottomRight: Radius.circular(isMe ? AppTheme.rounded4 : AppTheme.rounded12),
-              ),
-            ),
-            child: Text(
-              text,
-              style: AppTheme.paragraphSmRegular.copyWith(
-                color: isMe ? Colors.white : AppTheme.textPrimary,
-              ),
-            ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            time,
-            style: AppTheme.micro.copyWith(color: AppTheme.textSecondary),
-          ),
         ],
       ),
     );
