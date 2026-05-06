@@ -33,7 +33,7 @@ class PilotMessages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.kBgDeep,
+      backgroundColor: cs.surface,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,7 +58,7 @@ class PilotMessages extends StatelessWidget {
                       itemCount: _conversations.length,
                       separatorBuilder: (_, __) => const Divider(
                         height: 1,
-                        color: AppTheme.kBgElevated,
+                        color: cs.surfaceContainer,
                       ),
                       itemBuilder: (context, index) {
                         final convo = _conversations[index];

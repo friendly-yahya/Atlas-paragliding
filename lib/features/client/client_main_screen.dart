@@ -37,7 +37,7 @@ class _ClientMainScreenState extends State<ClientMainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.backgroundColor,
+      backgroundColor: cs.surface,
       body: IndexedStack(
         index: _selectedIndex,
         children: [
@@ -97,9 +97,9 @@ class _CleanNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.backgroundColor,
+        color: cs.surface,
         border: const Border(
-          top: BorderSide(color: AppTheme.strokeColor, width: 1),
+          top: BorderSide(color: cs.outline, width: 1),
         ),
       ),
       child: SafeArea(
@@ -150,7 +150,7 @@ class _NavBarItem extends StatelessWidget {
             height: isSelected ? 4 : 0,
             margin: const EdgeInsets.only(bottom: 4),
             decoration: const BoxDecoration(
-              color: AppTheme.primaryColor,
+              color: cs.primary,
               shape: BoxShape.circle,
             ),
           ),
@@ -160,14 +160,14 @@ class _NavBarItem extends StatelessWidget {
               isSelected ? item.activeIcon : item.icon,
               key: ValueKey(isSelected),
               size: 24,
-              color: isSelected ? AppTheme.primaryColor : AppTheme.textSecondary,
+              color: isSelected ? cs.primary : cs.onSurfaceVariant,
             ),
           ),
           const SizedBox(height: 4),
           Text(
             item.label,
             style: AppTheme.micro.copyWith(
-              color: isSelected ? AppTheme.primaryColor : AppTheme.textSecondary,
+              color: isSelected ? cs.primary : cs.onSurfaceVariant,
               fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
             ),
           ),

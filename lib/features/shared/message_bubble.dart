@@ -28,18 +28,18 @@ class MessageBubbleTheme {
 
   // ── Light — client ──────────────────────────────────────────────────────────
   static MessageBubbleTheme light() => MessageBubbleTheme(
-        meBubbleBg: AppTheme.primaryColor,
+        meBubbleBg: cs.primary,
         meTextColor: Colors.white,
-        otherBubbleBg: AppTheme.searchBackgroundColor,
-        otherTextColor: AppTheme.textPrimary,
-        timestampColor: AppTheme.textSecondary,
+        otherBubbleBg: cs.surfaceContainerHighest,
+        otherTextColor: cs.primary,
+        timestampColor: cs.onSurfaceVariant,
       );
 
   // ── Dark — pilot ────────────────────────────────────────────────────────────
   static MessageBubbleTheme dark() => MessageBubbleTheme(
-        meBubbleBg: AppTheme.kPrimary,
+        meBubbleBg: cs.primary,
         meTextColor: Colors.white,
-        otherBubbleBg: AppTheme.kBgCard,
+        otherBubbleBg: cs.surfaceContainerHighest,
         otherTextColor: Colors.white.withValues(alpha: 0.85),
         timestampColor: Colors.white.withValues(alpha: 0.3),
       );

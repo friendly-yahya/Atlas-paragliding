@@ -29,16 +29,16 @@ class ChatHeaderTheme {
 
   // ── Light — client ──────────────────────────────────────────────────────────
   static ChatHeaderTheme light() => ChatHeaderTheme(
-        appBarBg: AppTheme.backgroundColor,
-        backIconColor: AppTheme.textPrimary,
+        appBarBg: cs.surface,
+        backIconColor: cs.primary,
         nameStyle: AppTheme.paragraphSmMedium,
-        offlineStatusColor: AppTheme.textSecondary,
-        dividerColor: AppTheme.strokeColor,
+        offlineStatusColor: cs.onSurfaceVariant,
+        dividerColor: cs.outline,
       );
 
   // ── Dark — pilot ────────────────────────────────────────────────────────────
   static ChatHeaderTheme dark() => ChatHeaderTheme(
-        appBarBg: AppTheme.kBgCard,
+        appBarBg: cs.surfaceContainerHighest,
         backIconColor: Colors.white,
         nameStyle: AppTheme.paragraphSmMedium.copyWith(color: Colors.white),
         offlineStatusColor: Colors.white.withValues(alpha: 0.3),

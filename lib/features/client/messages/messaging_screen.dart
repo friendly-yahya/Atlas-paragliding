@@ -3,6 +3,7 @@ import 'package:atlas_paragliding/core/theme/app_theme.dart';
 //import 'package:atlas_paragliding/core/widgets/avatar.dart';
 import 'package:atlas_paragliding/core/widgets/conversation_tile.dart';
 import 'package:atlas_paragliding/features/shared/chat_screen.dart';
+
 class MessagingScreen extends StatelessWidget {
   const MessagingScreen({super.key});
 
@@ -32,8 +33,9 @@ class MessagingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Scaffold(
-      backgroundColor: AppTheme.backgroundColor,
+      backgroundColor: cs.surface,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,11 +51,11 @@ class MessagingScreen extends StatelessWidget {
             ),
             Expanded(
               child: _conversations.isEmpty
-                  ? _buildEmpty()
+                  ? _buildEmpty(context)
                   : ListView.separated(
                       padding: const EdgeInsets.symmetric(horizontal: AppTheme.space16),
                       itemCount: _conversations.length,
-                      separatorBuilder: (_, __) => const Divider(height: 1, color: AppTheme.strokeColor),
+                      separatorBuilder: (_, __) => Divider(height: 1, color: cs.outline),
                       itemBuilder: (context, index) {
                         final convo = _conversations[index];
                         return ConversationTile(
@@ -62,27 +64,26 @@ class MessagingScreen extends StatelessWidget {
                           time: convo['time'],
                           unreadCount: convo['unread'],
                           isOnline: convo['isOnline'],
-                          tileTheme: ConversationTileTheme.light(),  
+                          tileTheme: ConversationTileTheme.light(context),
                           onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (_) => ChatScreen(
                                 name: convo['name'],
                                 isOnline: convo['isOnline'],
+                                //might need to add context
                                 chatTheme: ChatScreenTheme.light(),
                                 initialMessages: const [
-                                  {'text': 'Hey! I booked your Essential Flight for Oct 19 🪂',                           'isMe': true,  'time': '10:20 AM'},
-                                  {'text': 'Perfect! See you at Aguergour launch site.',                                  'isMe': false, 'time': '10:22 AM'},
-                                  {'text': 'What should I wear?',                                                           'isMe': true,  'time': '10:25 AM'},
-                                  {'text': "Comfortable clothes and closed shoes. I'll handle the                           rest!", 'isMe': false, 'time': '10:28 AM'},
-                                  {'text': 'See you at the launch site at 10!',                                             'isMe': false, 'time': '10:32 AM'},
+                                  {'text': 'Hey! I booked your Essential Flight for Oct 19 🪂',         'isMe': true,  'time': '10:20 AM'},
+                                  {'text': 'Perfect! See you at Aguergour launch site.',                 'isMe': false, 'time': '10:22 AM'},
+                                  {'text': 'What should I wear?',                                        'isMe': true,  'time': '10:25 AM'},
+                                  {'text': "Comfortable clothes and closed shoes. I'll handle the rest!", 'isMe': false, 'time': '10:28 AM'},
+                                  {'text': 'See you at the launch site at 10!',                          'isMe': false, 'time': '10:32 AM'},
                                 ],
                               ),
                             ),
                           ),
-
                         );
-
                       },
                     ),
             ),
@@ -92,16 +93,17 @@ class MessagingScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildEmpty() {
+  Widget _buildEmpty(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.chat_bubble_outline_rounded, size: 48, color: AppTheme.textSecondary.withValues(alpha: 0.4)),
+          Icon(Icons.chat_bubble_outline_rounded, size: 48, color: cs.onSurfaceVariant.withValues(alpha: 0.4)),
           const SizedBox(height: AppTheme.space16),
-          Text('No messages yet', style: AppTheme.paragraphMedium.copyWith(color: AppTheme.textSecondary)),
+          Text('No messages yet', style: AppTheme.paragraphMedium.copyWith(color: cs.onSurfaceVariant)),
           const SizedBox(height: AppTheme.space4),
-          Text('Book a flight to start chatting', style: AppTheme.paragraphSmRegular.copyWith(color: AppTheme.textSecondary)),
+          Text('Book a flight to start chatting', style: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurfaceVariant)),
         ],
       ),
     );

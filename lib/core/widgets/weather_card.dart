@@ -21,11 +21,12 @@ class WeatherCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(AppTheme.space16),
       decoration: BoxDecoration(
-        color: AppTheme.kBgCard,
+        color: cs.surfaceContainerHighest,
         borderRadius: BorderRadius.circular(AppTheme.rounded12),
       ),
       child: Column(

@@ -13,6 +13,7 @@ class RoundIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Material(
       color: Colors.transparent,
       shape: const CircleBorder(),
@@ -25,7 +26,7 @@ class RoundIconButton extends StatelessWidget {
           child: Container(
             decoration: 
               BoxDecoration(
-                color: AppTheme.strokeColor,
+                color: cs.outline,
                 shape: BoxShape.circle
               ),
             child: Padding(

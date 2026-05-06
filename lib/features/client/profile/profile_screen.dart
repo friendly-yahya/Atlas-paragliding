@@ -8,7 +8,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.backgroundColor,
+      backgroundColor: cs.surface,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: AppTheme.space16),
@@ -24,7 +24,7 @@ class ProfileScreen extends StatelessWidget {
                   Text('Profile', style: AppTheme.heading2),
                   IconButton(
                     onPressed: () {},
-                    icon: const Icon(Icons.settings_outlined, size: 24, color: AppTheme.textSecondary),
+                    icon: const Icon(Icons.settings_outlined, size: 24, color: cs.onSurfaceVariant),
                   ),
                 ],
               ),
@@ -40,14 +40,14 @@ class ProfileScreen extends StatelessWidget {
                         width: 72,
                         height: 72,
                         decoration: BoxDecoration(
-                          color: AppTheme.primaryColor.withValues(alpha: 0.12),
+                          color: cs.primary.withValues(alpha: 0.12),
                           shape: BoxShape.circle,
                         ),
                         child: const Center(
                           child: Text('Y', style: TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.w600,
-                            color: AppTheme.primaryColor,
+                            color: cs.primary,
                           )),
                         ),
                       ),
@@ -58,9 +58,9 @@ class ProfileScreen extends StatelessWidget {
                           width: 22,
                           height: 22,
                           decoration: BoxDecoration(
-                            color: AppTheme.primaryColor,
+                            color: cs.primary,
                             shape: BoxShape.circle,
-                            border: Border.all(color: AppTheme.backgroundColor, width: 2),
+                            border: Border.all(color: cs.surface, width: 2),
                           ),
                           child: const Icon(Icons.edit, size: 11, color: Colors.white),
                         ),
@@ -73,7 +73,7 @@ class ProfileScreen extends StatelessWidget {
                     children: [
                       Text('Friendly Yahya', style: AppTheme.heading4),
                       const SizedBox(height: 2),
-                      Text('yahya@email.com', style: AppTheme.paragraphSmRegular.copyWith(color: AppTheme.textSecondary)),
+                      Text('yahya@email.com', style: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurfaceVariant)),
                       const SizedBox(height: AppTheme.space4),
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: AppTheme.space8, vertical: 3),
@@ -126,7 +126,7 @@ class ProfileScreen extends StatelessWidget {
                 date: 'Sep 3, 2024',
                 price: 'MAD 1000',
                 status: 'Cancelled',
-                statusColor: AppTheme.errorColor,
+                statusColor: cs.error,
               ),
 
               const SizedBox(height: AppTheme.space24),
@@ -158,14 +158,14 @@ class ProfileScreen extends StatelessWidget {
                 child: TextButton(
                   onPressed: () {},
                   style: TextButton.styleFrom(
-                    foregroundColor: AppTheme.errorColor,
+                    foregroundColor: cs.error,
                     padding: const EdgeInsets.symmetric(vertical: AppTheme.space16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(AppTheme.rounded8),
-                      side: const BorderSide(color: AppTheme.strokeColor),
+                      side: const BorderSide(color: cs.outline),
                     ),
                   ),
-                  child: Text('Sign out', style: AppTheme.paragraphSmMedium.copyWith(color: AppTheme.errorColor)),
+                  child: Text('Sign out', style: AppTheme.paragraphSmMedium.copyWith(color: cs.error)),
                 ),
               ),
 
@@ -181,7 +181,7 @@ class ProfileScreen extends StatelessWidget {
   void _handlePilotSwitch(BuildContext context) {
     showModalBottomSheet(
       context: context,
-      backgroundColor: AppTheme.backgroundColor,
+      backgroundColor: cs.surface,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(AppTheme.rounded12)),
       ),
@@ -195,7 +195,7 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: AppTheme.space8),
             Text(
               'Do you have an existing verified pilot account or are you new?',
-              style: AppTheme.paragraphSmRegular.copyWith(color: AppTheme.textSecondary),
+              style: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurfaceVariant),
             ),
             const SizedBox(height: AppTheme.space24),
             SizedBox(
@@ -218,11 +218,11 @@ class ProfileScreen extends StatelessWidget {
                   // TODO: navigate to pilot onboarding
                 },
                 style: TextButton.styleFrom(
-                  foregroundColor: AppTheme.textPrimary,
+                  foregroundColor: cs.primary,
                   padding: const EdgeInsets.symmetric(vertical: AppTheme.space12),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(AppTheme.rounded8),
-                    side: const BorderSide(color: AppTheme.strokeColor),
+                    side: const BorderSide(color: cs.outline),
                   ),
                 ),
                 child: Text('I\'m new — set up my pilot profile', style: AppTheme.paragraphSmMedium),
@@ -247,7 +247,7 @@ class _SectionLabel extends StatelessWidget {
     return Text(
       label.toUpperCase(),
       style: AppTheme.micro.copyWith(
-        color: AppTheme.textSecondary,
+        color: cs.onSurfaceVariant,
         letterSpacing: 1.2,
         fontWeight: FontWeight.w600,
       ),
@@ -271,7 +271,7 @@ class _InfoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: AppTheme.strokeColor),
+        border: Border.all(color: cs.outline),
         borderRadius: BorderRadius.circular(AppTheme.rounded12),
       ),
       child: Column(
@@ -287,19 +287,19 @@ class _InfoCard extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
-                    Icon(item.icon, size: 18, color: AppTheme.textSecondary),
+                    Icon(item.icon, size: 18, color: cs.onSurfaceVariant),
                     const SizedBox(width: AppTheme.space12),
                     Expanded(
                       child: Text(item.label, style: AppTheme.paragraphSmRegular),
                     ),
                     if (item.value.isNotEmpty)
-                      Text(item.value, style: AppTheme.paragraphSmRegular.copyWith(color: AppTheme.textSecondary)),
+                      Text(item.value, style: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurfaceVariant)),
                     if (tappable)
-                      const Icon(Icons.chevron_right_rounded, size: 18, color: AppTheme.textSecondary),
+                      const Icon(Icons.chevron_right_rounded, size: 18, color: cs.onSurfaceVariant),
                   ],
                 ),
               ),
-              if (!isLast) const Divider(height: 1, color: AppTheme.strokeColor),
+              if (!isLast) const Divider(height: 1, color: cs.outline),
             ],
           );
         }),
@@ -328,7 +328,7 @@ class _BookingHistoryCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(AppTheme.space16),
       decoration: BoxDecoration(
-        border: Border.all(color: AppTheme.strokeColor),
+        border: Border.all(color: cs.outline),
         borderRadius: BorderRadius.circular(AppTheme.rounded12),
       ),
       child: Row(
@@ -337,10 +337,10 @@ class _BookingHistoryCard extends StatelessWidget {
             width: 40,
             height: 40,
             decoration: BoxDecoration(
-              color: AppTheme.primaryColor.withValues(alpha: 0.08),
+              color: cs.primary.withValues(alpha: 0.08),
               borderRadius: BorderRadius.circular(AppTheme.rounded8),
             ),
-            child: const Icon(Icons.paragliding_rounded, size: 20, color: AppTheme.primaryColor),
+            child: const Icon(Icons.paragliding_rounded, size: 20, color: cs.primary),
           ),
           const SizedBox(width: AppTheme.space12),
           Expanded(
@@ -348,7 +348,7 @@ class _BookingHistoryCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(pilotName, style: AppTheme.paragraphSmMedium),
-                Text(date, style: AppTheme.micro.copyWith(color: AppTheme.textSecondary)),
+                Text(date, style: AppTheme.micro.copyWith(color: cs.onSurfaceVariant)),
               ],
             ),
           ),
@@ -376,7 +376,7 @@ class _PilotModeCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(AppTheme.space16),
       decoration: BoxDecoration(
-        border: Border.all(color: AppTheme.strokeColor),
+        border: Border.all(color: cs.outline),
         borderRadius: BorderRadius.circular(AppTheme.rounded12),
       ),
       child: Row(
@@ -385,10 +385,10 @@ class _PilotModeCard extends StatelessWidget {
             width: 40,
             height: 40,
             decoration: BoxDecoration(
-              color: AppTheme.primaryColor.withValues(alpha: 0.08),
+              color: cs.primary.withValues(alpha: 0.08),
               borderRadius: BorderRadius.circular(AppTheme.rounded8),
             ),
-            child: const Icon(Icons.paragliding_outlined, size: 20, color: AppTheme.primaryColor),
+            child: const Icon(Icons.paragliding_outlined, size: 20, color: cs.primary),
           ),
           const SizedBox(width: AppTheme.space12),
           Expanded(
@@ -398,7 +398,7 @@ class _PilotModeCard extends StatelessWidget {
                 Text('Switch to Pilot mode', style: AppTheme.paragraphSmMedium),
                 Text(
                   'Offer flights and manage bookings',
-                  style: AppTheme.micro.copyWith(color: AppTheme.textSecondary),
+                  style: AppTheme.micro.copyWith(color: cs.onSurfaceVariant),
                 ),
               ],
             ),
@@ -407,7 +407,7 @@ class _PilotModeCard extends StatelessWidget {
           TextButton(
             onPressed: onSwitch,
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppTheme.primaryColor,
+              backgroundColor: cs.primary,
               foregroundColor: Colors.white,
               elevation: 0,
               padding: const EdgeInsets.symmetric(horizontal: AppTheme.space16, vertical: AppTheme.space8),

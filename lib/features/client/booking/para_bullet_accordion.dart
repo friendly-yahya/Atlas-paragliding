@@ -32,6 +32,7 @@ class _ParaBulletAccordionState extends State<ParaBulletAccordion> {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -55,7 +56,7 @@ class _ParaBulletAccordionState extends State<ParaBulletAccordion> {
                   Icon(
                     _isExpanded ? Icons.expand_less : Icons.expand_more,
                     size: 24,
-                    color: AppTheme.textPrimary,
+                    color: cs.primary,
                   ),
                 ],
               ),
@@ -106,7 +107,7 @@ class _ParaBulletAccordionState extends State<ParaBulletAccordion> {
                                   Icon(
                                     Icons.arrow_forward,
                                     size: 16,
-                                    color: AppTheme.textPrimary,
+                                    color: cs.primary,
                                   ),
                                 ],
                               ),
@@ -118,7 +119,7 @@ class _ParaBulletAccordionState extends State<ParaBulletAccordion> {
               ),
               SizedBox(height: 16),
               Divider(
-                color: AppTheme.textSecondary.withValues(alpha: 0.3),
+                color: cs.onSurfaceVariant.withValues(alpha: 0.3),
                 thickness: 1,
                 height: 1,
               ),

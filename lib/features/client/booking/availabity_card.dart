@@ -6,6 +6,7 @@ class AvailabityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return SizedBox(
       height: 100,
       child: ListView.builder(
@@ -17,16 +18,16 @@ class AvailabityCard extends StatelessWidget {
             padding: EdgeInsets.symmetric(vertical: 8,horizontal: 16),
             margin: EdgeInsets.only(right: 20),
             decoration: BoxDecoration(
-              color: AppTheme.backgroundColor,
+              color: cs.surface,
               boxShadow: [BoxShadow(
-                color: AppTheme.textPrimary.withValues(alpha: 0.1),
+                color: cs.primary.withValues(alpha: 0.1),
                 offset: const Offset(0, 1),
                 blurRadius: 3,
                 spreadRadius: 0 ,
               ),],
               borderRadius: BorderRadius.circular(AppTheme.space12),
               border: Border.all(
-                color: AppTheme.strokeColor,
+                color: cs.outline,
                 width: 1,  
                               
               )

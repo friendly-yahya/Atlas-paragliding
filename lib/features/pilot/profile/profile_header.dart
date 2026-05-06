@@ -6,26 +6,25 @@ class ProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Container(
       padding: const EdgeInsets.all(AppTheme.space16),
       decoration: BoxDecoration(
-        color: AppTheme.kBgCard,
+        color: cs.surfaceContainerHighest,        // kBgCard → theme
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            
             children: [
               Stack(
                 children: [
-                  const CircleAvatar(
+                  CircleAvatar(
                     radius: 40,
-                    backgroundColor: Color(0xFFA3A3A3),
-                    child: Icon(Icons.person, color: Colors.white, size: 40),
+                    backgroundColor: cs.onSurfaceVariant,
+                    child: const Icon(Icons.person, color: Colors.white, size: 40),
                   ),
                   Positioned(
                     bottom: 0,
@@ -34,55 +33,46 @@ class ProfileHeader extends StatelessWidget {
                       width: 24,
                       height: 24,
                       decoration: BoxDecoration(
-                        color: AppTheme.kPrimary,
+                        color: cs.primary,
                         shape: BoxShape.circle,
-                        border: Border.all(color: AppTheme.kBgDeep, width: 2),
+                        border: Border.all(
+                          color: cs.surface,      // kBgDeep → theme
+                          width: 2,
+                        ),
                       ),
                       child: const Icon(Icons.edit, color: Colors.white, size: 11),
                     ),
                   ),
                 ],
               ),
-          
               const SizedBox(height: AppTheme.space12),
-          
-              // Name + verified
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
-                    'Mouad Khouya',
-                    style: AppTheme.heading2.copyWith(color: AppTheme.kTextPrimary),
-                  ),
+                  Text('Mouad Khouya',
+                      style: AppTheme.heading2.copyWith(color: cs.onSurface)),
                   const SizedBox(width: 6),
-                  Icon(Icons.verified_rounded, color: AppTheme.kPrimary, size: 16),
+                  Icon(Icons.verified_rounded, color: cs.primary, size: 16),
                 ],
               ),
-          
               const SizedBox(height: 2),
-          
-              Text(
-                'Marrakech, Aguer...',
-                style: AppTheme.paragraphSmRegular.copyWith(color: AppTheme.kTextSecondary),
-              ),
+              Text('Marrakech, Aguer...',
+                  style: AppTheme.paragraphSmRegular
+                      .copyWith(color: cs.onSurfaceVariant)),
             ],
           ),
-
-
-        Spacer(),
-
+          const Spacer(),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _Stat(value: '4.8', icon: Icons.star_rounded, iconColor: AppTheme.starColor),
+              _Stat(value: '4.8', icon: Icons.star_rounded,
+                  iconColor: AppTheme.starColor),     // star stays yellow always
               const _StatDivider(),
               _Stat(value: '8y+', sub: 'Of Experience'),
               const _StatDivider(),
               _Stat(value: '516+', sub: 'Flights'),
             ],
           ),
-
         ],
       ),
     );
@@ -98,6 +88,7 @@ class _Stat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: AppTheme.space6),
       child: Column(
@@ -105,10 +96,9 @@ class _Stat extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text(value, style: AppTheme.heading3.copyWith(
-                color: AppTheme.kTextPrimary,
-                fontWeight: FontWeight.w500
-              )),
+              Text(value,
+                  style: AppTheme.heading3.copyWith(
+                      color: cs.onSurface, fontWeight: FontWeight.w500)),
               if (icon != null) ...[
                 const SizedBox(width: 4),
                 Icon(icon, color: iconColor, size: 14),
@@ -116,7 +106,9 @@ class _Stat extends StatelessWidget {
             ],
           ),
           if (sub != null)
-            Text(sub!, style: AppTheme.paragraphMiniRegular.copyWith(color: AppTheme.kTextSecondary)),
+            Text(sub!,
+                style: AppTheme.paragraphMiniRegular
+                    .copyWith(color: cs.onSurfaceVariant)),
         ],
       ),
     );
@@ -128,10 +120,11 @@ class _StatDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Container(
       width: 80,
       height: 1,
-      color: AppTheme.kTextSecondary.withValues(alpha: 0.2),
+      color: cs.onSurfaceVariant.withValues(alpha: 0.2),
     );
   }
 }

@@ -6,6 +6,7 @@ class AboutInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -19,7 +20,7 @@ class AboutInfo extends StatelessWidget {
         ),
         Text(
           "This host speaks English,  French, Dutch, German, Arabic, Spanish",
-          style: AppTheme.paragraphSmRegular.copyWith(color: AppTheme.textSecondary),
+          style: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurfaceVariant),
         )
       ],
     );

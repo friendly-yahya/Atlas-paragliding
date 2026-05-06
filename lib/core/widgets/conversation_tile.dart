@@ -37,26 +37,32 @@ class ConversationTileTheme {
   });
 
   // ── Light (client) ──────────────────────────────────────────────────────────
-  static ConversationTileTheme light() => ConversationTileTheme(
-        nameUnread: AppTheme.paragraphSmMedium,
-        nameRead: AppTheme.paragraphSmRegular,
-        timeUnreadColor: AppTheme.primaryColor,
-        timeReadColor: AppTheme.textSecondary,
-        previewUnreadColor: AppTheme.textPrimary,
-        previewReadColor: AppTheme.textSecondary,
-        badgeColor: AppTheme.primaryColor,
-      );
+  static ConversationTileTheme light(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    return ConversationTileTheme(
+      nameUnread: AppTheme.paragraphSmMedium.copyWith(color: cs.onSurface),
+      nameRead: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurface),
+      timeUnreadColor: cs.primary,
+      timeReadColor: cs.onSurfaceVariant,
+      previewUnreadColor: cs.onSurface,
+      previewReadColor: cs.onSurfaceVariant,
+      badgeColor: cs.primary,
+    );
+  }
 
   // ── Dark (pilot) ────────────────────────────────────────────────────────────
-  static ConversationTileTheme dark() => ConversationTileTheme(
-        nameUnread: AppTheme.paragraphSmMedium.copyWith(color: Colors.white),
-        nameRead: AppTheme.paragraphSmRegular.copyWith(color: Colors.white),
-        timeUnreadColor: AppTheme.kPrimary,
-        timeReadColor: Colors.white.withValues(alpha: 0.3),
-        previewUnreadColor: Colors.white.withValues(alpha: 0.85),
-        previewReadColor: Colors.white.withValues(alpha: 0.35),
-        badgeColor: AppTheme.kPrimary,
-      );
+  static ConversationTileTheme dark(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    return ConversationTileTheme(
+      nameUnread: AppTheme.paragraphSmMedium.copyWith(color: cs.onSurface),
+      nameRead: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurface),
+      timeUnreadColor: cs.primary,
+      timeReadColor: cs.onSurface.withValues(alpha: 0.3),
+      previewUnreadColor: cs.onSurface.withValues(alpha: 0.85),
+      previewReadColor: cs.onSurface.withValues(alpha: 0.35),
+      badgeColor: cs.primary,
+    );
+  }
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -108,7 +114,7 @@ class ConversationTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final hasUnread = unreadCount > 0;
-
+    final cs = Theme.of(context).colorScheme;
     return GestureDetector(
       onTap: onTap,
       behavior: HitTestBehavior.opaque,
@@ -188,7 +194,7 @@ class ConversationTile extends StatelessWidget {
                             child: Text(
                               '$unreadCount',
                               style: AppTheme.micro.copyWith(
-                                color: Colors.white,
+                                color: cs.surface,
                                 fontWeight: FontWeight.w700,
                               ),
                             ),

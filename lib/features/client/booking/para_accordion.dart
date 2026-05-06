@@ -34,6 +34,7 @@ class _ParaAccordionState extends State<ParaAccordion> {
   }
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -56,7 +57,7 @@ class _ParaAccordionState extends State<ParaAccordion> {
                     Icon(
                       _isExpanded ? Icons.expand_less : Icons.expand_more,
                       size: 24,
-                      color: AppTheme.textPrimary,
+                      color: cs.primary,
                     ),
                     
                   ],
@@ -72,7 +73,7 @@ class _ParaAccordionState extends State<ParaAccordion> {
 
                             return ListTile(
                                 contentPadding: EdgeInsets.zero,
-                                leading: Icon(item.icon, size: 24,color: AppTheme.textPrimary,),
+                                leading: Icon(item.icon, size: 24,color: cs.primary,),
                                 title: Text(item.text, style: AppTheme.paragraphSmMedium,),
                               );
                           }).toList(),
@@ -83,7 +84,7 @@ class _ParaAccordionState extends State<ParaAccordion> {
                 ),
                 SizedBox(height: 16), 
                 Divider(
-                  color: AppTheme.textSecondary.withValues(alpha: 0.3), // 
+                  color: cs.onSurfaceVariant.withValues(alpha: 0.3), // 
                   thickness: 1,
                   height: 1,
                 )

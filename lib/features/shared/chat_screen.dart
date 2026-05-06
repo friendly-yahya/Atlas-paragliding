@@ -19,7 +19,7 @@ class ChatScreenTheme {
 
   // ── Light — client ──────────────────────────────────────────────────────────
   static ChatScreenTheme light() => ChatScreenTheme(
-        scaffoldBg: AppTheme.backgroundColor,
+        scaffoldBg: cs.surface,
         header: ChatHeaderTheme.light(),
         bubble: MessageBubbleTheme.light(),
         input: ChatInputBarTheme.light(),
@@ -27,7 +27,7 @@ class ChatScreenTheme {
 
   // ── Dark — pilot ────────────────────────────────────────────────────────────
   static ChatScreenTheme dark() => ChatScreenTheme(
-        scaffoldBg: AppTheme.kBgDeep,
+        scaffoldBg: cs.surface,
         header: ChatHeaderTheme.dark(),
         bubble: MessageBubbleTheme.dark(),
         input: ChatInputBarTheme.dark(),

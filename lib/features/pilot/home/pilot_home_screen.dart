@@ -22,9 +22,9 @@ class _PilotHomeScreenState extends State<PilotHomeScreen> {
   Widget build(BuildContext context) {
     
     return Scaffold(
-              backgroundColor: AppTheme.kBgDeep,
+              backgroundColor: cs.surface,
               appBar: AppBar(
-                backgroundColor: AppTheme.kBgDeep,
+                backgroundColor: cs.surface,
                 elevation: 0,
                 titleSpacing: AppTheme.space12,
                 title: GreetingTitle(name: "Mouad khouya", isOnline: true),
@@ -36,14 +36,14 @@ class _PilotHomeScreenState extends State<PilotHomeScreen> {
                     Container(
                       padding: EdgeInsetsGeometry.all(AppTheme.space8),
                       decoration: BoxDecoration(
-                      color: AppTheme.kBgCard,
+                      color: cs.surfaceContainerHighest,
                       border: Border.all(
-                        color: AppTheme.backgroundColor.withValues(alpha: .1),
+                        color: cs.surface.withValues(alpha: .1),
                       ),
                       borderRadius: BorderRadius.circular(AppTheme.space32),
                       boxShadow: [
                         BoxShadow(
-                          color: AppTheme.backgroundColor.withValues(alpha: 0.1),
+                          color: cs.surface.withValues(alpha: 0.1),
                           offset: Offset(0, 1),
                           blurRadius: 2,
                           spreadRadius: 0,
@@ -79,14 +79,14 @@ class _PilotHomeScreenState extends State<PilotHomeScreen> {
                     Container(
                       padding: EdgeInsetsGeometry.all(AppTheme.space8),
                       decoration: BoxDecoration(
-                      color: AppTheme.kBgCard,
+                      color: cs.surfaceContainerHighest,
                       border: Border.all(
-                        color: AppTheme.backgroundColor.withValues(alpha: .1),
+                        color: cs.surface.withValues(alpha: .1),
                       ),
                       borderRadius: BorderRadius.circular(AppTheme.space32),
                       boxShadow: [
                         BoxShadow(
-                          color: AppTheme.backgroundColor.withValues(alpha: 0.1),
+                          color: cs.surface.withValues(alpha: 0.1),
                           offset: Offset(0, 1),
                           blurRadius: 2,
                           spreadRadius: 0,
@@ -119,7 +119,7 @@ class _PilotHomeScreenState extends State<PilotHomeScreen> {
                               TextButton(
                                 onPressed: () => print('o'),
                                 style: AppTheme.bookMainButtonLight.copyWith(
-                                  backgroundColor: WidgetStatePropertyAll(AppTheme.kPrimary),
+                                  backgroundColor: WidgetStatePropertyAll(cs.primary),
                                 ),
                                 child: const Text('Prepay'),
                               ),

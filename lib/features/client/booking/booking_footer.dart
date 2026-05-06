@@ -13,9 +13,9 @@ class BookingFooter extends StatelessWidget {
         vertical: AppTheme.space12,
       ),
       decoration: BoxDecoration(
-        color: AppTheme.backgroundColor,
+        color: cs.surface,
         border: Border(
-          top: BorderSide(color: AppTheme.strokeColor, width: 1),
+          top: BorderSide(color: cs.outline, width: 1),
         ),
       ),
       child: Row(
@@ -35,7 +35,7 @@ class BookingFooter extends StatelessWidget {
                     Text(
                       '/ person',
                       style: AppTheme.paragraphMiniRegular.copyWith(
-                        color: AppTheme.textSecondary,
+                        color: cs.onSurfaceVariant,
                       ),
                     ),
                   ],
@@ -44,7 +44,7 @@ class BookingFooter extends StatelessWidget {
                 Text(
                   'Tandem flight · Oct 19 at 10:00 AM',
                   style: AppTheme.paragraphMiniRegular.copyWith(
-                    color: AppTheme.textSecondary,
+                    color: cs.onSurfaceVariant,
                   ),
                 ),
                 const SizedBox(height: AppTheme.space2),

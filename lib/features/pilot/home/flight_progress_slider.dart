@@ -103,17 +103,17 @@ class GlowRingThumbShape extends SliderComponentShape {
     final canvas = context.canvas;
 
     final glowPaint = Paint()
-      ..color = AppTheme.kPrimary.withValues(alpha: 0.3)
+      ..color = cs.primary.withValues(alpha: 0.3)
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8);
     canvas.drawCircle(center, ringRadius - 1, glowPaint);
 
     final ringPaint = Paint()
-      ..color = AppTheme.kPrimary.withValues(alpha: 0.4)
+      ..color = cs.primary.withValues(alpha: 0.4)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 2;
     canvas.drawCircle(center, ringRadius - 1, ringPaint);
 
-    final dotPaint = Paint()..color = AppTheme.kPrimary;
+    final dotPaint = Paint()..color = cs.primary;
     canvas.drawCircle(center, thumbRadius, dotPaint);
   }
 }
@@ -142,8 +142,8 @@ class _FlightProgressSliderState extends State<FlightProgressSlider> {
           activeHeight: 4,
           inactiveHeight: 4,
         ),
-        activeTrackColor: AppTheme.kPrimary,
-        inactiveTrackColor: AppTheme.backgroundColor.withValues(alpha: 0.6),
+        activeTrackColor: cs.primary,
+        inactiveTrackColor: cs.surface.withValues(alpha: 0.6),
         thumbShape: const GlowRingThumbShape(
           thumbRadius: 5,
           ringRadius: 9,

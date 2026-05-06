@@ -102,7 +102,7 @@ class BookingDetailScreen extends StatelessWidget {
                             
                           ),
                           const SizedBox(width: 6,),
-                          const Icon(Icons.circle, size: 8, color: AppTheme.textPrimary),
+                          const Icon(Icons.circle, size: 8, color: cs.primary),
                           const SizedBox(width: 8,),
                           Text('127 reviews',style: AppTheme.heading3,)
 
@@ -131,7 +131,7 @@ class BookingDetailScreen extends StatelessWidget {
                       AvailabityCard(),
                       const SizedBox(height: 16),
                       Divider(
-                        color: AppTheme.textSecondary.withValues(alpha: 0.3),
+                        color: cs.onSurfaceVariant.withValues(alpha: 0.3),
                         thickness: 1,
                         height: 1,
                       ),

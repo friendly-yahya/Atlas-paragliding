@@ -103,7 +103,7 @@ class _ManageOffersScreenState extends State<ManageOffersScreen> {
     final listed = _filtered;
 
     return Scaffold(
-      backgroundColor: AppTheme.kBgDeep,
+      backgroundColor: cs.surface,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,22 +119,22 @@ class _ManageOffersScreenState extends State<ManageOffersScreen> {
                     child: Container(
                       width: 40, height: 40,
                       decoration: BoxDecoration(
-                          color: AppTheme.kBgCard, shape: BoxShape.circle),
+                          color: cs.surfaceContainerHighest, shape: BoxShape.circle),
                       child: Icon(Icons.arrow_back_ios_new_rounded,
-                          color: AppTheme.kTextPrimary, size: 16),
+                          color: cs.onSurface, size: 16),
                     ),
                   ),
                   const SizedBox(width: 16),
                   Text('Manage Offers',
                       style: AppTheme.heading3
-                          .copyWith(color: AppTheme.kTextPrimary)),
+                          .copyWith(color: cs.onSurface)),
                   const Spacer(),
                   GestureDetector(
                     onTap: _addOffer,
                     child: Container(
                       width: 40, height: 40,
                       decoration: BoxDecoration(
-                          color: AppTheme.kPrimary, shape: BoxShape.circle),
+                          color: cs.primary, shape: BoxShape.circle),
                       child: const Icon(Icons.add_rounded,
                           color: Colors.white, size: 22),
                     ),
@@ -152,7 +152,7 @@ class _ManageOffersScreenState extends State<ManageOffersScreen> {
                 height: 44,
                 padding: const EdgeInsets.all(4),
                 decoration: BoxDecoration(
-                  color: AppTheme.kBgCard,
+                  color: cs.surfaceContainerHighest,
                   borderRadius: BorderRadius.circular(999),
                 ),
                 child: Row(
@@ -165,7 +165,7 @@ class _ManageOffersScreenState extends State<ManageOffersScreen> {
                           duration: const Duration(milliseconds: 200),
                           decoration: BoxDecoration(
                             color: selected
-                                ? AppTheme.kPrimary
+                                ? cs.primary
                                 : Colors.transparent,
                             borderRadius: BorderRadius.circular(999),
                           ),
@@ -175,7 +175,7 @@ class _ManageOffersScreenState extends State<ManageOffersScreen> {
                             style: AppTheme.paragraphSmRegular.copyWith(
                               color: selected
                                   ? Colors.white
-                                  : AppTheme.kTextSecondary,
+                                  : cs.onSurfaceVariant,
                               fontWeight: selected
                                   ? FontWeight.w600
                                   : FontWeight.normal,
@@ -232,9 +232,9 @@ class _OfferCard extends StatelessWidget {
 
   Color _statusColor(OfferStatus s) {
     switch (s) {
-      case OfferStatus.active:   return AppTheme.kPrimary;
+      case OfferStatus.active:   return cs.primary;
       case OfferStatus.draft:    return Colors.orangeAccent;
-      case OfferStatus.inactive: return AppTheme.kTextSecondary;
+      case OfferStatus.inactive: return cs.onSurfaceVariant;
     }
   }
 
@@ -251,11 +251,11 @@ class _OfferCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppTheme.kBgCard,
+        color: cs.surfaceContainerHighest,
         borderRadius: BorderRadius.circular(AppTheme.rounded12),
         border: Border.all(
           color: offer.status == OfferStatus.active
-              ? AppTheme.kPrimary.withValues(alpha: 0.35)
+              ? cs.primary.withValues(alpha: 0.35)
               : Colors.transparent,
         ),
       ),
@@ -269,7 +269,7 @@ class _OfferCard extends StatelessWidget {
               Expanded(
                 child: Text(offer.name,
                     style: AppTheme.paragraphMedium.copyWith(
-                        color: AppTheme.kTextPrimary,
+                        color: cs.onSurface,
                         fontWeight: FontWeight.w600)),
               ),
               Container(
@@ -311,12 +311,12 @@ class _OfferCard extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8, vertical: 3),
                         decoration: BoxDecoration(
-                          color: AppTheme.kBgElevated,
+                          color: cs.surfaceContainer,
                           borderRadius: BorderRadius.circular(999),
                         ),
                         child: Text(e,
                             style: AppTheme.paragraphMiniRegular.copyWith(
-                                color: AppTheme.kTextSecondary)),
+                                color: cs.onSurfaceVariant)),
                       ))
                   .toList(),
             ),
@@ -332,26 +332,26 @@ class _OfferCard extends StatelessWidget {
               if (offer.status != OfferStatus.active)
                 _ActionBtn(
                   label: 'Set Active',
-                  color: AppTheme.kPrimary,
+                  color: cs.primary,
                   onTap: () => onToggleStatus(OfferStatus.active),
                 ),
               if (offer.status == OfferStatus.active)
                 _ActionBtn(
                   label: 'Deactivate',
-                  color: AppTheme.kTextSecondary,
+                  color: cs.onSurfaceVariant,
                   onTap: () => onToggleStatus(OfferStatus.inactive),
                 ),
               const SizedBox(width: 8),
               if (offer.status != OfferStatus.draft)
                 _ActionBtn(
                   label: 'Move to Draft',
-                  color: AppTheme.kTextSecondary,
+                  color: cs.onSurfaceVariant,
                   onTap: () => onToggleStatus(OfferStatus.draft),
                 ),
               const Spacer(),
               _ActionBtn(
                 label: 'Edit',
-                color: AppTheme.kPrimary,
+                color: cs.primary,
                 onTap: onEdit,
               ),
               const SizedBox(width: 8),
@@ -379,13 +379,13 @@ class _InfoText extends StatelessWidget {
     return RichText(
       text: TextSpan(
         style: AppTheme.paragraphMiniRegular
-            .copyWith(color: AppTheme.kTextSecondary),
+            .copyWith(color: cs.onSurfaceVariant),
         children: [
           TextSpan(text: '$label  '),
           TextSpan(
             text: value,
             style: AppTheme.paragraphMiniMedium
-                .copyWith(color: AppTheme.kTextPrimary),
+                .copyWith(color: cs.onSurface),
           ),
         ],
       ),
@@ -432,7 +432,7 @@ class _EmptyState extends StatelessWidget {
           const SizedBox(height: 16),
           Text('No $tab offers',
               style:
-                  AppTheme.heading4.copyWith(color: AppTheme.kTextPrimary)),
+                  AppTheme.heading4.copyWith(color: cs.onSurface)),
           const SizedBox(height: 8),
           Text(
             tab == 'Active'
@@ -441,7 +441,7 @@ class _EmptyState extends StatelessWidget {
                     ? 'Tap + to start building a new offer.'
                     : 'Deactivated offers will appear here.',
             style: AppTheme.paragraphSmRegular
-                .copyWith(color: AppTheme.kTextSecondary),
+                .copyWith(color: cs.onSurfaceVariant),
             textAlign: TextAlign.center,
           ),
         ],

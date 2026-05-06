@@ -46,7 +46,7 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.backgroundColor,
+      backgroundColor: cs.surface,
       body: SafeArea(
         child: Column(
           children: [
@@ -61,8 +61,8 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
                 child: TextButton(
                   onPressed: () => Navigator.pop(context),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppTheme.textPrimary,
-                    foregroundColor: AppTheme.backgroundColor,
+                    backgroundColor: cs.primary,
+                    foregroundColor: cs.surface,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(AppTheme.rounded8),
                     ),
@@ -88,7 +88,7 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
                     Text(
                       'A few quick questions to ensure your safety during the flight. This will take about 2 minutes',
                       style: AppTheme.paragraphSmRegular.copyWith(
-                        color: AppTheme.textSecondary,
+                        color: cs.onSurfaceVariant,
                       ),
                     ),
                     const SizedBox(height: AppTheme.space24),
@@ -109,7 +109,7 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
                             onDecrement: () => setState(() { if (age > 1) age--; }),
                             onIncrement: () => setState(() => age++),
                           ),
-                          const Divider(color: AppTheme.strokeColor),
+                          const Divider(color: cs.outline),
                           // Weight
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -129,7 +129,7 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
                                   Text(
                                     'Safe range: 40-110Kg',
                                     style: AppTheme.paragraphMiniRegular.copyWith(
-                                      color: AppTheme.textSecondary,
+                                      color: cs.onSurfaceVariant,
                                       decoration: TextDecoration.underline,
                                     ),
                                   ),
@@ -137,7 +137,7 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
                               ),
                             ],
                           ),
-                          const Divider(color: AppTheme.strokeColor),
+                          const Divider(color: cs.outline),
                           // Flown before
                           Text('Have you been paragliding before?', style: AppTheme.paragraphSmMedium),
                           const SizedBox(height: AppTheme.space8),
@@ -166,7 +166,7 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
                           Text('Do any of these apply to you?', style: AppTheme.paragraphSmMedium),
                           Text(
                             'Select all that apply',
-                            style: AppTheme.paragraphMiniRegular.copyWith(color: AppTheme.textSecondary),
+                            style: AppTheme.paragraphMiniRegular.copyWith(color: cs.onSurfaceVariant),
                           ),
                           const SizedBox(height: AppTheme.space12),
                           ...List.generate(conditions.length, (i) {
@@ -190,13 +190,13 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
                                 ),
                                 decoration: BoxDecoration(
                                   border: Border.all(
-                                    color: isSelected ? AppTheme.primaryColor : AppTheme.strokeColor,
+                                    color: isSelected ? cs.primary : cs.outline,
                                   ),
                                   borderRadius: BorderRadius.circular(AppTheme.rounded8),
                                 ),
                                 child: Row(
                                   children: [
-                                    Icon(conditionIcons[i], size: 20, color: AppTheme.textSecondary),
+                                    Icon(conditionIcons[i], size: 20, color: cs.onSurfaceVariant),
                                     const SizedBox(width: AppTheme.space12),
                                     Text(condition, style: AppTheme.paragraphSmRegular),
                                   ],
@@ -221,13 +221,13 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
                               const SizedBox(width: AppTheme.space4),
                               Text(
                                 '(optional)',
-                                style: AppTheme.paragraphMiniRegular.copyWith(color: AppTheme.textSecondary),
+                                style: AppTheme.paragraphMiniRegular.copyWith(color: cs.onSurfaceVariant),
                               ),
                             ],
                           ),
-                          const Divider(color: AppTheme.strokeColor),
+                          const Divider(color: cs.outline),
                           _buildContactRow('Name:', 'Fatima Alaoui', nameController),
-                          const Divider(color: AppTheme.strokeColor),
+                          const Divider(color: cs.outline),
                           _buildContactRow('Phone:', '0627399949', phoneController),
                         ],
                       ),
@@ -243,7 +243,7 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
                           Text('How do you feel about heights?', style: AppTheme.paragraphSmMedium),
                           Text(
                             'Your comfort level helps Hicham prepare the best experience for you',
-                            style: AppTheme.paragraphMiniRegular.copyWith(color: AppTheme.textSecondary),
+                            style: AppTheme.paragraphMiniRegular.copyWith(color: cs.onSurfaceVariant),
                           ),
                           const SizedBox(height: AppTheme.space12),
                           ...heightFeelings.map((feeling) {
@@ -258,7 +258,7 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
                                 ),
                                 decoration: BoxDecoration(
                                   border: Border.all(
-                                    color: isSelected ? AppTheme.primaryColor : AppTheme.strokeColor,
+                                    color: isSelected ? cs.primary : cs.outline,
                                   ),
                                   borderRadius: BorderRadius.circular(AppTheme.rounded8),
                                 ),
@@ -287,7 +287,7 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
                           child: Icon(
                             acceptedTerms ? Icons.check_box : Icons.check_box_outline_blank,
                             size: 20,
-                            color: acceptedTerms ? AppTheme.primaryColor : AppTheme.textSecondary,
+                            color: acceptedTerms ? cs.primary : cs.onSurfaceVariant,
                           ),
                         ),
                         const SizedBox(width: AppTheme.space8),
@@ -300,18 +300,18 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
                                 TextSpan(
                                   text: 'the risks',
                                   style: AppTheme.paragraphSmRegular.copyWith(
-                                    color: AppTheme.primaryColor,
+                                    color: cs.primary,
                                     decoration: TextDecoration.underline,
-                                    decorationColor: AppTheme.primaryColor,
+                                    decorationColor: cs.primary,
                                   ),
                                 ),
                                 const TextSpan(text: '  '),
                                 TextSpan(
                                   text: 'and accept the terms and conditions',
                                   style: AppTheme.paragraphSmRegular.copyWith(
-                                    color: AppTheme.primaryColor,
+                                    color: cs.primary,
                                     decoration: TextDecoration.underline,
-                                    decorationColor: AppTheme.primaryColor,
+                                    decorationColor: cs.primary,
                                   ),
                                 ),
                               ],
@@ -334,9 +334,9 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
                         Text(
                           'Message Hicham directly',
                           style: AppTheme.paragraphSmMedium.copyWith(
-                            color: AppTheme.primaryColor,
+                            color: cs.primary,
                             decoration: TextDecoration.underline,
-                            decorationColor: AppTheme.primaryColor,
+                            decorationColor: cs.primary,
                           ),
                         ),
                         const SizedBox(width: AppTheme.space4),
@@ -357,8 +357,8 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
                 vertical: AppTheme.space16,
               ),
               decoration: const BoxDecoration(
-                border: Border(top: BorderSide(color: AppTheme.strokeColor)),
-                color: AppTheme.backgroundColor,
+                border: Border(top: BorderSide(color: cs.outline)),
+                color: cs.surface,
               ),
               child: Align(
                 alignment: Alignment.centerRight,
@@ -383,7 +383,7 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
       width: double.infinity,
       padding: const EdgeInsets.all(AppTheme.space16),
       decoration: BoxDecoration(
-        border: Border.all(color: AppTheme.strokeColor),
+        border: Border.all(color: cs.outline),
         borderRadius: BorderRadius.circular(AppTheme.rounded12),
       ),
       child: child,
@@ -426,7 +426,7 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
           padding: const EdgeInsets.symmetric(vertical: AppTheme.space12),
           decoration: BoxDecoration(
             border: Border.all(
-              color: selected ? AppTheme.primaryColor : AppTheme.strokeColor,
+              color: selected ? cs.primary : cs.outline,
             ),
             borderRadius: BorderRadius.circular(AppTheme.rounded8),
           ),
@@ -434,7 +434,7 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
             child: Text(
               label,
               style: AppTheme.paragraphSmMedium.copyWith(
-                color: selected ? AppTheme.primaryColor : AppTheme.textPrimary,
+                color: selected ? cs.primary : cs.primary,
               ),
             ),
           ),
@@ -455,7 +455,7 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
               controller: controller,
               decoration: InputDecoration(
                 hintText: placeholder,
-                hintStyle: AppTheme.paragraphSmRegular.copyWith(color: AppTheme.textSecondary),
+                hintStyle: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurfaceVariant),
                 border: InputBorder.none,
                 isDense: true,
                 contentPadding: EdgeInsets.zero,

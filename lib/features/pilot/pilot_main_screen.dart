@@ -6,6 +6,7 @@ import 'package:atlas_paragliding/features/pilot/messages/pilot_messages.dart';
 import 'package:atlas_paragliding/features/pilot/scheduling/pilot_booking.dart';
 import 'package:atlas_paragliding/features/pilot/forecast/pilot_offer.dart';
 import 'package:atlas_paragliding/features/pilot/profile/pilot_profile.dart';
+
 class PilotMainScreen extends StatefulWidget {
   const PilotMainScreen({super.key, required this.onSwitchToClient});
   final VoidCallback onSwitchToClient;
@@ -41,11 +42,11 @@ class _PilotMainScreenState extends State<PilotMainScreen> {
 
   Widget _buildTabScreen(int index) {
     final screens = [
-      const PilotHomeScreen(), 
-      const PilotMessages(),      
-      const PilotBooking(),       
-      const PilotOffer(),        
-      PilotProfile(onSwitchToClient: widget.onSwitchToClient),       
+      const PilotHomeScreen(),
+      const PilotMessages(),
+      const PilotBooking(),
+      const PilotOffer(),
+      PilotProfile(onSwitchToClient: widget.onSwitchToClient),
     ];
 
     return Navigator(
@@ -58,13 +59,14 @@ class _PilotMainScreenState extends State<PilotMainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, _) async {
         if (!didPop) await _onWillPop();
       },
       child: Scaffold(
-        backgroundColor: AppTheme.kBgDeep,
+        backgroundColor: cs.surface,
         body: IndexedStack(
           index: _currentIndex,
           children: List.generate(5, _buildTabScreen),
@@ -94,14 +96,14 @@ class _PilotBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bottomPadding = MediaQuery.of(context).padding.bottom;
-
+    final cs = Theme.of(context).colorScheme;
     return Container(
-      color: AppTheme.kBgDeep,
+      color: cs.surface,
       padding: EdgeInsets.fromLTRB(12, 10, 12, bottomPadding + 14),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 7),
         decoration: BoxDecoration(
-          color: AppTheme.kBgCard,
+          color: cs.surfaceContainerHighest,
           borderRadius: BorderRadius.circular(40),
         ),
         child: Row(
@@ -138,6 +140,7 @@ class _NavTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return GestureDetector(
       onTap: onTap,
       behavior: HitTestBehavior.opaque,
@@ -147,7 +150,7 @@ class _NavTile extends StatelessWidget {
         height: 54,
         padding: EdgeInsets.all(isActive ? 4 : 0),
         decoration: BoxDecoration(
-          color: isActive ? AppTheme.kPrimary : Colors.transparent,
+          color: isActive ? cs.primary : Colors.transparent,
           borderRadius: BorderRadius.circular(999),
         ),
         child: Row(
@@ -157,13 +160,13 @@ class _NavTile extends StatelessWidget {
               width: 42,
               height: 42,
               decoration: BoxDecoration(
-                color: isActive ? Colors.white : const Color(0xFF252834),
+                color: isActive ? cs.surface : cs.surfaceContainer,
                 shape: BoxShape.circle,
               ),
               child: Icon(
                 item.icon,
                 size: 20,
-                color: isActive ? AppTheme.kPrimary : Colors.white.withValues(alpha: .55),
+                color: isActive ? cs.primary : cs.onSurface.withValues(alpha: 0.55),
               ),
             ),
             AnimatedSize(
@@ -174,11 +177,8 @@ class _NavTile extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 8, right: 10),
                       child: Text(
                         item.label,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Geist',
+                        style: AppTheme.paragraphSmMedium.copyWith(
+                          color: cs.surface,
                           letterSpacing: 0.1,
                         ),
                       ),
@@ -198,8 +198,3 @@ class _NavItem {
   final String label;
   const _NavItem({required this.icon, required this.label});
 }
-
-
-
-
-

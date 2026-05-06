@@ -133,7 +133,7 @@ class _OfferDetailsScreenState extends State<OfferDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.kBgDeep,
+      backgroundColor: cs.surface,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,9 +149,9 @@ class _OfferDetailsScreenState extends State<OfferDetailsScreen> {
                     child: Container(
                       width: 40, height: 40,
                       decoration: BoxDecoration(
-                          color: AppTheme.kBgCard, shape: BoxShape.circle),
+                          color: cs.surfaceContainerHighest, shape: BoxShape.circle),
                       child: Icon(Icons.arrow_back_ios_new_rounded,
-                          color: AppTheme.kTextPrimary, size: 16),
+                          color: cs.onSurface, size: 16),
                     ),
                   ),
                   const SizedBox(width: 16),
@@ -160,7 +160,7 @@ class _OfferDetailsScreenState extends State<OfferDetailsScreen> {
                         ? 'Edit  ${_offerName ?? ''}'
                         : _titles[_step],
                     style: AppTheme.heading3
-                        .copyWith(color: AppTheme.kTextPrimary),
+                        .copyWith(color: cs.onSurface),
                   ),
                 ],
               ),
@@ -182,8 +182,8 @@ class _OfferDetailsScreenState extends State<OfferDetailsScreen> {
                           right: i < _totalSteps - 1 ? 6 : 0),
                       decoration: BoxDecoration(
                         color: done || active
-                            ? AppTheme.kPrimary
-                            : AppTheme.kBgCard,
+                            ? cs.primary
+                            : cs.surfaceContainerHighest,
                         borderRadius: BorderRadius.circular(999),
                       ),
                     ),
@@ -278,7 +278,7 @@ class _StepType extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
                 horizontal: 16, vertical: 16),
             decoration: BoxDecoration(
-              color: isSelected ? AppTheme.kPrimary : AppTheme.kBgCard,
+              color: isSelected ? cs.primary : cs.surfaceContainerHighest,
               borderRadius: BorderRadius.circular(AppTheme.rounded12),
             ),
             child: Row(
@@ -286,7 +286,7 @@ class _StepType extends StatelessWidget {
                 Expanded(
                   child: Text(name,
                       style: AppTheme.paragraphMedium.copyWith(
-                        color: AppTheme.kTextPrimary,
+                        color: cs.onSurface,
                         fontWeight: FontWeight.w600,
                       )),
                 ),
@@ -296,7 +296,7 @@ class _StepType extends StatelessWidget {
                       : Icons.chevron_right_rounded,
                   color: isSelected
                       ? Colors.white
-                      : AppTheme.kTextSecondary,
+                      : cs.onSurfaceVariant,
                   size: 20,
                 ),
               ],
@@ -339,12 +339,12 @@ class _StepTiming extends StatelessWidget {
               children: [
                 Text('Flight time',
                     style: AppTheme.paragraphMedium.copyWith(
-                        color: AppTheme.kTextPrimary,
+                        color: cs.onSurface,
                         fontWeight: FontWeight.w600)),
                 const SizedBox(height: 4),
                 Text('How long is the actual flight?',
                     style: AppTheme.paragraphSmRegular
-                        .copyWith(color: AppTheme.kTextSecondary)),
+                        .copyWith(color: cs.onSurfaceVariant)),
                 const SizedBox(height: 12),
                 _PillGrid(
                     options: kFlightTimes,
@@ -353,12 +353,12 @@ class _StepTiming extends StatelessWidget {
                 const SizedBox(height: 24),
                 Text('Total experience duration',
                     style: AppTheme.paragraphMedium.copyWith(
-                        color: AppTheme.kTextPrimary,
+                        color: cs.onSurface,
                         fontWeight: FontWeight.w600)),
                 const SizedBox(height: 4),
                 Text('Including briefing, gearing up, extras…',
                     style: AppTheme.paragraphSmRegular
-                        .copyWith(color: AppTheme.kTextSecondary)),
+                        .copyWith(color: cs.onSurfaceVariant)),
                 const SizedBox(height: 12),
                 _PillGrid(
                     options: kTotalDurations,
@@ -409,11 +409,11 @@ class _StepExtras extends StatelessWidget {
               children: [
                 Text('What\'s included?',
                     style: AppTheme.heading2
-                        .copyWith(color: AppTheme.kTextPrimary)),
+                        .copyWith(color: cs.onSurface)),
                 const SizedBox(height: 4),
                 Text('Select everything that comes with this offer.',
                     style: AppTheme.paragraphSmRegular
-                        .copyWith(color: AppTheme.kTextSecondary)),
+                        .copyWith(color: cs.onSurfaceVariant)),
                 const SizedBox(height: 20),
 
                 // Preset pills
@@ -430,15 +430,15 @@ class _StepExtras extends StatelessWidget {
                             horizontal: 16, vertical: 10),
                         decoration: BoxDecoration(
                           color: isPicked
-                              ? AppTheme.kPrimary
-                              : AppTheme.kBgCard,
+                              ? cs.primary
+                              : cs.surfaceContainerHighest,
                           borderRadius: BorderRadius.circular(999),
                         ),
                         child: Text(label,
                             style: AppTheme.paragraphSmRegular.copyWith(
                               color: isPicked
                                   ? Colors.white
-                                  : AppTheme.kTextPrimary,
+                                  : cs.onSurface,
                             )),
                       ),
                     );
@@ -450,7 +450,7 @@ class _StepExtras extends StatelessWidget {
                 // Custom extra input
                 Text('Add custom',
                     style: AppTheme.paragraphMedium.copyWith(
-                        color: AppTheme.kTextPrimary,
+                        color: cs.onSurface,
                         fontWeight: FontWeight.w600)),
                 const SizedBox(height: 10),
                 Row(
@@ -458,20 +458,20 @@ class _StepExtras extends StatelessWidget {
                     Expanded(
                       child: Container(
                         decoration: BoxDecoration(
-                          color: AppTheme.kBgCard,
+                          color: cs.surfaceContainerHighest,
                           borderRadius: BorderRadius.circular(
                               AppTheme.rounded12),
                         ),
                         child: TextField(
                           controller: customCtrl,
                           style: AppTheme.paragraphSmRegular
-                              .copyWith(color: AppTheme.kTextPrimary),
+                              .copyWith(color: cs.onSurface),
                           decoration: InputDecoration(
                             hintText:
                                 'e.g. Sunset flight, Hammam visit…',
                             hintStyle: AppTheme.paragraphSmRegular
                                 .copyWith(
-                                    color: AppTheme.kTextSecondary),
+                                    color: cs.onSurfaceVariant),
                             border: InputBorder.none,
                             contentPadding:
                                 const EdgeInsets.symmetric(
@@ -486,7 +486,7 @@ class _StepExtras extends StatelessWidget {
                       child: Container(
                         width: 46, height: 46,
                         decoration: BoxDecoration(
-                          color: AppTheme.kPrimary,
+                          color: cs.primary,
                           borderRadius: BorderRadius.circular(
                               AppTheme.rounded12),
                         ),
@@ -508,12 +508,12 @@ class _StepExtras extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 12, vertical: 6),
                               decoration: BoxDecoration(
-                                color: AppTheme.kPrimary
+                                color: cs.primary
                                     .withValues(alpha: 0.15),
                                 borderRadius:
                                     BorderRadius.circular(999),
                                 border: Border.all(
-                                    color: AppTheme.kPrimary
+                                    color: cs.primary
                                         .withValues(alpha: 0.4)),
                               ),
                               child: Row(
@@ -523,12 +523,12 @@ class _StepExtras extends StatelessWidget {
                                       style: AppTheme
                                           .paragraphMiniMedium
                                           .copyWith(
-                                              color: AppTheme.kPrimary)),
+                                              color: cs.primary)),
                                   const SizedBox(width: 6),
                                   GestureDetector(
                                     onTap: () => onToggle(s),
                                     child: Icon(Icons.close_rounded,
-                                        color: AppTheme.kPrimary,
+                                        color: cs.primary,
                                         size: 14),
                                   ),
                                 ],
@@ -581,17 +581,17 @@ class _StepPrice extends StatelessWidget {
               children: [
                 Text('Set your price',
                     style: AppTheme.heading2
-                        .copyWith(color: AppTheme.kTextPrimary)),
+                        .copyWith(color: cs.onSurface)),
                 const SizedBox(height: 4),
                 Text('Clients will see this price on your offer.',
                     style: AppTheme.paragraphSmRegular
-                        .copyWith(color: AppTheme.kTextSecondary)),
+                        .copyWith(color: cs.onSurfaceVariant)),
                 const SizedBox(height: 20),
 
                 // Price field — no icon, just text prefix
                 Container(
                   decoration: BoxDecoration(
-                    color: AppTheme.kBgCard,
+                    color: cs.surfaceContainerHighest,
                     borderRadius:
                         BorderRadius.circular(AppTheme.rounded12),
                   ),
@@ -600,14 +600,14 @@ class _StepPrice extends StatelessWidget {
                     keyboardType: TextInputType.number,
                     onChanged: (_) => onChanged(),
                     style: AppTheme.heading3
-                        .copyWith(color: AppTheme.kTextPrimary),
+                        .copyWith(color: cs.onSurface),
                     decoration: InputDecoration(
                       hintText: '0',
                       hintStyle: AppTheme.heading3
-                          .copyWith(color: AppTheme.kTextSecondary),
+                          .copyWith(color: cs.onSurfaceVariant),
                       suffixText: 'USD',
                       suffixStyle: AppTheme.paragraphMedium
-                          .copyWith(color: AppTheme.kTextSecondary),
+                          .copyWith(color: cs.onSurfaceVariant),
                       border: InputBorder.none,
                       contentPadding: const EdgeInsets.symmetric(
                           vertical: 18, horizontal: 20),
@@ -619,7 +619,7 @@ class _StepPrice extends StatelessWidget {
 
                 Text('Save as',
                     style: AppTheme.paragraphMedium.copyWith(
-                        color: AppTheme.kTextPrimary,
+                        color: cs.onSurface,
                         fontWeight: FontWeight.w600)),
                 const SizedBox(height: 12),
 
@@ -670,7 +670,7 @@ class _SaveAsOption extends StatelessWidget {
         padding:
             const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         decoration: BoxDecoration(
-          color: selected ? AppTheme.kPrimary : AppTheme.kBgCard,
+          color: selected ? cs.primary : cs.surfaceContainerHighest,
           borderRadius: BorderRadius.circular(AppTheme.rounded12),
         ),
         child: Row(
@@ -681,14 +681,14 @@ class _SaveAsOption extends StatelessWidget {
                 children: [
                   Text(title,
                       style: AppTheme.paragraphMedium.copyWith(
-                          color: AppTheme.kTextPrimary,
+                          color: cs.onSurface,
                           fontWeight: FontWeight.w600)),
                   Text(desc,
                       style: AppTheme.paragraphSmRegular.copyWith(
                           color: selected
-                              ? AppTheme.kTextPrimary
+                              ? cs.onSurface
                                   .withValues(alpha: 0.7)
-                              : AppTheme.kTextSecondary)),
+                              : cs.onSurfaceVariant)),
                 ],
               ),
             ),
@@ -735,7 +735,7 @@ class _PillGrid extends StatelessWidget {
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
             decoration: BoxDecoration(
-              color: isSelected ? AppTheme.kPrimary : AppTheme.kBgCard,
+              color: isSelected ? cs.primary : cs.surfaceContainerHighest,
               borderRadius: BorderRadius.circular(AppTheme.rounded12),
             ),
             alignment: Alignment.center,
@@ -743,7 +743,7 @@ class _PillGrid extends StatelessWidget {
               label,
               style: AppTheme.paragraphSmRegular.copyWith(
                 color:
-                    isSelected ? Colors.white : AppTheme.kTextPrimary,
+                    isSelected ? Colors.white : cs.onSurface,
                 fontWeight: isSelected
                     ? FontWeight.w600
                     : FontWeight.normal,
@@ -773,8 +773,8 @@ class _BottomButton extends StatelessWidget {
         child: ElevatedButton(
           onPressed: onTap,
           style: ElevatedButton.styleFrom(
-            backgroundColor: AppTheme.kPrimary,
-            disabledBackgroundColor: AppTheme.kBgCard,
+            backgroundColor: cs.primary,
+            disabledBackgroundColor: cs.surfaceContainerHighest,
             padding: const EdgeInsets.symmetric(vertical: 16),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(AppTheme.rounded40),

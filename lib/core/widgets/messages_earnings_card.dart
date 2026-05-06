@@ -22,9 +22,10 @@ class MessagesEarningsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.kBgCard,
+        color: cs.surfaceContainerHighest,
         borderRadius: BorderRadius.circular(AppTheme.rounded12),
       ),
       child: IntrinsicHeight(
@@ -45,7 +46,7 @@ class MessagesEarningsCard extends StatelessWidget {
                         Text(
                           'Messages',
                           style: AppTheme.paragraphSmMedium.copyWith(
-                            color: Colors.white.withValues(alpha: 0.85),
+                            color: cs.onSurface.withValues(alpha: 0.85),
                           ),
                         ),
                         const SizedBox(width: AppTheme.space6),
@@ -55,13 +56,13 @@ class MessagesEarningsCard extends StatelessWidget {
                             vertical: 2,
                           ),
                           decoration: BoxDecoration(
-                            color: AppTheme.kPrimary,
+                            color: cs.primary,
                             borderRadius: BorderRadius.circular(99),
                           ),
                           child: Text(
                             '${recentConversations.where((c) => (c['unread'] as int) > 0).length}',
                             style: AppTheme.micro.copyWith(
-                              color: Colors.white,
+                              color: cs.surface,
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -82,14 +83,14 @@ class MessagesEarningsCard extends StatelessWidget {
                           Text(
                             'See all',
                             style: AppTheme.paragraphMiniRegular.copyWith(
-                              color: Colors.white.withValues(alpha: 0.45),
+                              color: cs.onSurface.withValues(alpha: 0.45),
                             ),
                           ),
                           const SizedBox(width: 2),
                           Icon(
                             Icons.arrow_forward_rounded,
                             size: 12,
-                            color: Colors.white.withValues(alpha: 0.45),
+                            color: cs.onSurface.withValues(alpha: 0.45),
                           ),
                         ],
                       ),
@@ -113,7 +114,7 @@ class _MiniConvoRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final hasUnread = (convo['unread'] as int) > 0;
-
+    final cs = Theme.of(context).colorScheme;
     return Padding(
       padding: const EdgeInsets.only(bottom: AppTheme.space8),
       child: Row(
@@ -131,7 +132,7 @@ class _MiniConvoRow extends StatelessWidget {
                       child: Text(
                         convo['name'],
                         style: AppTheme.paragraphMiniMedium.copyWith(
-                          color: Colors.white.withValues(alpha: 0.85),
+                          color: cs.onSurface.withValues(alpha: 0.85),
                         ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -140,7 +141,7 @@ class _MiniConvoRow extends StatelessWidget {
                     Text(
                       convo['time'],
                       style: AppTheme.micro.copyWith(
-                        color: Colors.white.withValues(alpha: 0.35),
+                        color: cs.onSurface.withValues(alpha: 0.35),
                       ),
                     ),
                   ],
@@ -152,7 +153,7 @@ class _MiniConvoRow extends StatelessWidget {
                       child: Text(
                         convo['lastMessage'],
                         style: AppTheme.micro.copyWith(
-                          color: Colors.white.withValues(alpha: 0.4),
+                          color: cs.onSurface.withValues(alpha: 0.4),
                         ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -162,8 +163,8 @@ class _MiniConvoRow extends StatelessWidget {
                       Container(
                         width: 7,
                         height: 7,
-                        decoration: const BoxDecoration(
-                          color: AppTheme.kPrimary,
+                        decoration: BoxDecoration(
+                          color: cs.primary,
                           shape: BoxShape.circle,
                         ),
                       ),

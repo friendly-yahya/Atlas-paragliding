@@ -18,6 +18,7 @@ class ElevatedCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Container(
       width: width,
       padding: padding ?? const EdgeInsets.all(AppTheme.space16),
@@ -28,9 +29,9 @@ class ElevatedCard extends StatelessWidget {
             )
           : null,
       decoration: BoxDecoration(
-        color: AppTheme.kBgElevated,
+        color: cs.surfaceContainer,
         border: Border.all(
-          color: AppTheme.backgroundColor.withValues(alpha: .1),
+          color: cs.surface.withValues(alpha: .1),
         ),
         borderRadius: BorderRadius.circular(AppTheme.space32),
         boxShadow: [

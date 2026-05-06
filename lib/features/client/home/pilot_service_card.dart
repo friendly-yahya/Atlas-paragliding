@@ -7,10 +7,11 @@ class PilotServiceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.backgroundColor,
-        border: Border.all(color: AppTheme.strokeColor, width: 1),
+        color: cs.surface,
+        border: Border.all(color: cs.outline, width: 1),
         borderRadius: BorderRadius.circular(AppTheme.rounded12),
       ),
       child: Row(
@@ -41,19 +42,19 @@ class PilotServiceCard extends StatelessWidget {
                       const SizedBox(width: 2),
                       Text('4.9', style: AppTheme.micro),
                       const SizedBox(width: 4),
-                      const Icon(Icons.circle, size: 3, color: AppTheme.textSecondary),
+                      Icon(Icons.circle, size: 3, color: cs.onSurfaceVariant),
                       const SizedBox(width: 4),
-                      Text('150 flights', style: AppTheme.micro.copyWith(color: AppTheme.textSecondary)),
+                      Text('150 flights', style: AppTheme.micro.copyWith(color: cs.onSurfaceVariant)),
                     ],
                   ),
                   const SizedBox(height: 2),
                   Row(
                     children: [
-                      const Icon(Icons.verified_rounded, size: 12, color: AppTheme.primaryColor),
+                      Icon(Icons.verified_rounded, size: 12, color: cs.primary),
                       const SizedBox(width: 3),
                       Text(
                         'Certified',
-                        style: AppTheme.micro.copyWith(color: AppTheme.primaryColor),
+                        style: AppTheme.micro.copyWith(color: cs.primary),
                       ),
                     ],
                   ),
@@ -66,7 +67,7 @@ class PilotServiceCard extends StatelessWidget {
           Container(
             width: 1,
             margin: const EdgeInsets.symmetric(vertical: AppTheme.space12),
-            color: AppTheme.strokeColor,
+            color: cs.outline,
           ),
 
           // Right — info + actions
@@ -86,13 +87,13 @@ class PilotServiceCard extends StatelessWidget {
                           Text('Hicham L.', style: AppTheme.heading4),
                           Text(
                             'Marrakech, Morocco',
-                            style: AppTheme.micro.copyWith(color: AppTheme.textSecondary),
+                            style: AppTheme.micro.copyWith(color: cs.onSurfaceVariant),
                           ),
                         ],
                       ),
                       GestureDetector(
                         onTap: () {},
-                        child: const Icon(Icons.favorite_border, size: 20, color: AppTheme.textSecondary),
+                        child: Icon(Icons.favorite_border, size: 20, color: cs.onSurfaceVariant),
                       ),
                     ],
                   ),
@@ -109,7 +110,7 @@ class PilotServiceCard extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 2),
                         child: Text(
                           '/Essential Flight',
-                          style: AppTheme.micro.copyWith(color: AppTheme.textSecondary),
+                          style: AppTheme.micro.copyWith(color: cs.onSurfaceVariant),
                         ),
                       ),
                     ],
@@ -127,7 +128,7 @@ class PilotServiceCard extends StatelessWidget {
                           MaterialPageRoute(builder: (_) => const BookingDetailScreen()),
                         );
                       },
-                      style: AppTheme.primaryButton,
+                      style: AppTheme.primaryButton(context),
                       child: const Text('Book Flight Now'),
                     ),
                   ),

@@ -9,9 +9,9 @@ class EarningsWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(AppTheme.space16),
       decoration: BoxDecoration(
-        color: AppTheme.kPrimary,
+        color: cs.primary,
         border: Border.all(
-          color: AppTheme.backgroundColor.withValues(alpha: .1)
+          color: cs.surface.withValues(alpha: .1)
         ),
         borderRadius: BorderRadius.circular(AppTheme.space32),
           boxShadow: [
@@ -50,14 +50,14 @@ class EarningsWidget extends StatelessWidget {
                   Text(
                     '5 flights',
                     style: AppTheme.paragraphSmRegular.copyWith(
-                      color: AppTheme.backgroundColor.withValues(alpha: .7),
+                      color: cs.surface.withValues(alpha: .7),
                       fontSize: 13,
                     )
                   ),
                   SizedBox(width: AppTheme.space6,),
                   Icon(
                     Icons.circle,
-                    color: AppTheme.backgroundColor.withValues(alpha: 0.7),
+                    color: cs.surface.withValues(alpha: 0.7),
                     size: 6,
                   ),
                   SizedBox(width: AppTheme.space6,),
@@ -67,14 +67,14 @@ class EarningsWidget extends StatelessWidget {
                       Text(
                         '4.8',
                         style: AppTheme.paragraphSmRegular.copyWith(
-                          color: AppTheme.backgroundColor.withValues(alpha: .7),
+                          color: cs.surface.withValues(alpha: .7),
                           fontSize: 13,
                         )
                       ),
                       SizedBox(width: AppTheme.space2,),
                       Icon(
                         Icons.star_rounded,
-                        color: AppTheme.backgroundColor.withValues(alpha: 0.7),
+                        color: cs.surface.withValues(alpha: 0.7),
                         size: 16,
                       ),
 

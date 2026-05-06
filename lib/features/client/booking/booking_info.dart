@@ -31,7 +31,7 @@ class BookingInfo extends StatelessWidget {
         Text(
           subtitle,
           style: AppTheme.paragraphSmMedium.copyWith(
-            color: AppTheme.textSecondary,
+            color: cs.onSurfaceVariant,
           ),
           textAlign: TextAlign.center,
         ),
@@ -71,7 +71,7 @@ class _Divider extends StatelessWidget {
       height: 40,
       width: 1,
       margin: const EdgeInsets.symmetric(horizontal: AppTheme.space24),
-      color: AppTheme.strokeColor,
+      color: cs.outline,
     );
   }
 }
@@ -86,7 +86,7 @@ class _StatItem extends StatelessWidget {
     required this.icon,
     required this.value,
     required this.label,
-    this.iconColor = AppTheme.textPrimary,
+    this.iconColor = cs.primary,
   });
 
   @override
@@ -106,7 +106,7 @@ class _StatItem extends StatelessWidget {
         Text(
           label,
           style: AppTheme.paragraphMiniRegular.copyWith(
-            color: AppTheme.textSecondary,
+            color: cs.onSurfaceVariant,
           ),
         ),
       ],

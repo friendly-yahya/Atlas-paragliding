@@ -5,6 +5,9 @@ import 'package:atlas_paragliding/features/pilot/profile/settings_tile_group.dar
 import 'package:atlas_paragliding/features/pilot/profile/profile_header.dart';
 import 'package:atlas_paragliding/features/pilot/profile/language_set_up/language_screen.dart';
 import 'package:atlas_paragliding/features/pilot/profile/manage_offers/manage_offers_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:atlas_paragliding/core/theme/theme_notifier.dart';
+
 class _TileData {
   const _TileData({required this.icon, required this.label, required this.onTap});
   final IconData icon;
@@ -19,15 +22,15 @@ class _SectionData {
 }
 
 // ── StatefulWidget so we can hold selected languages ────────
-class PilotProfile extends StatefulWidget {
+class PilotProfile extends ConsumerStatefulWidget {
   const PilotProfile({super.key, required this.onSwitchToClient});
   final VoidCallback onSwitchToClient;
 
   @override
-  State<PilotProfile> createState() => _PilotProfileState();
+  ConsumerState<PilotProfile> createState() => _PilotProfileState();
 }
 
-class _PilotProfileState extends State<PilotProfile> {
+class _PilotProfileState extends ConsumerState<PilotProfile> {
   List<SelectedLanguage> _languages = [];
 
   // subtitle shown on the tile: "English, French" or "Not set"
@@ -63,6 +66,8 @@ class _PilotProfileState extends State<PilotProfile> {
   }
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    final isDark = ref.watch(pilotThemeProvider) == ThemeMode.dark;
     final List<_SectionData> sections = [
       _SectionData(
         title: 'Personal Information',
@@ -105,7 +110,7 @@ class _PilotProfileState extends State<PilotProfile> {
     ];
 
     return Scaffold(
-      backgroundColor: AppTheme.kBgDeep,
+      backgroundColor: cs.surface,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(AppTheme.space16),
@@ -114,7 +119,37 @@ class _PilotProfileState extends State<PilotProfile> {
             children: [
               const ProfileHeader(),
               const SizedBox(height: AppTheme.space24),
-
+              // ── Theme toggle ──────────────────────────────
+              Padding(
+                padding: const EdgeInsets.only(bottom: AppTheme.space24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: AppTheme.space12),
+                      child: Text('Appearance',
+                          style: AppTheme.heading4.copyWith(color: cs.onSurface)),
+                    ),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: SwitchListTile(
+                        tileColor: cs.surfaceContainerHighest,
+                        secondary: Icon(
+                          isDark ? Icons.dark_mode_rounded : Icons.light_mode_rounded,
+                          color: cs.primary,
+                        ),
+                        title: Text('Dark Mode',
+                            style: AppTheme.paragraphSmMedium
+                                .copyWith(color: cs.onSurface)),
+                        value: isDark,
+                        activeThumbColor: cs.primary,
+                        onChanged: (_) =>
+                            ref.read(pilotThemeProvider.notifier).toggle(),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               ...sections.map((section) => Padding(
                 padding: const EdgeInsets.only(bottom: AppTheme.space24),
                 child: Column(
@@ -123,7 +158,7 @@ class _PilotProfileState extends State<PilotProfile> {
                     Padding(
                       padding: const EdgeInsets.only(bottom: AppTheme.space12),
                       child: Text(section.title,
-                          style: AppTheme.heading4.copyWith(color: AppTheme.kTextPrimary)),
+                          style: AppTheme.heading4.copyWith(color: cs.onSurface)),
                     ),
                     SettingsTileGroup(
                       tiles: section.tiles.map((t) {

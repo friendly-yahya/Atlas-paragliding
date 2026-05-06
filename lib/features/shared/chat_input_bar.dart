@@ -31,24 +31,30 @@ class ChatInputBarTheme {
   });
 
   // ── Light — client ──────────────────────────────────────────────────────────
-  static ChatInputBarTheme light() => ChatInputBarTheme(
-        barBg: AppTheme.backgroundColor,
-        borderColor: AppTheme.strokeColor,
-        fieldBg: AppTheme.searchBackgroundColor,
-        textStyle: AppTheme.paragraphSmRegular,
-        hintColor: AppTheme.textSecondary,
-        sendButtonColor: AppTheme.primaryColor,
-      );
+  static ChatInputBarTheme light(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    return ChatInputBarTheme(
+      barBg: cs.surface,
+      borderColor: cs.outline,
+      fieldBg: cs.surfaceContainerHighest,
+      textStyle: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurface),
+      hintColor: cs.onSurfaceVariant,
+      sendButtonColor: cs.primary,
+    );
+  }
 
   // ── Dark — pilot ────────────────────────────────────────────────────────────
-  static ChatInputBarTheme dark() => ChatInputBarTheme(
-        barBg: AppTheme.kBgCard,
-        borderColor: Colors.white.withValues(alpha: 0.08),
-        fieldBg: AppTheme.kBgElevated,
-        textStyle: AppTheme.paragraphSmRegular.copyWith(color: Colors.white),
-        hintColor: Colors.white.withValues(alpha: 0.3),
-        sendButtonColor: AppTheme.kPrimary,
-      );
+  static ChatInputBarTheme dark(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    return ChatInputBarTheme(
+      barBg: cs.surfaceContainerHighest,
+      borderColor: cs.outline,
+      fieldBg: cs.surfaceContainer,
+      textStyle: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurface),
+      hintColor: cs.onSurface.withValues(alpha: 0.3),
+      sendButtonColor: cs.primary,
+    );
+  }
 }
 
 
@@ -76,6 +82,7 @@ class ChatInputBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final t = inputTheme;
+    final cs = Theme.of(context).colorScheme;
 
     return Container(
       padding: const EdgeInsets.fromLTRB(
@@ -129,9 +136,9 @@ class ChatInputBar extends StatelessWidget {
                 color: t.sendButtonColor,
                 shape: BoxShape.circle,
               ),
-              child: const Icon(
+              child: Icon(
                 Icons.arrow_upward_rounded,
-                color: Colors.white,
+                color: cs.surface,
                 size: 20,
               ),
             ),

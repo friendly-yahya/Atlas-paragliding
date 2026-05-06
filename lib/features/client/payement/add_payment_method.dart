@@ -22,7 +22,7 @@ class _AddPaymentMethodState extends State<AddPaymentMethod> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.backgroundColor,
+      backgroundColor: cs.surface,
       body: SafeArea(
         child: Column(
           children: [
@@ -37,8 +37,8 @@ class _AddPaymentMethodState extends State<AddPaymentMethod> {
                 child: TextButton(
                   onPressed: () => Navigator.pop(context),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppTheme.textPrimary,
-                    foregroundColor: AppTheme.backgroundColor,
+                    backgroundColor: cs.primary,
+                    foregroundColor: cs.surface,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(AppTheme.rounded8),
                     ),
@@ -65,7 +65,7 @@ class _AddPaymentMethodState extends State<AddPaymentMethod> {
                     // Payment options card
                     Container(
                       decoration: BoxDecoration(
-                        border: Border.all(color: AppTheme.strokeColor),
+                        border: Border.all(color: cs.outline),
                         borderRadius: BorderRadius.circular(AppTheme.rounded12),
                       ),
                       child: Column(
@@ -85,7 +85,7 @@ class _AddPaymentMethodState extends State<AddPaymentMethod> {
                                   ),
                                   child: Row(
                                     children: [
-                                      Icon(method['icon'] as IconData, size: 22, color: AppTheme.textPrimary),
+                                      Icon(method['icon'] as IconData, size: 22, color: cs.primary),
                                       const SizedBox(width: AppTheme.space12),
                                       Expanded(
                                         child: Text(method['label'] as String, style: AppTheme.paragraphSmRegular),
@@ -96,7 +96,7 @@ class _AddPaymentMethodState extends State<AddPaymentMethod> {
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                           border: Border.all(
-                                            color: isSelected ? AppTheme.primaryColor : AppTheme.strokeColor,
+                                            color: isSelected ? cs.primary : cs.outline,
                                             width: isSelected ? 6 : 1.5,
                                           ),
                                         ),
@@ -105,7 +105,7 @@ class _AddPaymentMethodState extends State<AddPaymentMethod> {
                                   ),
                                 ),
                                 if (!isLast)
-                                  const Divider(height: 1, color: AppTheme.strokeColor),
+                                  const Divider(height: 1, color: cs.outline),
                               ],
                             ),
                           );
@@ -124,8 +124,8 @@ class _AddPaymentMethodState extends State<AddPaymentMethod> {
                 vertical: AppTheme.space16,
               ),
               decoration: const BoxDecoration(
-                border: Border(top: BorderSide(color: AppTheme.strokeColor)),
-                color: AppTheme.backgroundColor,
+                border: Border(top: BorderSide(color: cs.outline)),
+                color: cs.surface,
               ),
               child: Align(
                 alignment: Alignment.centerRight,

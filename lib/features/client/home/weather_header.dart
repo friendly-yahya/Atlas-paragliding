@@ -6,6 +6,7 @@ class WeatherHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -18,7 +19,7 @@ class WeatherHeader extends StatelessWidget {
             Text(
               'Agergour, Morocco',
               style: AppTheme.paragraphSmMedium.copyWith(
-                color: AppTheme.textSecondary,
+                color: cs.onSurfaceVariant,
               ),
             ),
             const SizedBox(height: AppTheme.space4),
@@ -27,26 +28,26 @@ class WeatherHeader extends StatelessWidget {
                 Icon(
                   Icons.wb_sunny_rounded,
                   size: 14,
-                  color: AppTheme.textSecondary,
+                  color: cs.onSurfaceVariant,
                 ),
                 const SizedBox(width: AppTheme.space4),
                 Text(
                   'Clear & Sunny 28°',
                   style: AppTheme.paragraphMiniMedium.copyWith(
-                    color: AppTheme.textSecondary,
+                    color: cs.onSurfaceVariant,
                   ),
                 ),
                 const SizedBox(width: AppTheme.space12),
                 Icon(
                   Icons.air_rounded,
                   size: 14,
-                  color: AppTheme.textSecondary,
+                  color: cs.onSurfaceVariant,
                 ),
                 const SizedBox(width: AppTheme.space4),
                 Text(
                   '14 Km/h NE',
                   style: AppTheme.paragraphMiniMedium.copyWith(
-                    color: AppTheme.textSecondary,
+                    color: cs.onSurfaceVariant,
                   ),
                 ),
               ],
@@ -55,11 +56,11 @@ class WeatherHeader extends StatelessWidget {
         ),
         CircleAvatar(
           radius: 22,
-          backgroundColor: AppTheme.primaryColor,
+          backgroundColor: cs.primary,
           child: Text(
             'AB',
             style: AppTheme.paragraphSmMedium.copyWith(
-              color: AppTheme.backgroundColor,
+              color: cs.surface,
             ),
           ),
         ),

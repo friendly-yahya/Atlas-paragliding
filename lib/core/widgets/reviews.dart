@@ -1,3 +1,4 @@
+// ignore: unused_import
 import 'package:atlas_paragliding/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:atlas_paragliding/features/client/booking/review_details.dart';
@@ -7,6 +8,7 @@ class Reviews extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return SizedBox(
       height: 180,
       child: ListView.builder(
@@ -20,7 +22,7 @@ class Reviews extends StatelessWidget {
             margin: EdgeInsets.only(right: 20),
             decoration: BoxDecoration(
               border: Border(right: BorderSide(
-                color: AppTheme.textPrimary,
+                color: cs.primary,
                 width: 1.0,
               ))
             ),

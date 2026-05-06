@@ -8,7 +8,7 @@ class ReviewAndContinue extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.backgroundColor,
+      backgroundColor: cs.surface,
       body: SafeArea(
         child: Column(
           children: [
@@ -23,8 +23,8 @@ class ReviewAndContinue extends StatelessWidget {
                 child: TextButton(
                   onPressed: () => Navigator.pop(context),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppTheme.textPrimary,
-                    foregroundColor: AppTheme.backgroundColor,
+                    backgroundColor: cs.primary,
+                    foregroundColor: cs.surface,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(AppTheme.rounded8),
                     ),
@@ -62,8 +62,8 @@ class ReviewAndContinue extends StatelessWidget {
                                 child: Container(
                                   width: 90,
                                   height: 90,
-                                  color: AppTheme.strokeColor,
-                                  child: const Icon(Icons.paragliding, size: 40, color: AppTheme.textSecondary),
+                                  color: cs.outline,
+                                  child: const Icon(Icons.paragliding, size: 40, color: cs.onSurfaceVariant),
                                 ),
                               ),
                               const SizedBox(width: AppTheme.space16),
@@ -81,14 +81,14 @@ class ReviewAndContinue extends StatelessWidget {
                                         const Icon(Icons.star_rounded, color: AppTheme.starColor, size: 16),
                                         const SizedBox(width: 4),
                                         Text('4.8', style: AppTheme.paragraphSmMedium),
-                                        Text(' • ', style: AppTheme.paragraphSmRegular.copyWith(color: AppTheme.textSecondary)),
-                                        Text('127 reviews', style: AppTheme.paragraphSmRegular.copyWith(color: AppTheme.textSecondary)),
+                                        Text(' • ', style: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurfaceVariant)),
+                                        Text('127 reviews', style: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurfaceVariant)),
                                       ],
                                     ),
                                     const SizedBox(height: AppTheme.space4),
                                     Text(
                                       'Certified • Marrakech',
-                                      style: AppTheme.paragraphSmRegular.copyWith(color: AppTheme.textSecondary),
+                                      style: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurfaceVariant),
                                     ),
                                   ],
                                 ),
@@ -97,7 +97,7 @@ class ReviewAndContinue extends StatelessWidget {
                           ),
 
                           const SizedBox(height: AppTheme.space16),
-                          const Divider(color: AppTheme.strokeColor, height: 1),
+                          const Divider(color: cs.outline, height: 1),
                           const SizedBox(height: AppTheme.space16),
 
                           // Activity information
@@ -123,7 +123,7 @@ class ReviewAndContinue extends StatelessWidget {
                           ),
 
                           const SizedBox(height: AppTheme.space16),
-                          const Divider(color: AppTheme.strokeColor, height: 1),
+                          const Divider(color: cs.outline, height: 1),
                           const SizedBox(height: AppTheme.space16),
 
                           // Passenger information
@@ -146,7 +146,7 @@ class ReviewAndContinue extends StatelessWidget {
                           ),
 
                           const SizedBox(height: AppTheme.space16),
-                          const Divider(color: AppTheme.strokeColor, height: 1),
+                          const Divider(color: cs.outline, height: 1),
                           const SizedBox(height: AppTheme.space16),
 
                           // Free cancellation
@@ -154,7 +154,7 @@ class ReviewAndContinue extends StatelessWidget {
                           const SizedBox(height: AppTheme.space4),
                           Text(
                             'Cancel before Oct 18 for a full refund. Full policy',
-                            style: AppTheme.paragraphSmRegular.copyWith(color: AppTheme.textSecondary),
+                            style: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurfaceVariant),
                           ),
                         ],
                       ),
@@ -177,7 +177,7 @@ class ReviewAndContinue extends StatelessWidget {
                           Text('Video Recording: Included', style: AppTheme.paragraphSmRegular),
                           Text('Tea pause: Included', style: AppTheme.paragraphSmRegular),
                           const SizedBox(height: AppTheme.space12),
-                          const Divider(color: AppTheme.strokeColor, height: 1),
+                          const Divider(color: cs.outline, height: 1),
                           const SizedBox(height: AppTheme.space12),
                           Text(
                             'Total price: \$80 (TAX INCLUDED)',
@@ -200,8 +200,8 @@ class ReviewAndContinue extends StatelessWidget {
                 vertical: AppTheme.space16,
               ),
               decoration: const BoxDecoration(
-                border: Border(top: BorderSide(color: AppTheme.strokeColor)),
-                color: AppTheme.backgroundColor,
+                border: Border(top: BorderSide(color: cs.outline)),
+                color: cs.surface,
               ),
               child: Align(
                 alignment: Alignment.centerRight,
@@ -226,7 +226,7 @@ class ReviewAndContinue extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(AppTheme.space16),
       decoration: BoxDecoration(
-        border: Border.all(color: AppTheme.strokeColor),
+        border: Border.all(color: cs.outline),
         borderRadius: BorderRadius.circular(AppTheme.rounded12),
       ),
       child: child,
@@ -237,12 +237,12 @@ class ReviewAndContinue extends StatelessWidget {
     return TextButton(
       onPressed: () {},
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppTheme.backgroundColor,
-        foregroundColor: AppTheme.textPrimary,
+        backgroundColor: cs.surface,
+        foregroundColor: cs.primary,
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppTheme.rounded8),
-          side: const BorderSide(color: AppTheme.strokeColor),
+          side: const BorderSide(color: cs.outline),
         ),
         padding: const EdgeInsets.symmetric(
           horizontal: AppTheme.space16,

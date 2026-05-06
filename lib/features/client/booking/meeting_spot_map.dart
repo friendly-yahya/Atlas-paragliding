@@ -72,7 +72,7 @@ class MeetingSpotMap extends StatelessWidget {
                       alignment: Alignment.center,
                       child: const Icon(
                         Icons.location_pin,
-                        color: AppTheme.primaryColor,
+                        color: cs.primary,
                         size: 48,))
                   ],
                   
@@ -94,7 +94,7 @@ class MeetingSpotMap extends StatelessWidget {
         ),
         SizedBox(height: 16),
         Divider(
-          color: AppTheme.textSecondary.withValues(alpha: 0.3),
+          color: cs.onSurfaceVariant.withValues(alpha: 0.3),
           thickness: 1,
           height: 1,
         ),

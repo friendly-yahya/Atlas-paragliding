@@ -8,8 +8,10 @@ class SettingsTileGroup extends StatelessWidget {
     required this.tiles,
     });
   final List<SettingsTile> tiles;
+  
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Column(
       children: List.generate(tiles.length, (i) {
         final isFirst = i == 0;
@@ -25,12 +27,12 @@ class SettingsTileGroup extends StatelessWidget {
             ClipRRect(
               borderRadius: radius,
               child: Material(
-                color: AppTheme.kBgCard,
+                color: cs.surfaceContainerHighest,
                 borderRadius: radius,
                 child: InkWell(
                   onTap: tiles[i].onTap,
                   borderRadius: radius,
-                  splashColor: AppTheme.kPrimary.withValues(alpha: 0.1),
+                  splashColor: cs.primary.withValues(alpha: 0.1),
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: AppTheme.space16,
@@ -38,17 +40,17 @@ class SettingsTileGroup extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
-                        Icon(tiles[i].icon, color: AppTheme.kTextPrimary, size: 20),
+                        Icon(tiles[i].icon, color: cs.onSurface, size: 20),
                         SizedBox(width: AppTheme.space12),
                         Expanded(
                           child: Text(
                             tiles[i].label,
                             style: AppTheme.paragraphSmMedium.copyWith(
-                              color: AppTheme.kTextPrimary,
+                              color: cs.onSurface,
                             ),
                           ),
                         ),
-                        Icon(Icons.chevron_right_rounded, color: AppTheme.kTextPrimary),
+                        Icon(Icons.chevron_right_rounded, color: cs.onSurface),
                       ],
                     ),
                 ),
@@ -59,7 +61,7 @@ class SettingsTileGroup extends StatelessWidget {
             Divider(
               height: 1,
               thickness: 1,
-              color: AppTheme.kBgDeep,
+              color: cs.surface,
               indent: 0,
               endIndent: 0,
             )

@@ -17,7 +17,7 @@ class ClientInfoCard extends StatelessWidget {
             Text(
               'Abdnour khouya',
               style: AppTheme.paragraphSmMedium.copyWith(
-                color: AppTheme.backgroundColor,
+                color: cs.surface,
               ),
             ),
             //SizedBox(height: AppTheme.space2,),
@@ -27,20 +27,20 @@ class ClientInfoCard extends StatelessWidget {
                 Text(
                   'Booked at 16:45',
                   style: AppTheme.paragraphMiniMedium.copyWith(
-                    color: AppTheme.backgroundColor.withValues(alpha: 0.7),
+                    color: cs.surface.withValues(alpha: 0.7),
                   )
                 ),
                 SizedBox(width: AppTheme.space4,),
                 Icon(
                   Icons.circle,
                   size: 6,
-                  color: AppTheme.backgroundColor.withValues(alpha: 0.7),
+                  color: cs.surface.withValues(alpha: 0.7),
                 ),
                 SizedBox(width: AppTheme.space4,),
                 Text(
                   'en route',
                   style: AppTheme.paragraphMiniMedium.copyWith(
-                    color: AppTheme.kPrimary
+                    color: cs.primary
                   ),
                 )
               ],

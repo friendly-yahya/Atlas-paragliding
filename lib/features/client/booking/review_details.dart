@@ -32,6 +32,7 @@ class _ReviewMetaRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -48,7 +49,7 @@ class _ReviewMetaRow extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 4),
-            const Icon(Icons.circle, size: 6, color: AppTheme.textPrimary),
+            Icon(Icons.circle, size: 6, color: cs.primary),
             const SizedBox(width: 6),
             Text(timeAgo, style: AppTheme.paragraphSmMedium),
           ],

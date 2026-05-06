@@ -171,3 +171,72 @@ class AppTheme {
     );
   }
 }
+
+
+// ════════════════════════════════════════════════════════════════
+// COLOR MIGRATION REFERENCE
+// Old hardcoded constant → Theme.of(context).colorScheme.slot
+// ════════════════════════════════════════════════════════════════
+//
+// ── SHARED / CLIENT (light) ──────────────────────────────────────
+// cs.surface          → cs.surface
+// cs.surfaceContainerHighest     → cs.surfaceContainerHighest
+// cs.primary               → cs.onSurface
+// cs.onSurfaceVariant             → cs.onSurfaceVariant
+// cs.outline               → cs.outline
+// AppTheme.primaryColor              → cs.primary
+// AppTheme.successColor              → cs.secondary  (or keep as fixed Color)
+// cs.error                → cs.error
+// AppTheme.starColor                 → never migrate (always yellow, role-agnostic)
+//
+// ── PILOT (dark) ─────────────────────────────────────────────────
+// cs.surface                   → cs.surface
+// cs.surfaceContainerHighest                   → cs.surfaceContainerHighest
+// cs.surfaceContainer               → cs.surfaceContainer
+// cs.primary                 → cs.primary
+// cs.onSurface              → cs.onSurface
+// cs.onSurfaceVariant            → cs.onSurfaceVariant
+//
+// ── ALPHA VARIANTS ───────────────────────────────────────────────
+// cs.surface.withValues(alpha: 0.1)  → cs.surface.withValues(alpha: 0.1)
+// cs.surface.withValues(alpha: 0.4)  → cs.onSurface.withValues(alpha: 0.4)
+// cs.surface.withValues(alpha: 0.6)  → cs.onSurface.withValues(alpha: 0.6)
+// cs.surface.withValues(alpha: 0.7)  → cs.onSurface.withValues(alpha: 0.7)
+// cs.surface.withValues(alpha: 0.8)  → cs.onSurface.withValues(alpha: 0.8)
+// cs.onSurfaceVariant.withValues(alpha: 0.2)   → cs.onSurfaceVariant.withValues(alpha: 0.2)
+// cs.onSurfaceVariant.withValues(alpha: 0.3)   → cs.onSurfaceVariant.withValues(alpha: 0.3)
+// cs.onSurfaceVariant.withValues(alpha: 0.3)    → cs.onSurfaceVariant.withValues(alpha: 0.3)
+// Colors.black.withValues(alpha: 0.25)             → cs.shadow  (or keep as fixed)
+//
+// ── HARDCODED ONE-OFFS FOUND IN YOUR FILES ───────────────────────
+// Color.fromARGB(190, 59, 131, 246)  → cs.primary.withValues(alpha: 0.75)
+// Colors.white.withValues(alpha:.5)  → cs.onSurface.withValues(alpha: 0.5)
+// Colors.white.withValues(alpha:.7)  → cs.onSurface.withValues(alpha: 0.7)
+// Colors.blue.withValues(alpha:0.15) → cs.primary.withValues(alpha: 0.15)  (map circle)
+// Colors.blue.withValues(alpha:0.7)  → cs.primary.withValues(alpha: 0.7)   (map border)
+//
+// ── BUTTON STYLES ────────────────────────────────────────────────
+// AppTheme.primaryButton             → AppTheme.primaryButton(context)
+// AppTheme.bookMainButtonLight       → AppTheme.pillButtonPrimary(context)
+// AppTheme.bookingButtonDark         → AppTheme.pillButtonDark(context)
+// AppTheme.browsingButtonDark        → AppTheme.pillButtonDark(context)
+// AppTheme.browsingButtonLight       → AppTheme.pillButtonPrimary(context)
+//
+// ── TEXT STYLES ──────────────────────────────────────────────────
+// Any AppTheme.headingX              → .copyWith(color: cs.onSurface)
+// Any AppTheme.paragraphXx           → .copyWith(color: cs.onSurface)
+//                                      or .copyWith(color: cs.onSurfaceVariant)
+//                                      for secondary/hint text
+// AppTheme.kDisplayHero              → AppTheme.kDisplayHero(context)  [now a method]
+// AppTheme.kDisplaySub               → AppTheme.kDisplaySub(context)   [now a method]
+//
+// ── SCAFFOLD BACKGROUNDS ─────────────────────────────────────────
+// Scaffold(backgroundColor: cs.surface)        → cs.surface
+// Scaffold(backgroundColor: cs.surface) → cs.surface
+// AppBar(backgroundColor: cs.surface)          → cs.surface
+//
+// ── THINGS THAT NEVER CHANGE (keep as fixed colors) ──────────────
+// AppTheme.starColor       — always yellow regardless of theme
+// AppTheme.successColor    — always green
+// cs.error      — already wired to cs.error
+// ════════════════════════════════════════════════════════════════

@@ -23,7 +23,7 @@ class MessagesWidget extends StatelessWidget {
               Text(
                 'Today',
                 style: AppTheme.paragraphSmRegular.copyWith(
-                  color: AppTheme.backgroundColor.withValues(alpha: 0.8),
+                  color: cs.surface.withValues(alpha: 0.8),
                   fontWeight: FontWeight.w800,
                 ),
               ),
@@ -34,19 +34,19 @@ class MessagesWidget extends StatelessWidget {
                   vertical: 1,
                 ),
                 decoration: BoxDecoration(
-                  color: AppTheme.kPrimary,
+                  color: cs.primary,
                   borderRadius: BorderRadius.circular(99),
                 ),
                 /* child: Text(
                   '${recentConversations.where((c) => (c['unread'] as int) > 0).length}',
                   style: AppTheme.micro.copyWith(
-                    color: AppTheme.backgroundColor,
+                    color: cs.surface,
                     fontWeight: FontWeight.w700,
                   ), */
                 child: Text(
                   '3',
                   style: AppTheme.paragraphMiniRegular.copyWith(
-                    color: AppTheme.backgroundColor,
+                    color: cs.surface,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -64,14 +64,14 @@ class MessagesWidget extends StatelessWidget {
               Text(
                 'See all',
                 style: AppTheme.paragraphMiniRegular.copyWith(
-                  color: AppTheme.backgroundColor.withValues(alpha: 0.6),
+                  color: cs.surface.withValues(alpha: 0.6),
                   fontWeight: FontWeight.w800,
                 ),
               ),
               SizedBox(width: AppTheme.space4),
               Icon(
                 Icons.chevron_right_rounded,
-                color: AppTheme.backgroundColor.withValues(alpha: 0.6),
+                color: cs.surface.withValues(alpha: 0.6),
                 size: 16,
               ),
             ],
@@ -115,7 +115,7 @@ class _MiniConvoRow extends StatelessWidget {
                       child: Text(
                         convo['name'] as String,
                         style: AppTheme.paragraphMiniMedium.copyWith(
-                          color: AppTheme.backgroundColor.withValues(alpha: 0.85),
+                          color: cs.surface.withValues(alpha: 0.85),
                         ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -124,7 +124,7 @@ class _MiniConvoRow extends StatelessWidget {
                     Text(
                       convo['time'] as String,
                       style: AppTheme.micro.copyWith(
-                        color: AppTheme.backgroundColor.withValues(alpha: 0.35),
+                        color: cs.surface.withValues(alpha: 0.35),
                       ),
                     ),
                   ],
@@ -137,7 +137,7 @@ class _MiniConvoRow extends StatelessWidget {
                       child: Text(
                         convo['lastMessage'] as String,
                         style: AppTheme.micro.copyWith(
-                          color: AppTheme.backgroundColor.withValues(alpha: 0.4),
+                          color: cs.surface.withValues(alpha: 0.4),
                         ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -148,7 +148,7 @@ class _MiniConvoRow extends StatelessWidget {
                         width: 7,
                         height: 7,
                         decoration: const BoxDecoration(
-                          color: AppTheme.kPrimary,
+                          color: cs.primary,
                           shape: BoxShape.circle,
                         ),
                       ),

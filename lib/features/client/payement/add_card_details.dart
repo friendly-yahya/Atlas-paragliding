@@ -5,7 +5,7 @@ void showAddCardDetails(BuildContext context) {
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
-    backgroundColor: AppTheme.backgroundColor,
+    backgroundColor: cs.surface,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(AppTheme.rounded12)),
     ),
@@ -65,7 +65,7 @@ class _AddCardDetailsSheetState extends State<_AddCardDetailsSheet> {
             // Card fields
             Container(
               decoration: BoxDecoration(
-                border: Border.all(color: AppTheme.strokeColor),
+                border: Border.all(color: cs.outline),
                 borderRadius: BorderRadius.circular(AppTheme.rounded8),
               ),
               child: Column(
@@ -85,7 +85,7 @@ class _AddCardDetailsSheetState extends State<_AddCardDetailsSheet> {
                             decoration: InputDecoration(
                               hintText: 'Card number',
                               hintStyle: AppTheme.paragraphSmRegular.copyWith(
-                                color: AppTheme.textSecondary,
+                                color: cs.onSurfaceVariant,
                               ),
                               border: InputBorder.none,
                               isDense: true,
@@ -93,11 +93,11 @@ class _AddCardDetailsSheetState extends State<_AddCardDetailsSheet> {
                             style: AppTheme.paragraphSmRegular,
                           ),
                         ),
-                        const Icon(Icons.lock_outline, size: 18, color: AppTheme.textSecondary),
+                        const Icon(Icons.lock_outline, size: 18, color: cs.onSurfaceVariant),
                       ],
                     ),
                   ),
-                  const Divider(height: 1, color: AppTheme.strokeColor),
+                  const Divider(height: 1, color: cs.outline),
                   // Expiration + CVV
                   IntrinsicHeight(
                     child: Row(
@@ -114,7 +114,7 @@ class _AddCardDetailsSheetState extends State<_AddCardDetailsSheet> {
                               decoration: InputDecoration(
                                 hintText: 'Expiration',
                                 hintStyle: AppTheme.paragraphSmRegular.copyWith(
-                                  color: AppTheme.textSecondary,
+                                  color: cs.onSurfaceVariant,
                                 ),
                                 border: InputBorder.none,
                                 isDense: true,
@@ -123,7 +123,7 @@ class _AddCardDetailsSheetState extends State<_AddCardDetailsSheet> {
                             ),
                           ),
                         ),
-                        const VerticalDivider(width: 1, color: AppTheme.strokeColor),
+                        const VerticalDivider(width: 1, color: cs.outline),
                         Expanded(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
@@ -136,7 +136,7 @@ class _AddCardDetailsSheetState extends State<_AddCardDetailsSheet> {
                               decoration: InputDecoration(
                                 hintText: 'CVV/CVC',
                                 hintStyle: AppTheme.paragraphSmRegular.copyWith(
-                                  color: AppTheme.textSecondary,
+                                  color: cs.onSurfaceVariant,
                                 ),
                                 border: InputBorder.none,
                                 isDense: true,
@@ -163,14 +163,14 @@ class _AddCardDetailsSheetState extends State<_AddCardDetailsSheet> {
                 vertical: AppTheme.space4,
               ),
               decoration: BoxDecoration(
-                border: Border.all(color: AppTheme.strokeColor),
+                border: Border.all(color: cs.outline),
                 borderRadius: BorderRadius.circular(AppTheme.rounded8),
               ),
               child: DropdownButtonHideUnderline(
                 child: DropdownButton<String>(
                   value: selectedCountry,
                   isExpanded: true,
-                  icon: const Icon(Icons.keyboard_arrow_down, color: AppTheme.textPrimary),
+                  icon: const Icon(Icons.keyboard_arrow_down, color: cs.primary),
                   style: AppTheme.paragraphSmRegular,
                   onChanged: (value) {
                     if (value != null) setState(() => selectedCountry = value);
@@ -194,8 +194,8 @@ class _AddCardDetailsSheetState extends State<_AddCardDetailsSheet> {
                 TextButton(
                   onPressed: () => Navigator.pop(context),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppTheme.textPrimary,
-                    foregroundColor: AppTheme.backgroundColor,
+                    backgroundColor: cs.primary,
+                    foregroundColor: cs.surface,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(AppTheme.rounded40),
                     ),

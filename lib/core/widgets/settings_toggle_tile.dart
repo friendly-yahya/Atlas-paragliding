@@ -31,8 +31,9 @@ class _SettingsToggleTileState extends State<SettingsToggleTile> {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Material(
-      color: AppTheme.kBgCard,
+      color: cs.surfaceContainerHighest,
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: AppTheme.space16,
@@ -40,19 +41,19 @@ class _SettingsToggleTileState extends State<SettingsToggleTile> {
         ),
         child: Row(
           children: [
-            Icon(widget.icon, color: AppTheme.kTextPrimary, size: 20),
+            Icon(widget.icon, color: cs.onSurface, size: 20),
             SizedBox(width: AppTheme.space12),
             Expanded(
               child: Text(
                 widget.label,
-                style: AppTheme.paragraphMedium.copyWith(color: AppTheme.kTextPrimary),
+                style: AppTheme.paragraphMedium.copyWith(color: cs.onSurface),
               ),
             ),
             Transform.scale(
               scale: 0.75,
               child: CupertinoSwitch(
                 value: _value,
-                activeTrackColor: AppTheme.kPrimary,
+                activeTrackColor: cs.primary,
                 onChanged: (val) {
                   setState(() => _value = val);
                   widget.onChanged?.call(val);

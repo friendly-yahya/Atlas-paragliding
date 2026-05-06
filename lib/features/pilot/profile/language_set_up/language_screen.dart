@@ -56,7 +56,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
         .toList();
 
     return Scaffold(
-      backgroundColor: AppTheme.kBgDeep,
+      backgroundColor: cs.surface,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,13 +71,13 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
                     onTap: () => Navigator.pop(context, _selected),
                     child: Container(
                       width: 40, height: 40,
-                      decoration: BoxDecoration(color: AppTheme.kBgCard, shape: BoxShape.circle),
-                      child: Icon(Icons.arrow_back_ios_new_rounded, color: AppTheme.kTextPrimary, size: 16),
+                      decoration: BoxDecoration(color: cs.surfaceContainerHighest, shape: BoxShape.circle),
+                      child: Icon(Icons.arrow_back_ios_new_rounded, color: cs.onSurface, size: 16),
                     ),
                   ),
                   const SizedBox(width: 16),
                   Text('Languages Spoken',
-                      style: AppTheme.heading3.copyWith(color: AppTheme.kTextPrimary)),
+                      style: AppTheme.heading3.copyWith(color: cs.onSurface)),
                 ],
               ),
             ),
@@ -105,16 +105,16 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Container(
                 decoration: BoxDecoration(
-                  color: AppTheme.kBgCard,
+                  color: cs.surfaceContainerHighest,
                   borderRadius: BorderRadius.circular(AppTheme.rounded12),
                 ),
                 child: TextField(
                   onChanged: (v) => setState(() => _search = v),
-                  style: AppTheme.paragraphSmRegular.copyWith(color: AppTheme.kTextPrimary),
+                  style: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurface),
                   decoration: InputDecoration(
                     hintText: 'Search language...',
-                    hintStyle: AppTheme.paragraphSmRegular.copyWith(color: AppTheme.kTextSecondary),
-                    prefixIcon: Icon(Icons.search_rounded, color: AppTheme.kTextSecondary, size: 20),
+                    hintStyle: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurfaceVariant),
+                    prefixIcon: Icon(Icons.search_rounded, color: cs.onSurfaceVariant, size: 20),
                     border: InputBorder.none,
                     contentPadding: const EdgeInsets.symmetric(vertical: 14),
                   ),
@@ -156,10 +156,10 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
                       duration: const Duration(milliseconds: 200),
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                       decoration: BoxDecoration(
-                        color: picked ? AppTheme.kBgElevated : AppTheme.kBgCard,
+                        color: picked ? cs.surfaceContainer : cs.surfaceContainerHighest,
                         borderRadius: BorderRadius.circular(AppTheme.rounded12),
                         border: Border.all(
-                          color: picked ? AppTheme.kPrimary.withValues(alpha: 0.4) : Colors.transparent,
+                          color: picked ? cs.primary.withValues(alpha: 0.4) : Colors.transparent,
                         ),
                       ),
                       child: Row(
@@ -170,14 +170,14 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
                             child: Text(
                               lang['name']!,
                               style: AppTheme.paragraphMedium.copyWith(
-                                color: picked ? AppTheme.kTextSecondary : AppTheme.kTextPrimary,
+                                color: picked ? cs.onSurfaceVariant : cs.onSurface,
                               ),
                             ),
                           ),
                           if (picked)
-                            Icon(Icons.check_circle_rounded, color: AppTheme.kPrimary, size: 20)
+                            Icon(Icons.check_circle_rounded, color: cs.primary, size: 20)
                           else
-                            Icon(Icons.chevron_right_rounded, color: AppTheme.kTextSecondary, size: 20),
+                            Icon(Icons.chevron_right_rounded, color: cs.onSurfaceVariant, size: 20),
                         ],
                       ),
                     ),
@@ -203,9 +203,9 @@ class _LanguageChip extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
-        color: AppTheme.kPrimary.withValues(alpha: 0.15),
+        color: cs.primary.withValues(alpha: 0.15),
         borderRadius: BorderRadius.circular(999),
-        border: Border.all(color: AppTheme.kPrimary.withValues(alpha: 0.4)),
+        border: Border.all(color: cs.primary.withValues(alpha: 0.4)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -214,12 +214,12 @@ class _LanguageChip extends StatelessWidget {
           const SizedBox(width: 6),
           Text(
             '${lang.name} · ${lang.fluency}',
-            style: AppTheme.paragraphMiniMedium.copyWith(color: AppTheme.kPrimary),
+            style: AppTheme.paragraphMiniMedium.copyWith(color: cs.primary),
           ),
           const SizedBox(width: 6),
           GestureDetector(
             onTap: onRemove,
-            child: Icon(Icons.close_rounded, color: AppTheme.kPrimary, size: 14),
+            child: Icon(Icons.close_rounded, color: cs.primary, size: 14),
           ),
         ],
       ),
