@@ -10,7 +10,7 @@ import 'profile/profile_screen.dart';
 import 'package:atlas_paragliding/core/theme/app_theme.dart';
 
 class ClientMainScreen extends StatefulWidget {
-  final VoidCallback onSwitchToPilot; 
+  final VoidCallback onSwitchToPilot;
   const ClientMainScreen({super.key, required this.onSwitchToPilot});
 
   @override
@@ -36,6 +36,7 @@ class _ClientMainScreenState extends State<ClientMainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Scaffold(
       backgroundColor: cs.surface,
       body: IndexedStack(
@@ -45,7 +46,6 @@ class _ClientMainScreenState extends State<ClientMainScreen> {
           _buildNavigator(1, const MessagingScreen()),
           _buildNavigator(2, const FlightScreen()),
           _buildNavigator(3, ProfileScreen(onSwitchToPilot: widget.onSwitchToPilot)),
-
         ],
       ),
       bottomNavigationBar: _CleanNavBar(
@@ -95,10 +95,11 @@ class _CleanNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Container(
       decoration: BoxDecoration(
         color: cs.surface,
-        border: const Border(
+        border: Border(
           top: BorderSide(color: cs.outline, width: 1),
         ),
       ),
@@ -136,6 +137,7 @@ class _NavBarItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return GestureDetector(
       onTap: onTap,
       behavior: HitTestBehavior.opaque,
@@ -149,7 +151,7 @@ class _NavBarItem extends StatelessWidget {
             width: isSelected ? 4 : 0,
             height: isSelected ? 4 : 0,
             margin: const EdgeInsets.only(bottom: 4),
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               color: cs.primary,
               shape: BoxShape.circle,
             ),

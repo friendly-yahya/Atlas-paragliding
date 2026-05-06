@@ -45,6 +45,7 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Scaffold(
       backgroundColor: cs.surface,
       body: SafeArea(
@@ -98,6 +99,7 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
 
                     // Age + Weight + Flown before card
                     _buildCard(
+                      context: context,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -109,7 +111,7 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
                             onDecrement: () => setState(() { if (age > 1) age--; }),
                             onIncrement: () => setState(() => age++),
                           ),
-                          const Divider(color: cs.outline),
+                          Divider(color: cs.outline),
                           // Weight
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -137,17 +139,17 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
                               ),
                             ],
                           ),
-                          const Divider(color: cs.outline),
+                          Divider(color: cs.outline),
                           // Flown before
                           Text('Have you been paragliding before?', style: AppTheme.paragraphSmMedium),
                           const SizedBox(height: AppTheme.space8),
                           Row(
                             children: [
-                              _buildToggle('Yes', hasFlownBefore == true, () {
+                              _buildToggle(context, 'Yes', hasFlownBefore == true, () {
                                 setState(() => hasFlownBefore = true);
                               }),
                               const SizedBox(width: AppTheme.space8),
-                              _buildToggle('No', hasFlownBefore == false, () {
+                              _buildToggle(context, 'No', hasFlownBefore == false, () {
                                 setState(() => hasFlownBefore = false);
                               }),
                             ],
@@ -160,6 +162,7 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
 
                     // Medical conditions card
                     _buildCard(
+                      context: context,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -196,9 +199,18 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
                                 ),
                                 child: Row(
                                   children: [
-                                    Icon(conditionIcons[i], size: 20, color: cs.onSurfaceVariant),
+                                    Icon(conditionIcons[i], size: 18, color: isSelected ? cs.primary : cs.onSurfaceVariant),
                                     const SizedBox(width: AppTheme.space12),
-                                    Text(condition, style: AppTheme.paragraphSmRegular),
+                                    Expanded(
+                                      child: Text(
+                                        condition,
+                                        style: AppTheme.paragraphSmRegular.copyWith(
+                                          color: isSelected ? cs.primary : cs.onSurface,
+                                        ),
+                                      ),
+                                    ),
+                                    if (isSelected)
+                                      Icon(Icons.check_circle_rounded, size: 18, color: cs.primary),
                                   ],
                                 ),
                               ),
@@ -210,41 +222,13 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
 
                     const SizedBox(height: AppTheme.space16),
 
-                    // Emergency contact card
+                    // Height feelings card
                     _buildCard(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Text('Emergency Contact', style: AppTheme.paragraphSmMedium),
-                              const SizedBox(width: AppTheme.space4),
-                              Text(
-                                '(optional)',
-                                style: AppTheme.paragraphMiniRegular.copyWith(color: cs.onSurfaceVariant),
-                              ),
-                            ],
-                          ),
-                          const Divider(color: cs.outline),
-                          _buildContactRow('Name:', 'Fatima Alaoui', nameController),
-                          const Divider(color: cs.outline),
-                          _buildContactRow('Phone:', '0627399949', phoneController),
-                        ],
-                      ),
-                    ),
-
-                    const SizedBox(height: AppTheme.space16),
-
-                    // Heights comfort card
-                    _buildCard(
+                      context: context,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('How do you feel about heights?', style: AppTheme.paragraphSmMedium),
-                          Text(
-                            'Your comfort level helps Hicham prepare the best experience for you',
-                            style: AppTheme.paragraphMiniRegular.copyWith(color: cs.onSurfaceVariant),
-                          ),
                           const SizedBox(height: AppTheme.space12),
                           ...heightFeelings.map((feeling) {
                             final isSelected = selectedHeightFeeling == feeling;
@@ -264,9 +248,16 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
                                 ),
                                 child: Row(
                                   children: [
-                                    const Text('😊', style: TextStyle(fontSize: 18)),
-                                    const SizedBox(width: AppTheme.space12),
-                                    Text(feeling, style: AppTheme.paragraphSmRegular),
+                                    Expanded(
+                                      child: Text(
+                                        feeling,
+                                        style: AppTheme.paragraphSmRegular.copyWith(
+                                          color: isSelected ? cs.primary : cs.onSurface,
+                                        ),
+                                      ),
+                                    ),
+                                    if (isSelected)
+                                      Icon(Icons.check_circle_rounded, size: 18, color: cs.primary),
                                   ],
                                 ),
                               ),
@@ -294,7 +285,7 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
                         Expanded(
                           child: RichText(
                             text: TextSpan(
-                              style: AppTheme.paragraphSmRegular,
+                              style: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurface),
                               children: [
                                 const TextSpan(text: 'I understand '),
                                 TextSpan(
@@ -356,7 +347,7 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
                 horizontal: AppTheme.space16,
                 vertical: AppTheme.space16,
               ),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 border: Border(top: BorderSide(color: cs.outline)),
                 color: cs.surface,
               ),
@@ -364,10 +355,10 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
                 alignment: Alignment.centerRight,
                 child: TextButton(
                   onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => const ReviewAndContinue()),
-                ),
-                  style: AppTheme.bookMainButtonLight,
+                    context,
+                    MaterialPageRoute(builder: (_) => const ReviewAndContinue()),
+                  ),
+                  style: AppTheme.pillButtonPrimary(context),
                   child: const Text('Next'),
                 ),
               ),
@@ -378,7 +369,8 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
     );
   }
 
-  Widget _buildCard({required Widget child}) {
+  Widget _buildCard({required BuildContext context, required Widget child}) {
+    final cs = Theme.of(context).colorScheme;
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(AppTheme.space16),
@@ -418,7 +410,8 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
     );
   }
 
-  Widget _buildToggle(String label, bool selected, VoidCallback onTap) {
+  Widget _buildToggle(BuildContext context, String label, bool selected, VoidCallback onTap) {
+    final cs = Theme.of(context).colorScheme;
     return Expanded(
       child: GestureDetector(
         onTap: onTap,
@@ -434,7 +427,7 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
             child: Text(
               label,
               style: AppTheme.paragraphSmMedium.copyWith(
-                color: selected ? cs.primary : cs.primary,
+                color: selected ? cs.primary : cs.onSurface,
               ),
             ),
           ),
@@ -443,7 +436,8 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
     );
   }
 
-  Widget _buildContactRow(String label, String placeholder, TextEditingController controller) {
+  Widget _buildContactRow(BuildContext context, String label, String placeholder, TextEditingController controller) {
+    final cs = Theme.of(context).colorScheme;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: AppTheme.space8),
       child: Row(
@@ -460,7 +454,7 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
                 isDense: true,
                 contentPadding: EdgeInsets.zero,
               ),
-              style: AppTheme.paragraphSmRegular,
+              style: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurface),
             ),
           ),
         ],

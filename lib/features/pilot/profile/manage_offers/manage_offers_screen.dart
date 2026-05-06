@@ -100,6 +100,7 @@ class _ManageOffersScreenState extends State<ManageOffersScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     final listed = _filtered;
 
     return Scaffold(
@@ -230,7 +231,7 @@ class _OfferCard extends StatelessWidget {
   final VoidCallback onDelete;
   final void Function(OfferStatus) onToggleStatus;
 
-  Color _statusColor(OfferStatus s) {
+  Color _statusColor(OfferStatus s, ColorScheme cs) {
     switch (s) {
       case OfferStatus.active:   return cs.primary;
       case OfferStatus.draft:    return Colors.orangeAccent;
@@ -248,6 +249,7 @@ class _OfferCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -277,12 +279,12 @@ class _OfferCard extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(
                   color:
-                      _statusColor(offer.status).withValues(alpha: 0.15),
+                      _statusColor(offer.status, cs).withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(999),
                 ),
                 child: Text(_statusLabel(offer.status),
                     style: AppTheme.paragraphMiniMedium
-                        .copyWith(color: _statusColor(offer.status))),
+                        .copyWith(color: _statusColor(offer.status, cs))),
               ),
             ],
           ),
@@ -376,6 +378,7 @@ class _InfoText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return RichText(
       text: TextSpan(
         style: AppTheme.paragraphMiniRegular
@@ -424,6 +427,7 @@ class _EmptyState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
