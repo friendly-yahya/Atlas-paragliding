@@ -7,71 +7,72 @@ class WeatherWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedCard(
+    final cs = Theme.of(context).colorScheme;
     
-      //minHeight: 155,
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,  
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.baseline,
-          textBaseline: TextBaseline.alphabetic,
-          children: [
-            Text(
-              '31°',
-              style: AppTheme.kDisplayHero,
-            ),
-            Text(
-              '/1200m',
-              style: AppTheme.kDisplaySub,
-            )
-          ],
-        ),
-        Text(
-          'Ouirgane',
-          style: AppTheme.kDisplaySub.copyWith(
-            color: cs.surface.withValues(alpha: 0.8)
+    return ElevatedCard(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,  
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.baseline,
+            textBaseline: TextBaseline.alphabetic,
+            children: [
+              Text(
+                '31°',
+                style: AppTheme.kDisplayHero(context),
+              ),
+              Text(
+                '/1200m',
+                style: AppTheme.kDisplaySub(context),
+              )
+            ],
           ),
-        ),
-        SizedBox(height: AppTheme.space24,),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                Icon(
-                  Icons.wb_cloudy_outlined,
-                  color: cs.surface.withValues(alpha: 0.8),
-                  size: 24,
-                ),
-                SizedBox(width: AppTheme.space4,),
-                Text(
-                  '15km/h, W',
-                  style: AppTheme.paragraphSmRegular.copyWith(
-                    color: cs.surface.withValues(alpha: 0.8)
-                  ) ,
-                )
-              ],
+          Text(
+            'Ouirgane',
+            style: AppTheme.kDisplaySub(context).copyWith(
+              color: cs.surface.withValues(alpha: 0.8)
             ),
-            Row(
-              children: [
-                Icon(
-                  Icons.visibility_outlined,
-                  color: cs.surface.withValues(alpha: 0.8),
-                  size: 24,
-                ),
-                SizedBox(width: AppTheme.space4,),
-                Text(
-                  '25Km',
-                  style: AppTheme.paragraphSmRegular.copyWith(
-                    color: cs.surface.withValues(alpha: 0.8)
-                  ) ,
-                )
-              ],
-            )
-          ],
-        ) 
-       ],
-      ));
+          ),
+          const SizedBox(height: AppTheme.space24),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Icon(
+                    Icons.wb_cloudy_outlined,
+                    color: cs.surface.withValues(alpha: 0.8),
+                    size: 24,
+                  ),
+                  const SizedBox(width: AppTheme.space4),
+                  Text(
+                    '15km/h, W',
+                    style: AppTheme.paragraphSmRegular.copyWith(
+                      color: cs.surface.withValues(alpha: 0.8)
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                children: [
+                  Icon(
+                    Icons.visibility_outlined,
+                    color: cs.surface.withValues(alpha: 0.8),
+                    size: 24,
+                  ),
+                  const SizedBox(width: AppTheme.space4),
+                  Text(
+                    '25Km',
+                    style: AppTheme.paragraphSmRegular.copyWith(
+                      color: cs.surface.withValues(alpha: 0.8)
+                    ),
+                  )
+                ],
+              )
+            ],
+          ) 
+        ],
+      ),
+    );
   }
 }

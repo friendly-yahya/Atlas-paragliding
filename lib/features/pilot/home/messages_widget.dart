@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:atlas_paragliding/core/theme/app_theme.dart';
 import 'package:atlas_paragliding/core/widgets/avatar.dart';
 import '../../../core/widgets/elevated_card.dart';
+
 class MessagesWidget extends StatelessWidget {
   const MessagesWidget({super.key});
 
@@ -12,6 +13,8 @@ class MessagesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    
     return ElevatedCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,7 +30,7 @@ class MessagesWidget extends StatelessWidget {
                   fontWeight: FontWeight.w800,
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 6,
@@ -37,12 +40,6 @@ class MessagesWidget extends StatelessWidget {
                   color: cs.primary,
                   borderRadius: BorderRadius.circular(99),
                 ),
-                /* child: Text(
-                  '${recentConversations.where((c) => (c['unread'] as int) > 0).length}',
-                  style: AppTheme.micro.copyWith(
-                    color: cs.surface,
-                    fontWeight: FontWeight.w700,
-                  ), */
                 child: Text(
                   '3',
                   style: AppTheme.paragraphMiniRegular.copyWith(
@@ -53,7 +50,7 @@ class MessagesWidget extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: AppTheme.space4,),
+          const SizedBox(height: AppTheme.space4),
           // ── Conversation tiles ──
           ..._conversations.map((convo) => _MiniConvoRow(convo: convo)),
       
@@ -68,7 +65,7 @@ class MessagesWidget extends StatelessWidget {
                   fontWeight: FontWeight.w800,
                 ),
               ),
-              SizedBox(width: AppTheme.space4),
+              const SizedBox(width: AppTheme.space4),
               Icon(
                 Icons.chevron_right_rounded,
                 color: cs.surface.withValues(alpha: 0.6),
@@ -88,6 +85,7 @@ class _MiniConvoRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     final hasUnread = (convo['unread'] as int) > 0;
 
     return Padding(
@@ -147,7 +145,7 @@ class _MiniConvoRow extends StatelessWidget {
                       Container(
                         width: 7,
                         height: 7,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: cs.primary,
                           shape: BoxShape.circle,
                         ),
