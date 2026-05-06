@@ -70,14 +70,16 @@ class PilotMessages extends StatelessWidget {
                           time: convo['time'],
                           unreadCount: convo['unread'],
                           isOnline: convo['isOnline'],
-                          tileTheme: ConversationTileTheme.dark(cs as BuildContext),
+                          // ✅ Pass BuildContext – not ColorScheme
+                          tileTheme: ConversationTileTheme.dark(context),
                           onTap: () => Navigator.push(
                             context,
                             PageRouteBuilder(
                               pageBuilder: (context, animation, secondaryAnimation) => ChatScreen(
                                 name: convo['name'],
                                 isOnline: convo['isOnline'],
-                                chatTheme: ChatScreenTheme.dark(cs), 
+                                // ✅ Pass BuildContext – not ColorScheme
+                                chatTheme: ChatScreenTheme.dark(context),
                                 initialMessages: const [
                                   {'text': 'Hey! I booked your Essential Flight for Oct 19 🪂', 'isMe': false, 'time': '10:20 AM'},
                                   {'text': 'Perfect! See you at Aguergour launch site.',         'isMe': true,  'time': '10:22 AM'},

@@ -17,22 +17,31 @@ class ChatScreenTheme {
     required this.input,
   });
 
-  // ── Light — client ──────────────────────────────────────────────────────────
-  static ChatScreenTheme light(ColorScheme cs) => ChatScreenTheme(
-        scaffoldBg: cs.surface,
-        header: ChatHeaderTheme.light(cs),
-        bubble: MessageBubbleTheme.light(cs),
-        input: ChatInputBarTheme.light(cs as BuildContext),
-      );
+  // ── Light (client) ──────────────────────────────────────────────────────────
+  static ChatScreenTheme light(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    return ChatScreenTheme(
+      scaffoldBg: cs.surface,
+      header: ChatHeaderTheme.light(cs),
+      bubble: MessageBubbleTheme.light(cs),
+      // ✅ Pass the BuildContext directly – ChatInputBarTheme expects it
+      input: ChatInputBarTheme.light(context),
+    );
+  }
 
-  // ── Dark — pilot ────────────────────────────────────────────────────────────
-  static ChatScreenTheme dark(ColorScheme cs) => ChatScreenTheme(
-        scaffoldBg: cs.surface,
-        header: ChatHeaderTheme.dark(cs),
-        bubble: MessageBubbleTheme.dark(cs),
-        input: ChatInputBarTheme.dark(cs as BuildContext),
-      );
+  // ── Dark (pilot) ────────────────────────────────────────────────────────────
+  static ChatScreenTheme dark(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    return ChatScreenTheme(
+      scaffoldBg: cs.surface,
+      header: ChatHeaderTheme.dark(cs),
+      bubble: MessageBubbleTheme.dark(cs),
+      // ✅ Pass the BuildContext directly – ChatInputBarTheme expects it
+      input: ChatInputBarTheme.dark(context),
+    );
+  }
 }
+
 
 class ChatScreen extends StatefulWidget {
   /// Display name of the contact.

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:atlas_paragliding/core/theme/app_theme.dart';
-//import 'package:atlas_paragliding/core/widgets/avatar.dart';
 import 'package:atlas_paragliding/core/widgets/conversation_tile.dart';
 import 'package:atlas_paragliding/features/shared/chat_screen.dart';
 
@@ -71,8 +70,8 @@ class MessagingScreen extends StatelessWidget {
                               builder: (_) => ChatScreen(
                                 name: convo['name'],
                                 isOnline: convo['isOnline'],
-                                //might need to add context
-                                chatTheme: ChatScreenTheme.light(context as ColorScheme),
+                                // ✅ FIX: pass context
+                                chatTheme: ChatScreenTheme.light(context),
                                 initialMessages: const [
                                   {'text': 'Hey! I booked your Essential Flight for Oct 19 🪂',         'isMe': true,  'time': '10:20 AM'},
                                   {'text': 'Perfect! See you at Aguergour launch site.',                 'isMe': false, 'time': '10:22 AM'},
