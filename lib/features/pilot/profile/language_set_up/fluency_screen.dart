@@ -21,6 +21,8 @@ class _FluencyScreenState extends State<FluencyScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    
     return Scaffold(
       backgroundColor: cs.surface,
       body: SafeArea(
