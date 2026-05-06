@@ -21,6 +21,7 @@ class _AddPaymentMethodState extends State<AddPaymentMethod> {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Scaffold(
       backgroundColor: cs.surface,
       body: SafeArea(
@@ -88,7 +89,10 @@ class _AddPaymentMethodState extends State<AddPaymentMethod> {
                                       Icon(method['icon'] as IconData, size: 22, color: cs.primary),
                                       const SizedBox(width: AppTheme.space12),
                                       Expanded(
-                                        child: Text(method['label'] as String, style: AppTheme.paragraphSmRegular),
+                                        child: Text(
+                                          method['label'] as String,
+                                          style: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurface),
+                                        ),
                                       ),
                                       Container(
                                         width: 20,
@@ -104,8 +108,7 @@ class _AddPaymentMethodState extends State<AddPaymentMethod> {
                                     ],
                                   ),
                                 ),
-                                if (!isLast)
-                                  const Divider(height: 1, color: cs.outline),
+                                if (!isLast) Divider(height: 1, color: cs.outline),
                               ],
                             ),
                           );
@@ -123,7 +126,7 @@ class _AddPaymentMethodState extends State<AddPaymentMethod> {
                 horizontal: AppTheme.space16,
                 vertical: AppTheme.space16,
               ),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 border: Border(top: BorderSide(color: cs.outline)),
                 color: cs.surface,
               ),
@@ -131,8 +134,7 @@ class _AddPaymentMethodState extends State<AddPaymentMethod> {
                 alignment: Alignment.centerRight,
                 child: TextButton(
                   onPressed: () => showAddCardDetails(context),
-
-                  style: AppTheme.bookMainButtonLight,
+                  style: AppTheme.pillButtonPrimary(context),
                   child: const Text('Next'),
                 ),
               ),

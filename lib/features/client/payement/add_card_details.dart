@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:atlas_paragliding/core/theme/app_theme.dart';
 
 void showAddCardDetails(BuildContext context) {
+  final cs = Theme.of(context).colorScheme;
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -39,6 +40,7 @@ class _AddCardDetailsSheetState extends State<_AddCardDetailsSheet> {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Padding(
       padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
@@ -90,14 +92,14 @@ class _AddCardDetailsSheetState extends State<_AddCardDetailsSheet> {
                               border: InputBorder.none,
                               isDense: true,
                             ),
-                            style: AppTheme.paragraphSmRegular,
+                            style: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurface),
                           ),
                         ),
-                        const Icon(Icons.lock_outline, size: 18, color: cs.onSurfaceVariant),
+                        Icon(Icons.lock_outline, size: 18, color: cs.onSurfaceVariant),
                       ],
                     ),
                   ),
-                  const Divider(height: 1, color: cs.outline),
+                  Divider(height: 1, color: cs.outline),
                   // Expiration + CVV
                   IntrinsicHeight(
                     child: Row(
@@ -119,11 +121,11 @@ class _AddCardDetailsSheetState extends State<_AddCardDetailsSheet> {
                                 border: InputBorder.none,
                                 isDense: true,
                               ),
-                              style: AppTheme.paragraphSmRegular,
+                              style: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurface),
                             ),
                           ),
                         ),
-                        const VerticalDivider(width: 1, color: cs.outline),
+                        VerticalDivider(width: 1, color: cs.outline),
                         Expanded(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
@@ -141,7 +143,7 @@ class _AddCardDetailsSheetState extends State<_AddCardDetailsSheet> {
                                 border: InputBorder.none,
                                 isDense: true,
                               ),
-                              style: AppTheme.paragraphSmRegular,
+                              style: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurface),
                             ),
                           ),
                         ),
@@ -170,8 +172,8 @@ class _AddCardDetailsSheetState extends State<_AddCardDetailsSheet> {
                 child: DropdownButton<String>(
                   value: selectedCountry,
                   isExpanded: true,
-                  icon: const Icon(Icons.keyboard_arrow_down, color: cs.primary),
-                  style: AppTheme.paragraphSmRegular,
+                  icon: Icon(Icons.keyboard_arrow_down, color: cs.primary),
+                  style: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurface),
                   onChanged: (value) {
                     if (value != null) setState(() => selectedCountry = value);
                   },
@@ -209,10 +211,9 @@ class _AddCardDetailsSheetState extends State<_AddCardDetailsSheet> {
                 ),
                 TextButton(
                   onPressed: () {
-                    // handle next
                     Navigator.pop(context);
                   },
-                  style: AppTheme.bookMainButtonLight,
+                  style: AppTheme.pillButtonPrimary(context),
                   child: const Text('Next'),
                 ),
               ],

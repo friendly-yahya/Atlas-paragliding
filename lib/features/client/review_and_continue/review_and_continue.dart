@@ -7,6 +7,7 @@ class ReviewAndContinue extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Scaffold(
       backgroundColor: cs.surface,
       body: SafeArea(
@@ -50,6 +51,7 @@ class ReviewAndContinue extends StatelessWidget {
 
                     // Main info card
                     _buildCard(
+                      context: context,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -63,7 +65,7 @@ class ReviewAndContinue extends StatelessWidget {
                                   width: 90,
                                   height: 90,
                                   color: cs.outline,
-                                  child: const Icon(Icons.paragliding, size: 40, color: cs.onSurfaceVariant),
+                                  child: Icon(Icons.paragliding, size: 40, color: cs.onSurfaceVariant),
                                 ),
                               ),
                               const SizedBox(width: AppTheme.space16),
@@ -97,7 +99,7 @@ class ReviewAndContinue extends StatelessWidget {
                           ),
 
                           const SizedBox(height: AppTheme.space16),
-                          const Divider(color: cs.outline, height: 1),
+                          Divider(color: cs.outline, height: 1),
                           const SizedBox(height: AppTheme.space16),
 
                           // Activity information
@@ -123,7 +125,7 @@ class ReviewAndContinue extends StatelessWidget {
                           ),
 
                           const SizedBox(height: AppTheme.space16),
-                          const Divider(color: cs.outline, height: 1),
+                          Divider(color: cs.outline, height: 1),
                           const SizedBox(height: AppTheme.space16),
 
                           // Passenger information
@@ -146,7 +148,7 @@ class ReviewAndContinue extends StatelessWidget {
                           ),
 
                           const SizedBox(height: AppTheme.space16),
-                          const Divider(color: cs.outline, height: 1),
+                          Divider(color: cs.outline, height: 1),
                           const SizedBox(height: AppTheme.space16),
 
                           // Free cancellation
@@ -167,6 +169,7 @@ class ReviewAndContinue extends StatelessWidget {
                     const SizedBox(height: AppTheme.space16),
 
                     _buildCard(
+                      context: context,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -177,7 +180,7 @@ class ReviewAndContinue extends StatelessWidget {
                           Text('Video Recording: Included', style: AppTheme.paragraphSmRegular),
                           Text('Tea pause: Included', style: AppTheme.paragraphSmRegular),
                           const SizedBox(height: AppTheme.space12),
-                          const Divider(color: cs.outline, height: 1),
+                          Divider(color: cs.outline, height: 1),
                           const SizedBox(height: AppTheme.space12),
                           Text(
                             'Total price: \$80 (TAX INCLUDED)',
@@ -199,18 +202,18 @@ class ReviewAndContinue extends StatelessWidget {
                 horizontal: AppTheme.space16,
                 vertical: AppTheme.space16,
               ),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 border: Border(top: BorderSide(color: cs.outline)),
                 color: cs.surface,
               ),
               child: Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => const AddPaymentMethod()),
-                ),
-                  style: AppTheme.bookMainButtonLight,
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const AddPaymentMethod()),
+                  ),
+                  style: AppTheme.pillButtonPrimary(context),
                   child: const Text('Next'),
                 ),
               ),
@@ -221,7 +224,8 @@ class ReviewAndContinue extends StatelessWidget {
     );
   }
 
-  Widget _buildCard({required Widget child}) {
+  Widget _buildCard({required BuildContext context, required Widget child}) {
+    final cs = Theme.of(context).colorScheme;
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(AppTheme.space16),
@@ -234,6 +238,7 @@ class ReviewAndContinue extends StatelessWidget {
   }
 
   Widget _buildChangeButton(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return TextButton(
       onPressed: () {},
       style: ElevatedButton.styleFrom(
@@ -242,7 +247,7 @@ class ReviewAndContinue extends StatelessWidget {
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppTheme.rounded8),
-          side: const BorderSide(color: cs.outline),
+          side: BorderSide(color: cs.outline),
         ),
         padding: const EdgeInsets.symmetric(
           horizontal: AppTheme.space16,
