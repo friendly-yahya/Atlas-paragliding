@@ -72,7 +72,7 @@ class MessagingScreen extends StatelessWidget {
                                 name: convo['name'],
                                 isOnline: convo['isOnline'],
                                 //might need to add context
-                                chatTheme: ChatScreenTheme.light(),
+                                chatTheme: ChatScreenTheme.light(context as ColorScheme),
                                 initialMessages: const [
                                   {'text': 'Hey! I booked your Essential Flight for Oct 19 🪂',         'isMe': true,  'time': '10:20 AM'},
                                   {'text': 'Perfect! See you at Aguergour launch site.',                 'isMe': false, 'time': '10:22 AM'},

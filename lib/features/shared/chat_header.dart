@@ -28,21 +28,21 @@ class ChatHeaderTheme {
   });
 
   // ── Light — client ──────────────────────────────────────────────────────────
-  static ChatHeaderTheme light() => ChatHeaderTheme(
+  static ChatHeaderTheme light(ColorScheme cs) => ChatHeaderTheme(
         appBarBg: cs.surface,
         backIconColor: cs.primary,
-        nameStyle: AppTheme.paragraphSmMedium,
+        nameStyle: AppTheme.paragraphSmMedium.copyWith(color: cs.onSurface),
         offlineStatusColor: cs.onSurfaceVariant,
         dividerColor: cs.outline,
       );
 
   // ── Dark — pilot ────────────────────────────────────────────────────────────
-  static ChatHeaderTheme dark() => ChatHeaderTheme(
+  static ChatHeaderTheme dark(ColorScheme cs) => ChatHeaderTheme(
         appBarBg: cs.surfaceContainerHighest,
-        backIconColor: Colors.white,
-        nameStyle: AppTheme.paragraphSmMedium.copyWith(color: Colors.white),
-        offlineStatusColor: Colors.white.withValues(alpha: 0.3),
-        dividerColor: Colors.white.withValues(alpha: 0.08),
+        backIconColor: cs.onSurface,
+        nameStyle: AppTheme.paragraphSmMedium.copyWith(color: cs.onSurface),
+        offlineStatusColor: cs.onSurface.withValues(alpha: 0.3),
+        dividerColor: cs.outline.withValues(alpha: 0.08),
       );
 }
 

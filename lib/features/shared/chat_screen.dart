@@ -18,19 +18,19 @@ class ChatScreenTheme {
   });
 
   // ── Light — client ──────────────────────────────────────────────────────────
-  static ChatScreenTheme light() => ChatScreenTheme(
+  static ChatScreenTheme light(ColorScheme cs) => ChatScreenTheme(
         scaffoldBg: cs.surface,
-        header: ChatHeaderTheme.light(),
-        bubble: MessageBubbleTheme.light(),
-        input: ChatInputBarTheme.light(),
+        header: ChatHeaderTheme.light(cs),
+        bubble: MessageBubbleTheme.light(cs),
+        input: ChatInputBarTheme.light(cs as BuildContext),
       );
 
   // ── Dark — pilot ────────────────────────────────────────────────────────────
-  static ChatScreenTheme dark() => ChatScreenTheme(
+  static ChatScreenTheme dark(ColorScheme cs) => ChatScreenTheme(
         scaffoldBg: cs.surface,
-        header: ChatHeaderTheme.dark(),
-        bubble: MessageBubbleTheme.dark(),
-        input: ChatInputBarTheme.dark(),
+        header: ChatHeaderTheme.dark(cs),
+        bubble: MessageBubbleTheme.dark(cs),
+        input: ChatInputBarTheme.dark(cs as BuildContext),
       );
 }
 
@@ -48,7 +48,7 @@ class ChatScreen extends StatefulWidget {
   final List<Map<String, dynamic>> initialMessages;
 
   /// Controls all color/style decisions.
-  /// Use [ChatScreenTheme.light()] for clients, [ChatScreenTheme.dark()] for pilots.
+  /// Use [ChatScreenTheme.light(cs)] for clients, [ChatScreenTheme.dark(cs)] for pilots.
   final ChatScreenTheme chatTheme;
 
   const ChatScreen({

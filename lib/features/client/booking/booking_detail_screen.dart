@@ -11,25 +11,29 @@ import 'package:atlas_paragliding/core/widgets/reviews.dart';
 import 'package:atlas_paragliding/features/client/booking/availabity_card.dart';
 import 'package:atlas_paragliding/features/client/booking/meeting_spot_map.dart';
 import 'package:atlas_paragliding/features/client/booking/booking_footer.dart';
+
 class BookingDetailScreen extends StatelessWidget {
   const BookingDetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    
     return Scaffold(
+      backgroundColor: cs.surface,
       body: SafeArea(
         child: Column(
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(
-                    horizontal: AppTheme.space16,
-                    vertical: AppTheme.space16,
-                  ),
+                horizontal: AppTheme.space16,
+                vertical: AppTheme.space16,
+              ),
               child: BookingHeader(
-                          onShare: () => print('share'),
-                          onBack: () => Navigator.pop(context),
-                          onLike: () => print('like'),
-                        ),
+                onShare: () => print('share'),
+                onBack: () => Navigator.pop(context),
+                onLike: () => print('like'),
+              ),
             ),
             Expanded(
               child: SingleChildScrollView(
@@ -46,7 +50,7 @@ class BookingDetailScreen extends StatelessWidget {
                       const WindowImg(),
                       const SizedBox(height: 16),
               
-                      BookingInfo(
+                      const BookingInfo(
                         title: 'Essential Flight With Hicham ',
                         subtitle: 'Pilot based in Marrakech, Morocco',
                         rating: 4.8,
@@ -95,40 +99,36 @@ class BookingDetailScreen extends StatelessWidget {
                             children: [
                               Text(
                                 '4.8',
-                                style: AppTheme.heading3,
+                                style: AppTheme.heading3.copyWith(color: cs.onSurface),
                               ),
-                              Icon(Icons.star_rounded,color: AppTheme.starColor, size: 26,)
+                              const Icon(Icons.star_rounded, color: AppTheme.starColor, size: 26),
                             ],
-                            
                           ),
-                          const SizedBox(width: 6,),
-                          const Icon(Icons.circle, size: 8, color: cs.primary),
-                          const SizedBox(width: 8,),
-                          Text('127 reviews',style: AppTheme.heading3,)
-
+                          const SizedBox(width: 6),
+                          Icon(Icons.circle, size: 8, color: cs.onSurfaceVariant),
+                          const SizedBox(width: 8),
+                          Text('127 reviews', style: AppTheme.heading3.copyWith(color: cs.onSurface)),
                         ],
                       ),
-                      SizedBox(height: 16),
-                      Reviews(),
+                      const SizedBox(height: 16),
+                      const Reviews(),
                       
                       const SizedBox(height: 16),
                       SizedBox(
                         width: double.infinity,
-                        child: TextButton(onPressed: () => print("works fine"), 
-                                  
-                                  style: AppTheme.primaryButton,
-                                  
-                                  child: Text('View all reviews'),
-                                
-                                  ),
+                        child: TextButton(
+                          onPressed: () => print("works fine"), 
+                          style: AppTheme.primaryButton(context),
+                          child: const Text('View all reviews'),
+                        ),
                       ),
                       const SizedBox(height: 16),
                       Text(
                         'Check availability',
-                        style: AppTheme.heading3,
+                        style: AppTheme.heading3.copyWith(color: cs.onSurface),
                       ),
                       const SizedBox(height: 16),    
-                      AvailabityCard(),
+                      const AvailabityCard(),
                       const SizedBox(height: 16),
                       Divider(
                         color: cs.onSurfaceVariant.withValues(alpha: 0.3),
@@ -137,25 +137,20 @@ class BookingDetailScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
 
-                      MeetingSpotMap(longitude: 31.6295, latitude: -7.9811),
+                      const MeetingSpotMap(longitude: 31.6295, latitude: -7.9811),
 
                       const SizedBox(height: 16),
-                      Policies(),
+                      const Policies(),
                       const SizedBox(height: 16),
-                      
-                      
-
                     ],
                   ),
                 ),
               ),
-              
             ),
-            BookingFooter(),
+            const BookingFooter(),
           ],
         ),
       ),
     );
   }
 }
- 

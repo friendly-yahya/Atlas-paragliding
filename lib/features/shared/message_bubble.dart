@@ -27,7 +27,7 @@ class MessageBubbleTheme {
   });
 
   // ── Light — client ──────────────────────────────────────────────────────────
-  static MessageBubbleTheme light() => MessageBubbleTheme(
+  static MessageBubbleTheme light(ColorScheme cs) => MessageBubbleTheme(
         meBubbleBg: cs.primary,
         meTextColor: Colors.white,
         otherBubbleBg: cs.surfaceContainerHighest,
@@ -36,12 +36,12 @@ class MessageBubbleTheme {
       );
 
   // ── Dark — pilot ────────────────────────────────────────────────────────────
-  static MessageBubbleTheme dark() => MessageBubbleTheme(
+  static MessageBubbleTheme dark(ColorScheme cs) => MessageBubbleTheme(
         meBubbleBg: cs.primary,
         meTextColor: Colors.white,
         otherBubbleBg: cs.surfaceContainerHighest,
-        otherTextColor: Colors.white.withValues(alpha: 0.85),
-        timestampColor: Colors.white.withValues(alpha: 0.3),
+        otherTextColor: cs.onSurface.withValues(alpha: 0.85),
+        timestampColor: cs.onSurface.withValues(alpha: 0.3),
       );
 }
 

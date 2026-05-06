@@ -7,6 +7,8 @@ class BookingFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: AppTheme.space16,
@@ -30,7 +32,7 @@ class BookingFooter extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.baseline,
                   textBaseline: TextBaseline.alphabetic,
                   children: [
-                    Text('MAD 800', style: AppTheme.heading3),
+                    Text('MAD 800', style: AppTheme.heading3.copyWith(color: cs.onSurface)),
                     const SizedBox(width: AppTheme.space4),
                     Text(
                       '/ person',
@@ -50,33 +52,30 @@ class BookingFooter extends StatelessWidget {
                 const SizedBox(height: AppTheme.space2),
                 Row(
                   children: [
-
                     Text(
                       'Free cancellation',
                       style: AppTheme.paragraphMiniRegular.copyWith(
-                        color: Color.fromARGB(190, 59, 131, 246),
+                        color: cs.primary.withValues(alpha: 0.75),
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                     const SizedBox(width: AppTheme.space4),
-                    const Icon(
+                    Icon(
                       Icons.help,
                       size: 14,
-                      color: Color.fromARGB(190, 59, 131, 246),
+                      color: cs.primary.withValues(alpha: 0.75),
                     ),
-
-        
-      ],
-    ),
-  ],
-),
+                  ],
+                ),
+              ],
+            ),
           ),
           TextButton(
             onPressed: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const SafetyHealthCheck()),
             ),
-            style: AppTheme.bookMainButtonLight,
+            style: AppTheme.pillButtonPrimary(context),
             child: const Text('Book'),
           ),
         ],

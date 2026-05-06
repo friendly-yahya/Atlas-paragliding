@@ -25,7 +25,7 @@ class BookingInfo extends StatelessWidget {
       children: [
         Text(
           title,
-          style: AppTheme.heading2,
+          style: AppTheme.heading2.copyWith(color: cs.onSurface),
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: AppTheme.space4),
@@ -46,17 +46,19 @@ class BookingInfo extends StatelessWidget {
               label: 'Rating',
               iconColor: AppTheme.starColor,
             ),
-            _Divider(),
+            const _Divider(),
             _StatItem(
               icon: Icons.flight_takeoff_rounded,
               value: '$years years',
               label: 'Experience',
+              iconColor: cs.primary,
             ),
-            _Divider(),
+            const _Divider(),
             _StatItem(
               icon: Icons.airplanemode_active_rounded,
               value: '+$flights',
               label: 'Flights done',
+              iconColor: cs.primary,
             ),
           ],
         ),
@@ -66,6 +68,8 @@ class BookingInfo extends StatelessWidget {
 }
 
 class _Divider extends StatelessWidget {
+  const _Divider();
+
   @override
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
@@ -88,11 +92,12 @@ class _StatItem extends StatelessWidget {
     required this.icon,
     required this.value,
     required this.label,
-    this.iconColor = cs.primary,
+    required this.iconColor,
   });
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Column(
       children: [
         Row(
@@ -101,7 +106,7 @@ class _StatItem extends StatelessWidget {
           children: [
             Icon(icon, size: 22, color: iconColor),
             const SizedBox(width: AppTheme.space4),
-            Text(value, style: AppTheme.heading3),
+            Text(value, style: AppTheme.heading3.copyWith(color: cs.onSurface)),
           ],
         ),
         const SizedBox(height: AppTheme.space4),

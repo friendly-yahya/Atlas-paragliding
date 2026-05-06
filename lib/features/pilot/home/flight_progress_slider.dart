@@ -101,19 +101,22 @@ class GlowRingThumbShape extends SliderComponentShape {
     required Size sizeWithOverflow,
   }) {
     final canvas = context.canvas;
+    final cs = sliderTheme.activeTrackColor != null 
+        ? ColorScheme.fromSeed(seedColor: sliderTheme.activeTrackColor!)
+        : ColorScheme.fromSeed(seedColor: Colors.blue);
 
     final glowPaint = Paint()
-      ..color = cs.primary.withValues(alpha: 0.3)
+      ..color = sliderTheme.activeTrackColor!.withValues(alpha: 0.3)
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8);
     canvas.drawCircle(center, ringRadius - 1, glowPaint);
 
     final ringPaint = Paint()
-      ..color = cs.primary.withValues(alpha: 0.4)
+      ..color = sliderTheme.activeTrackColor!.withValues(alpha: 0.4)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 2;
     canvas.drawCircle(center, ringRadius - 1, ringPaint);
 
-    final dotPaint = Paint()..color = cs.primary;
+    final dotPaint = Paint()..color = sliderTheme.activeTrackColor!;
     canvas.drawCircle(center, thumbRadius, dotPaint);
   }
 }
@@ -135,6 +138,8 @@ class FlightProgressSlider extends StatefulWidget {
 class _FlightProgressSliderState extends State<FlightProgressSlider> {
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    
     return SliderTheme(
       data: SliderThemeData(
         trackHeight: 4,

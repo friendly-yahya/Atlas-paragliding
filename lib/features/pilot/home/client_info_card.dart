@@ -7,10 +7,12 @@ class ClientInfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    
     return Row(
       children: [
-        Avatar(name: 'Abdnour khouya', isOnline: true),
-        SizedBox(width: AppTheme.space8,),
+        const Avatar(name: 'Abdnour khouya', isOnline: true),
+        const SizedBox(width: AppTheme.space8),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -20,34 +22,31 @@ class ClientInfoCard extends StatelessWidget {
                 color: cs.surface,
               ),
             ),
-            //SizedBox(height: AppTheme.space2,),
             Row(
-
               children: [
                 Text(
                   'Booked at 16:45',
                   style: AppTheme.paragraphMiniMedium.copyWith(
                     color: cs.surface.withValues(alpha: 0.7),
-                  )
+                  ),
                 ),
-                SizedBox(width: AppTheme.space4,),
+                const SizedBox(width: AppTheme.space4),
                 Icon(
                   Icons.circle,
                   size: 6,
                   color: cs.surface.withValues(alpha: 0.7),
                 ),
-                SizedBox(width: AppTheme.space4,),
+                const SizedBox(width: AppTheme.space4),
                 Text(
                   'en route',
                   style: AppTheme.paragraphMiniMedium.copyWith(
-                    color: cs.primary
+                    color: cs.primary,
                   ),
-                )
+                ),
               ],
-            )
+            ),
           ],
         ),
-
       ],
     );
   }
