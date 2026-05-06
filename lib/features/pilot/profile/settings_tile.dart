@@ -8,22 +8,24 @@ class SettingsTile extends StatelessWidget {
     required this.label,
     this.subtitle,
     this.onTap,
+    this.trailing
   });
 
   final IconData icon;
   final String label;
   final String? subtitle; // optional line below the label
   final VoidCallback? onTap;
-
+  final Widget? trailing;
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Material(
-      color: AppTheme.kBgCard,
+      color: cs.surfaceContainerHighest,
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(12),
-        splashColor: AppTheme.kPrimary.withValues(alpha: 0.1),
+        splashColor: cs.primary.withValues(alpha: 0.1),
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: AppTheme.space16,
@@ -31,21 +33,22 @@ class SettingsTile extends StatelessWidget {
           ),
           child: Row(
             children: [
-              Icon(icon, color: AppTheme.kTextPrimary, size: 20),
+              Icon(icon, color: cs.onSurface, size: 20),
               const SizedBox(width: AppTheme.space12),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(label,
-                        style: AppTheme.paragraphMedium.copyWith(color: AppTheme.kTextPrimary)),
+                        style: AppTheme.paragraphSmMedium.copyWith(color: cs.onSurface)),
                     if (subtitle != null)
                       Text(subtitle!,
-                          style: AppTheme.paragraphMiniRegular.copyWith(color: AppTheme.kTextSecondary)),
+                          style: AppTheme.paragraphMiniRegular.copyWith(color: cs.onSurfaceVariant)),
                   ],
                 ),
               ),
-              Icon(Icons.chevron_right_rounded, color: AppTheme.kTextPrimary),
+              trailing??
+                Icon(Icons.chevron_right_rounded, color: cs.onSurface),
             ],
           ),
         ),

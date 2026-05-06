@@ -1,6 +1,8 @@
+import 'package:atlas_paragliding/core/theme/theme_notifier.dart';
 import 'package:atlas_paragliding/features/client/client_main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'firebase_options.dart';
 import 'core/theme/app_theme.dart';
 import 'package:atlas_paragliding/features/pilot/pilot_main_screen.dart'; 
@@ -10,7 +12,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(ProviderScope(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -18,11 +20,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Atlas Paragliding',
-      theme: AppTheme.lightTheme,
-      home: const AppRoot(), 
-    );
+    return const AppRoot(); 
+    
   }
 }
 class AppRoot extends StatefulWidget {
@@ -33,13 +32,45 @@ class AppRoot extends StatefulWidget {
 }
 
 class _AppRootState extends State<AppRoot> {
-  bool _isPilotMode = false;
-  void _switchToPilot() => setState(()=> _isPilotMode = true);
-    void _switchToClient() => setState(()=> _isPilotMode = false);
+  bool _isPilotMode = false;                                    // ← up here
+  void _switchToPilot()  => setState(() => _isPilotMode = true);   // ← up here
+  void _switchToClient() => setState(() => _isPilotMode = false);  // ← up here
+
   @override
   Widget build(BuildContext context) {
     return _isPilotMode
-        ? PilotMainScreen(onSwitchToClient: _switchToClient)
-        :ClientMainScreen(onSwitchToPilot: _switchToPilot);
+        ? _PilotApp(onSwitchToClient: _switchToClient)
+        : _ClientApp(onSwitchToPilot: _switchToPilot);
+  }
+}
+class _ClientApp extends ConsumerWidget {
+  final VoidCallback onSwitchToPilot;
+  const _ClientApp({required this.onSwitchToPilot});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeMode = ref.watch(clientThemeProvider);
+    return MaterialApp(
+      theme:     AppTheme.clientLightTheme,
+      darkTheme: AppTheme.clientDarkTheme,
+      themeMode: themeMode,
+      home: ClientMainScreen(onSwitchToPilot: onSwitchToPilot),
+    );
+  }
+}
+
+class _PilotApp extends ConsumerWidget {
+  final VoidCallback onSwitchToClient;
+  const _PilotApp({required this.onSwitchToClient});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeMode = ref.watch(pilotThemeProvider);
+    return MaterialApp(
+      theme:     AppTheme.pilotLightTheme,
+      darkTheme: AppTheme.pilotDarkTheme,
+      themeMode: themeMode,
+      home: PilotMainScreen(onSwitchToClient: onSwitchToClient),
+    );
   }
 }
