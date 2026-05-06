@@ -51,6 +51,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     final filtered = kLanguages
         .where((l) => l['name']!.toLowerCase().contains(_search.toLowerCase()))
         .toList();
@@ -200,6 +201,7 @@ class _LanguageChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
