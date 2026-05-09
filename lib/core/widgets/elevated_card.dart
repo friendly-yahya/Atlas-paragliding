@@ -31,7 +31,7 @@ class ElevatedCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: cs.surfaceContainer,
         border: Border.all(
-          color: cs.surface.withValues(alpha: .1),
+          color: cs.onSurface.withValues(alpha: .1),
         ),
         borderRadius: BorderRadius.circular(AppTheme.space32),
         boxShadow: [

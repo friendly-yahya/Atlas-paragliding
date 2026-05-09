@@ -30,7 +30,7 @@ class WeatherWidget extends StatelessWidget {
           Text(
             'Ouirgane',
             style: AppTheme.kDisplaySub(context).copyWith(
-              color: cs.surface.withValues(alpha: 0.8)
+              color: cs.onSurface.withValues(alpha: 0.8)
             ),
           ),
           const SizedBox(height: AppTheme.space24),
@@ -41,14 +41,14 @@ class WeatherWidget extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.wb_cloudy_outlined,
-                    color: cs.surface.withValues(alpha: 0.8),
+                    color: cs.onSurface.withValues(alpha: 0.8),
                     size: 24,
                   ),
                   const SizedBox(width: AppTheme.space4),
                   Text(
                     '15km/h, W',
                     style: AppTheme.paragraphSmRegular.copyWith(
-                      color: cs.surface.withValues(alpha: 0.8)
+                      color: cs.onSurface.withValues(alpha: 0.8)
                     ),
                   )
                 ],
@@ -57,14 +57,14 @@ class WeatherWidget extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.visibility_outlined,
-                    color: cs.surface.withValues(alpha: 0.8),
+                    color: cs.onSurface.withValues(alpha: 0.8),
                     size: 24,
                   ),
                   const SizedBox(width: AppTheme.space4),
                   Text(
                     '25Km',
                     style: AppTheme.paragraphSmRegular.copyWith(
-                      color: cs.surface.withValues(alpha: 0.8)
+                      color: cs.onSurface.withValues(alpha: 0.8)
                     ),
                   )
                 ],

@@ -18,6 +18,9 @@ class PilotMainScreen extends StatefulWidget {
 class _PilotMainScreenState extends State<PilotMainScreen> {
   int _currentIndex = 0;
 
+  // Track which tabs have been visited so we only build them lazily.
+  final Set<int> _visitedTabs = {0};
+
   final List<GlobalKey<NavigatorState>> _navigatorKeys = List.generate(
     5,
     (_) => GlobalKey<NavigatorState>(),
@@ -40,7 +43,17 @@ class _PilotMainScreenState extends State<PilotMainScreen> {
     return true;
   }
 
+  void _onTabTap(int i) {
+    setState(() {
+      _visitedTabs.add(i);
+      _currentIndex = i;
+    });
+  }
+
   Widget _buildTabScreen(int index) {
+    // Don't build screens that haven't been visited yet.
+    if (!_visitedTabs.contains(index)) return const SizedBox.shrink();
+
     final screens = [
       const PilotHomeScreen(),
       const PilotMessages(),
@@ -67,14 +80,25 @@ class _PilotMainScreenState extends State<PilotMainScreen> {
       },
       child: Scaffold(
         backgroundColor: cs.surface,
-        body: IndexedStack(
-          index: _currentIndex,
-          children: List.generate(5, _buildTabScreen),
+        body: Stack(
+          fit: StackFit.expand,
+          children: List.generate(5, (i) {
+            return Offstage(
+              offstage: i != _currentIndex,
+              child: TickerMode(
+                enabled: i == _currentIndex,
+                child: _buildTabScreen(i),
+              ),
+            );
+          }),
         ),
         bottomNavigationBar: _PilotBottomNavBar(
           currentIndex: _currentIndex,
           items: _items,
-          onTap: (i) => setState(() => _currentIndex = i),
+          onTap: (i) {
+            HapticFeedback.lightImpact();
+            _onTabTap(i);
+          },
         ),
       ),
     );
@@ -114,10 +138,7 @@ class _PilotBottomNavBar extends StatelessWidget {
             (i) => _NavTile(
               item: items[i],
               isActive: i == currentIndex,
-              onTap: () {
-                HapticFeedback.lightImpact();
-                onTap(i);
-              },
+              onTap: () => onTap(i),
             ),
           ),
         ),
@@ -156,18 +177,34 @@ class _NavTile extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: isActive ? cs.surface : cs.surfaceContainer,
-                shape: BoxShape.circle,
+            TweenAnimationBuilder<Color?>(
+              tween: ColorTween(
+                begin: isActive ? cs.surfaceContainer : cs.onSurface,
+                end:   isActive ? cs.onSurface        : cs.surfaceContainer,
               ),
-              child: Icon(
-                item.icon,
-                size: 20,
-                color: isActive ? cs.primary : cs.onSurface.withValues(alpha: 0.55),
-              ),
+              duration: const Duration(milliseconds: 280),
+              curve: Curves.easeInOut,
+              builder: (context, circleColor, _) {
+                return TweenAnimationBuilder<Color?>(
+                  tween: ColorTween(
+                    begin: isActive ? cs.onSurface.withValues(alpha: 0.55) : cs.primary,
+                    end:   isActive ? cs.primary                           : cs.onSurface.withValues(alpha: 0.55),
+                  ),
+                  duration: const Duration(milliseconds: 280),
+                  curve: Curves.easeInOut,
+                  builder: (context, iconColor, _) {
+                    return Container(
+                      width: 42,
+                      height: 42,
+                      decoration: BoxDecoration(
+                        color: circleColor,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(item.icon, size: 20, color: iconColor),
+                    );
+                  },
+                );
+              },
             ),
             AnimatedSize(
               duration: const Duration(milliseconds: 280),
@@ -178,7 +215,7 @@ class _NavTile extends StatelessWidget {
                       child: Text(
                         item.label,
                         style: AppTheme.paragraphSmMedium.copyWith(
-                          color: cs.surface,
+                          color: cs.onSurface,
                           letterSpacing: 0.1,
                         ),
                       ),

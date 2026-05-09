@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:atlas_paragliding/core/theme/app_theme.dart';
 
 class AsymmetricTrackShape extends RoundedRectSliderTrackShape {
   final double activeHeight;
@@ -148,7 +147,7 @@ class _FlightProgressSliderState extends State<FlightProgressSlider> {
           inactiveHeight: 4,
         ),
         activeTrackColor: cs.primary,
-        inactiveTrackColor: cs.surface.withValues(alpha: 0.6),
+        inactiveTrackColor: cs.onSurface.withValues(alpha: 0.6),
         thumbShape: const GlowRingThumbShape(
           thumbRadius: 5,
           ringRadius: 9,

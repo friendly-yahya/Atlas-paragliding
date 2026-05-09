@@ -164,7 +164,7 @@ class AppTheme {
     final cs = Theme.of(context).colorScheme;
     return TextButton.styleFrom(
       backgroundColor: cs.primary,
-      foregroundColor: cs.surface,
+      foregroundColor: cs.onSurface,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(99)),
       textStyle: paragraphSmMedium,
       padding: const EdgeInsets.symmetric(horizontal: space24, vertical: 9),
@@ -172,48 +172,44 @@ class AppTheme {
   }
 }
 
-
 // ════════════════════════════════════════════════════════════════
 // COLOR MIGRATION REFERENCE
 // Old hardcoded constant → Theme.of(context).colorScheme.slot
 // ════════════════════════════════════════════════════════════════
 //
-// ── SHARED / CLIENT (light) ──────────────────────────────────────
-// cs.surface          → cs.surface
-// cs.surfaceContainerHighest     → cs.surfaceContainerHighest
-// cs.primary               → cs.onSurface
-// cs.onSurfaceVariant             → cs.onSurfaceVariant
-// cs.outline               → cs.outline
-// AppTheme.primaryColor              → cs.primary
-// AppTheme.successColor              → cs.secondary  (or keep as fixed Color)
-// cs.error                → cs.error
-// AppTheme.starColor                 → never migrate (always yellow, role-agnostic)
+// ── CLIENT (light) ───────────────────────────────────────────────
+// AppTheme.backgroundColor            → cs.surface
+// AppTheme.searchBackgroundColor       → cs.surfaceContainerHighest
+// AppTheme.textPrimary                 → cs.onSurface
+// AppTheme.textSecondary               → cs.onSurfaceVariant
+// AppTheme.strokeColor                 → cs.outline
+// AppTheme.primaryColor                → cs.primary
+// AppTheme.errorColor                  → cs.error
+// AppTheme.starColor                   → never migrate (always yellow)
 //
 // ── PILOT (dark) ─────────────────────────────────────────────────
-// cs.surface                   → cs.surface
-// cs.surfaceContainerHighest                   → cs.surfaceContainerHighest
-// cs.surfaceContainer               → cs.surfaceContainer
-// cs.primary                 → cs.primary
-// cs.onSurface              → cs.onSurface
-// cs.onSurfaceVariant            → cs.onSurfaceVariant
+// AppTheme.kBgDeep                     → cs.surface
+// AppTheme.kBgCard                     → cs.surfaceContainerHighest
+// AppTheme.kBgElevated                 → cs.surfaceContainer
+// AppTheme.kPrimary                    → cs.primary
+// AppTheme.kTextPrimary                → cs.onSurface
+// AppTheme.kTextSecondary              → cs.onSurfaceVariant
 //
 // ── ALPHA VARIANTS ───────────────────────────────────────────────
-// cs.surface.withValues(alpha: 0.1)  → cs.surface.withValues(alpha: 0.1)
-// cs.surface.withValues(alpha: 0.4)  → cs.onSurface.withValues(alpha: 0.4)
-// cs.surface.withValues(alpha: 0.6)  → cs.onSurface.withValues(alpha: 0.6)
-// cs.surface.withValues(alpha: 0.7)  → cs.onSurface.withValues(alpha: 0.7)
-// cs.surface.withValues(alpha: 0.8)  → cs.onSurface.withValues(alpha: 0.8)
-// cs.onSurfaceVariant.withValues(alpha: 0.2)   → cs.onSurfaceVariant.withValues(alpha: 0.2)
-// cs.onSurfaceVariant.withValues(alpha: 0.3)   → cs.onSurfaceVariant.withValues(alpha: 0.3)
-// cs.onSurfaceVariant.withValues(alpha: 0.3)    → cs.onSurfaceVariant.withValues(alpha: 0.3)
-// Colors.black.withValues(alpha: 0.25)             → cs.shadow  (or keep as fixed)
+// AppTheme.backgroundColor.withValues(alpha: 0.4) → cs.onSurface.withValues(alpha: 0.4)
+// AppTheme.backgroundColor.withValues(alpha: 0.6) → cs.onSurface.withValues(alpha: 0.6)
+// AppTheme.backgroundColor.withValues(alpha: 0.7) → cs.onSurface.withValues(alpha: 0.7)
+// AppTheme.backgroundColor.withValues(alpha: 0.8) → cs.onSurface.withValues(alpha: 0.8)
+// AppTheme.kTextSecondary.withValues(alpha: 0.2)  → cs.onSurfaceVariant.withValues(alpha: 0.2)
+// AppTheme.kTextSecondary.withValues(alpha: 0.3)  → cs.onSurfaceVariant.withValues(alpha: 0.3)
+// Colors.black.withValues(alpha: 0.25)            → keep as fixed (shadow)
 //
-// ── HARDCODED ONE-OFFS FOUND IN YOUR FILES ───────────────────────
+// ── HARDCODED ONE-OFFS ───────────────────────────────────────────
 // Color.fromARGB(190, 59, 131, 246)  → cs.primary.withValues(alpha: 0.75)
-// Colors.white.withValues(alpha:.5)  → cs.onSurface.withValues(alpha: 0.5)
-// Colors.white.withValues(alpha:.7)  → cs.onSurface.withValues(alpha: 0.7)
-// Colors.blue.withValues(alpha:0.15) → cs.primary.withValues(alpha: 0.15)  (map circle)
-// Colors.blue.withValues(alpha:0.7)  → cs.primary.withValues(alpha: 0.7)   (map border)
+// Colors.white.withValues(alpha: .5) → cs.onSurface.withValues(alpha: 0.5)
+// Colors.white.withValues(alpha: .7) → cs.onSurface.withValues(alpha: 0.7)
+// Colors.blue.withValues(alpha: 0.15)→ cs.primary.withValues(alpha: 0.15)
+// Colors.blue.withValues(alpha: 0.7) → cs.primary.withValues(alpha: 0.7)
 //
 // ── BUTTON STYLES ────────────────────────────────────────────────
 // AppTheme.primaryButton             → AppTheme.primaryButton(context)
@@ -223,20 +219,18 @@ class AppTheme {
 // AppTheme.browsingButtonLight       → AppTheme.pillButtonPrimary(context)
 //
 // ── TEXT STYLES ──────────────────────────────────────────────────
-// Any AppTheme.headingX              → .copyWith(color: cs.onSurface)
-// Any AppTheme.paragraphXx           → .copyWith(color: cs.onSurface)
-//                                      or .copyWith(color: cs.onSurfaceVariant)
-//                                      for secondary/hint text
-// AppTheme.kDisplayHero              → AppTheme.kDisplayHero(context)  [now a method]
-// AppTheme.kDisplaySub               → AppTheme.kDisplaySub(context)   [now a method]
+// AppTheme.heading(1-4)              → .copyWith(color: cs.onSurface)
+// AppTheme.paragraph*                → .copyWith(color: cs.onSurface)
+//                                      or cs.onSurfaceVariant for secondary text
+// AppTheme.kDisplayHero              → AppTheme.kDisplayHero(context)
+// AppTheme.kDisplaySub               → AppTheme.kDisplaySub(context)
 //
-// ── SCAFFOLD BACKGROUNDS ─────────────────────────────────────────
-// Scaffold(backgroundColor: cs.surface)        → cs.surface
-// Scaffold(backgroundColor: cs.surface) → cs.surface
-// AppBar(backgroundColor: cs.surface)          → cs.surface
+// ── SCAFFOLD / APPBAR ────────────────────────────────────────────
+// Scaffold(backgroundColor: AppTheme.kBgDeep)         → cs.surface
+// Scaffold(backgroundColor: AppTheme.backgroundColor)  → cs.surface
+// AppBar(backgroundColor: AppTheme.kBgDeep)            → cs.surface
 //
-// ── THINGS THAT NEVER CHANGE (keep as fixed colors) ──────────────
-// AppTheme.starColor       — always yellow regardless of theme
-// AppTheme.successColor    — always green
-// cs.error      — already wired to cs.error
+// ── NEVER CHANGE ─────────────────────────────────────────────────
+// AppTheme.starColor    — always yellow
+// AppTheme.successColor — always green
 // ════════════════════════════════════════════════════════════════

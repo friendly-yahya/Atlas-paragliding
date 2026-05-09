@@ -19,7 +19,7 @@ class ClientInfoCard extends StatelessWidget {
             Text(
               'Abdnour khouya',
               style: AppTheme.paragraphSmMedium.copyWith(
-                color: cs.surface,
+                color: cs.onSurface,
               ),
             ),
             Row(
@@ -27,14 +27,14 @@ class ClientInfoCard extends StatelessWidget {
                 Text(
                   'Booked at 16:45',
                   style: AppTheme.paragraphMiniMedium.copyWith(
-                    color: cs.surface.withValues(alpha: 0.7),
+                    color: cs.onSurface.withValues(alpha: 0.7),
                   ),
                 ),
                 const SizedBox(width: AppTheme.space4),
                 Icon(
                   Icons.circle,
                   size: 6,
-                  color: cs.surface.withValues(alpha: 0.7),
+                  color: cs.onSurface.withValues(alpha: 0.7),
                 ),
                 const SizedBox(width: AppTheme.space4),
                 Text(

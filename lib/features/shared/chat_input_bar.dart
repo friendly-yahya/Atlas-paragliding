@@ -138,7 +138,7 @@ class ChatInputBar extends StatelessWidget {
               ),
               child: Icon(
                 Icons.arrow_upward_rounded,
-                color: cs.surface,
+                color: cs.onSurface,
                 size: 20,
               ),
             ),

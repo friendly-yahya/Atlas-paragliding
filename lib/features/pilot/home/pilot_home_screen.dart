@@ -40,12 +40,12 @@ class _PilotHomeScreenState extends State<PilotHomeScreen> {
               decoration: BoxDecoration(
                 color: cs.surfaceContainerHighest,
                 border: Border.all(
-                  color: cs.surface.withValues(alpha: .1),
+                  color: cs.onSurface.withValues(alpha: .1),
                 ),
                 borderRadius: BorderRadius.circular(AppTheme.space32),
                 boxShadow: [
                   BoxShadow(
-                    color: cs.surface.withValues(alpha: 0.1),
+                    color: cs.onSurface.withValues(alpha: 0.1),
                     offset: const Offset(0, 1),
                     blurRadius: 2,
                     spreadRadius: 0,
@@ -83,12 +83,12 @@ class _PilotHomeScreenState extends State<PilotHomeScreen> {
               decoration: BoxDecoration(
                 color: cs.surfaceContainerHighest,
                 border: Border.all(
-                  color: cs.surface.withValues(alpha: .1),
+                  color: cs.onSurface.withValues(alpha: .1),
                 ),
                 borderRadius: BorderRadius.circular(AppTheme.space32),
                 boxShadow: [
                   BoxShadow(
-                    color: cs.surface.withValues(alpha: 0.1),
+                    color: cs.onSurface.withValues(alpha: 0.1),
                     offset: const Offset(0, 1),
                     blurRadius: 2,
                     spreadRadius: 0,
