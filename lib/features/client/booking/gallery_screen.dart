@@ -1,6 +1,5 @@
 import 'package:atlas_paragliding/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:photo_view/photo_view.dart';
 
 class GalleryScreen extends StatefulWidget {
   final List<String> images;
@@ -57,9 +56,10 @@ class _GalleryScreenState extends State<GalleryScreen> {
   @override
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      backgroundColor: Colors.black87,
+      backgroundColor: cs.surface,
 
       body: SafeArea(
         child: Padding(
@@ -107,7 +107,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
                     ),
                     child: Text(
                       '${_currentIndex + 1} / ${widget.images.length}',
-                      style: AppTheme.paragraphSmMedium.copyWith(
+                      style: AppTheme.paragraphMiniMedium.copyWith(
                         color: cs.onSurface,
                       ),
                     ),
@@ -126,20 +126,27 @@ class _GalleryScreenState extends State<GalleryScreen> {
                     setState(() => _currentIndex = index);
                   },
                   itemBuilder: (context, index) {
+                    // Available width after horizontal padding
+                    final imageWidth = screenWidth - (AppTheme.space16 * 2) - (AppTheme.space8 * 2);
+
                     return Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: AppTheme.space8,
                       ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(AppTheme.rounded40),
-                        child: PhotoView(
-                          imageProvider: AssetImage(widget.images[index]),
-                          // covered = image always fills the container (like BoxFit.cover)
-                          // no more black bars
-                          minScale: PhotoViewComputedScale.covered,
-                          maxScale: PhotoViewComputedScale.covered * 3,
-                          backgroundDecoration: const BoxDecoration(
-                            color: Colors.black,
+                      child: Center(
+                        child: InteractiveViewer(
+                          minScale: 1.0,
+                          maxScale: 3.0,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(AppTheme.rounded40),
+                            // Image.asset with no explicit height —
+                            // width is fixed to fill the available space,
+                            // height auto-sizes to preserve the natural aspect ratio
+                            child: Image.asset(
+                              widget.images[index],
+                              width: imageWidth,
+                              fit: BoxFit.fitWidth, // width fills, height follows
+                            ),
                           ),
                         ),
                       ),
