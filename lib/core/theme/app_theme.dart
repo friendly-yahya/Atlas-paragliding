@@ -164,7 +164,7 @@ class AppTheme {
     final cs = Theme.of(context).colorScheme;
     return TextButton.styleFrom(
       backgroundColor: cs.primary,
-      foregroundColor: cs.onSurface,
+      foregroundColor: cs.surface,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(99)),
       textStyle: paragraphSmMedium,
       padding: const EdgeInsets.symmetric(horizontal: space24, vertical: 9),

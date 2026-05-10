@@ -26,6 +26,8 @@ class ConversationTileTheme {
   /// Fill color of the unread badge circle.
   final Color badgeColor;
 
+ final Color badgeTextColor;
+
   const ConversationTileTheme({
     required this.nameUnread,
     required this.nameRead,
@@ -34,6 +36,7 @@ class ConversationTileTheme {
     required this.previewUnreadColor,
     required this.previewReadColor,
     required this.badgeColor,
+    required this.badgeTextColor,
   });
 
   // ── Light (client) ──────────────────────────────────────────────────────────
@@ -47,6 +50,7 @@ class ConversationTileTheme {
       previewUnreadColor: cs.onSurface,
       previewReadColor: cs.onSurfaceVariant,
       badgeColor: cs.primary,
+      badgeTextColor: cs.surface
     );
   }
 
@@ -61,6 +65,7 @@ class ConversationTileTheme {
       previewUnreadColor: cs.onSurface.withValues(alpha: 0.85),
       previewReadColor: cs.onSurface.withValues(alpha: 0.35),
       badgeColor: cs.primary,
+      badgeTextColor: cs.onSurface,
     );
   }
 }
@@ -194,7 +199,7 @@ class ConversationTile extends StatelessWidget {
                             child: Text(
                               '$unreadCount',
                               style: AppTheme.micro.copyWith(
-                                color: cs.surface,
+                                color: tileTheme.badgeTextColor,
                                 fontWeight: FontWeight.w700,
                               ),
                             ),

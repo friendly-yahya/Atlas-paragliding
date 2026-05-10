@@ -31,7 +31,7 @@ class MessageBubbleTheme {
         meBubbleBg: cs.primary,
         meTextColor: Colors.white,
         otherBubbleBg: cs.surfaceContainerHighest,
-        otherTextColor: cs.primary,
+        otherTextColor: cs.onSurface,
         timestampColor: cs.onSurfaceVariant,
       );
 

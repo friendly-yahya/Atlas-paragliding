@@ -30,7 +30,7 @@ class ChatHeaderTheme {
   // ── Light — client ──────────────────────────────────────────────────────────
   static ChatHeaderTheme light(ColorScheme cs) => ChatHeaderTheme(
         appBarBg: cs.surface,
-        backIconColor: cs.primary,
+        backIconColor: cs.onSurface,
         nameStyle: AppTheme.paragraphSmMedium.copyWith(color: cs.onSurface),
         offlineStatusColor: cs.onSurfaceVariant,
         dividerColor: cs.outline,

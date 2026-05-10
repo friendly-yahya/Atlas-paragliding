@@ -20,7 +20,7 @@ class ChatInputBarTheme {
 
   /// Fill color of the circular send button.
   final Color sendButtonColor;
-
+  final Color sendButtonIconColor;
   const ChatInputBarTheme({
     required this.barBg,
     required this.borderColor,
@@ -28,6 +28,7 @@ class ChatInputBarTheme {
     required this.textStyle,
     required this.hintColor,
     required this.sendButtonColor,
+    required this.sendButtonIconColor,
   });
 
   // ── Light — client ──────────────────────────────────────────────────────────
@@ -40,6 +41,7 @@ class ChatInputBarTheme {
       textStyle: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurface),
       hintColor: cs.onSurfaceVariant,
       sendButtonColor: cs.primary,
+      sendButtonIconColor: cs.surface,
     );
   }
 
@@ -53,6 +55,7 @@ class ChatInputBarTheme {
       textStyle: AppTheme.paragraphSmRegular.copyWith(color: cs.onSurface),
       hintColor: cs.onSurface.withValues(alpha: 0.3),
       sendButtonColor: cs.primary,
+      sendButtonIconColor: cs.onSurface
     );
   }
 }
