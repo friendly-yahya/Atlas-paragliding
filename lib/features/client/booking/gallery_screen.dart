@@ -118,6 +118,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
               const SizedBox(height: AppTheme.space16),
 
               // ── GALLERY ───────────────────────────────────────
+// ── GALLERY ───────────────────────────────────────
               Expanded(
                 child: PageView.builder(
                   controller: _pageController,
@@ -126,26 +127,35 @@ class _GalleryScreenState extends State<GalleryScreen> {
                     setState(() => _currentIndex = index);
                   },
                   itemBuilder: (context, index) {
-                    // Available width after horizontal padding
                     final imageWidth = screenWidth - (AppTheme.space16 * 2) - (AppTheme.space8 * 2);
-
+              
                     return Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: AppTheme.space8,
-                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: AppTheme.space8),
                       child: Center(
                         child: InteractiveViewer(
                           minScale: 1.0,
                           maxScale: 3.0,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(AppTheme.rounded40),
-                            // Image.asset with no explicit height —
-                            // width is fixed to fill the available space,
-                            // height auto-sizes to preserve the natural aspect ratio
-                            child: Image.asset(
-                              widget.images[index],
-                              width: imageWidth,
-                              fit: BoxFit.fitWidth, // width fills, height follows
+                            child: AnimatedBuilder(
+                              animation: _pageController,
+                              builder: (context, child) {
+                                double offset = 0;
+                                if (_pageController.hasClients &&
+                                    _pageController.position.haveDimensions) {
+                                  offset = (_pageController.page! - index) * imageWidth * 0.3;
+                                  // 0.3 = parallax intensity (tweak between 0.1 – 0.5)
+                                }
+                                return Transform.translate(
+                                  offset: Offset(offset, 0),
+                                  child: child,
+                                );
+                              },
+                              child: Image.asset(
+                                widget.images[index],
+                                width: imageWidth,
+                                fit: BoxFit.fitWidth,
+                              ),
                             ),
                           ),
                         ),
@@ -154,7 +164,6 @@ class _GalleryScreenState extends State<GalleryScreen> {
                   },
                 ),
               ),
-
               const SizedBox(height: AppTheme.space16),
 
               // ── DOT INDICATORS ────────────────────────────────
