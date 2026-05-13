@@ -1,16 +1,16 @@
 import 'package:atlas_paragliding/core/theme/app_theme.dart';
-import 'package:atlas_paragliding/features/client/booking/policies.dart';
+import 'package:atlas_paragliding/features/client/home/booking/policies.dart';
 import 'package:flutter/material.dart';
-import 'package:atlas_paragliding/features/client/booking/window_img.dart';
-import 'package:atlas_paragliding/features/client/booking/booking_header.dart';
-import 'package:atlas_paragliding/features/client/booking/about_info.dart';
-import 'package:atlas_paragliding/features/client/booking/booking_info.dart';
-import 'package:atlas_paragliding/features/client/booking/para_accordion.dart';
-import 'package:atlas_paragliding/features/client/booking/para_bullet_accordion.dart';
+import 'package:atlas_paragliding/features/client/home/booking/window_img.dart';
+import 'package:atlas_paragliding/features/client/home/booking/booking_header.dart';
+import 'package:atlas_paragliding/features/client/home/booking/about_info.dart';
+import 'package:atlas_paragliding/features/client/home/booking/booking_info.dart';
+import 'package:atlas_paragliding/features/client/home/booking/para_accordion.dart';
+import 'package:atlas_paragliding/features/client/home/booking/para_bullet_accordion.dart';
 import 'package:atlas_paragliding/core/widgets/reviews.dart';
-import 'package:atlas_paragliding/features/client/booking/availabity_card.dart';
-import 'package:atlas_paragliding/features/client/booking/meeting_spot_map.dart';
-import 'package:atlas_paragliding/features/client/booking/booking_footer.dart';
+import 'package:atlas_paragliding/features/client/home/booking/availabity_card.dart';
+import 'package:atlas_paragliding/features/client/home/booking/meeting_spot_map.dart';
+import 'package:atlas_paragliding/features/client/home/booking/booking_footer.dart';
 
 class BookingDetailScreen extends StatelessWidget {
   const BookingDetailScreen({super.key});

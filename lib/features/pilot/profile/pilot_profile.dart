@@ -6,7 +6,7 @@ import 'package:atlas_paragliding/features/pilot/profile/profile_header.dart';
 import 'package:atlas_paragliding/features/pilot/profile/language_set_up/language_screen.dart';
 import 'package:atlas_paragliding/features/pilot/profile/manage_offers/manage_offers_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:atlas_paragliding/core/theme/theme_notifier.dart';
+import 'package:atlas_paragliding/core/theme/notifiers.dart';
 
 class _TileData {
   const _TileData({required this.icon, required this.label, required this.onTap});

@@ -2,13 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'flights/flight_screen.dart';
 import 'home/home_screen.dart';
 import '../pilot/pilot_main_screen.dart';
 import 'messages/messaging_screen.dart';
 import 'profile/profile_screen.dart';
 import 'package:atlas_paragliding/core/theme/app_theme.dart';
-
+import 'package:atlas_paragliding/core/theme/notifiers.dart';
 class ClientMainScreen extends StatefulWidget {
   final VoidCallback onSwitchToPilot;
   const ClientMainScreen({super.key, required this.onSwitchToPilot});
@@ -82,7 +83,7 @@ class _NavItem {
   const _NavItem({required this.icon, required this.activeIcon, required this.label});
 }
 
-class _CleanNavBar extends StatelessWidget {
+class _CleanNavBar extends ConsumerWidget {
   final int selectedIndex;
   final List<_NavItem> navItems;
   final ValueChanged<int> onTap;
@@ -94,8 +95,12 @@ class _CleanNavBar extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final cs = Theme.of(context).colorScheme;
+    final showNavBar = ref.watch(navBarVisible);
+
+    if (!showNavBar) return const SizedBox.shrink();
+
     return Container(
       decoration: BoxDecoration(
         color: cs.surface,

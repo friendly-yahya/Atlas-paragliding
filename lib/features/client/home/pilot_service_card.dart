@@ -1,5 +1,5 @@
 import 'package:atlas_paragliding/core/theme/app_theme.dart';
-import 'package:atlas_paragliding/features/client/booking/booking_detail_screen.dart';
+import 'package:atlas_paragliding/features/client/home/booking/booking_detail_screen.dart';
 import 'package:flutter/material.dart';
 
 class PilotServiceCard extends StatelessWidget {
@@ -123,8 +123,8 @@ class PilotServiceCard extends StatelessWidget {
                     width: double.infinity,
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
+                        Navigator.of(context, rootNavigator: true).push(
+                          
                           MaterialPageRoute(builder: (_) => const BookingDetailScreen()),
                         );
                       },

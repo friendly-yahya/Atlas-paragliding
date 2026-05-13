@@ -1,4 +1,4 @@
-import 'package:atlas_paragliding/core/theme/theme_notifier.dart';
+import 'package:atlas_paragliding/core/theme/notifiers.dart';
 import 'package:atlas_paragliding/features/client/client_main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';

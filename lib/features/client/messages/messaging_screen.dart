@@ -64,8 +64,7 @@ class MessagingScreen extends StatelessWidget {
                           unreadCount: convo['unread'],
                           isOnline: convo['isOnline'],
                           tileTheme: ConversationTileTheme.light(context),
-                          onTap: () => Navigator.push(
-                            context,
+                          onTap: () => Navigator.of(context, rootNavigator: true).push(
                             MaterialPageRoute(
                               builder: (_) => ChatScreen(
                                 name: convo['name'],

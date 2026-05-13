@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:atlas_paragliding/core/theme/app_theme.dart';
-import 'package:atlas_paragliding/features/client/payement/add_payment_method.dart';
+import 'package:atlas_paragliding/features/client/home/booking/safety_and_health_check/review_and_continue/payement/add_payment_method.dart';
 
 class ReviewAndContinue extends StatelessWidget {
   const ReviewAndContinue({super.key});

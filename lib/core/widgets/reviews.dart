@@ -1,7 +1,7 @@
 // ignore: unused_import
 import 'package:atlas_paragliding/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:atlas_paragliding/features/client/booking/review_details.dart';
+import 'package:atlas_paragliding/features/client/home/booking/review_details.dart';
 
 class Reviews extends StatelessWidget {
   const Reviews({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:atlas_paragliding/core/theme/app_theme.dart';
-import 'package:atlas_paragliding/features/client/review_and_continue/review_and_continue.dart';
+import 'package:atlas_paragliding/features/client/home/booking/safety_and_health_check/review_and_continue/review_and_continue.dart';
 
 class SafetyHealthCheck extends StatefulWidget {
   const SafetyHealthCheck({super.key});

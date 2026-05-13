@@ -1,5 +1,5 @@
 import 'package:atlas_paragliding/core/theme/app_theme.dart';
-import './gallery_screen.dart'; 
+import 'gallery_screen.dart'; 
 import 'package:flutter/material.dart';
 
 class WindowImg extends StatelessWidget {

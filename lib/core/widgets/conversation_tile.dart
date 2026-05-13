@@ -119,6 +119,7 @@ class ConversationTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final hasUnread = unreadCount > 0;
+    // ignore: unused_local_variable
     final cs = Theme.of(context).colorScheme;
     return GestureDetector(
       onTap: onTap,
