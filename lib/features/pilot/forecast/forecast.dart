@@ -1,3 +1,4 @@
+// ignore_for_file: unused_import
 import 'package:flutter/material.dart';
 
 class Forecast extends StatelessWidget {
@@ -7,6 +8,6 @@ class Forecast extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text('forecast') ,
-    );;
+    );
   }
 }

@@ -100,6 +100,7 @@ class GlowRingThumbShape extends SliderComponentShape {
     required Size sizeWithOverflow,
   }) {
     final canvas = context.canvas;
+    
     final cs = sliderTheme.activeTrackColor != null 
         ? ColorScheme.fromSeed(seedColor: sliderTheme.activeTrackColor!)
         : ColorScheme.fromSeed(seedColor: Colors.blue);

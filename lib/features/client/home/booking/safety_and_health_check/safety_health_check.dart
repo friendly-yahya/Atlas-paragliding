@@ -436,6 +436,7 @@ class _SafetyHealthCheckState extends State<SafetyHealthCheck> {
     );
   }
 
+  // ignore: unused_element
   Widget _buildContactRow(BuildContext context, String label, String placeholder, TextEditingController controller) {
     final cs = Theme.of(context).colorScheme;
     return Padding(
