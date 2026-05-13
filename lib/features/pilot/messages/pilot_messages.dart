@@ -72,8 +72,7 @@ class PilotMessages extends StatelessWidget {
                           isOnline: convo['isOnline'],
                           // ✅ Pass BuildContext – not ColorScheme
                           tileTheme: ConversationTileTheme.dark(context),
-                          onTap: () => Navigator.push(
-                            context,
+                          onTap: () => Navigator.of(context, rootNavigator: true).push(
                             PageRouteBuilder(
                               pageBuilder: (context, animation, secondaryAnimation) => ChatScreen(
                                 name: convo['name'],

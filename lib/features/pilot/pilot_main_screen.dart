@@ -4,7 +4,7 @@ import 'package:atlas_paragliding/core/theme/app_theme.dart';
 import 'package:atlas_paragliding/features/pilot/home/pilot_home_screen.dart';
 import 'package:atlas_paragliding/features/pilot/messages/pilot_messages.dart';
 import 'package:atlas_paragliding/features/pilot/scheduling/pilot_booking.dart';
-import 'package:atlas_paragliding/features/pilot/forecast/pilot_offer.dart';
+import 'package:atlas_paragliding/features/pilot/forecast/forecast.dart';
 import 'package:atlas_paragliding/features/pilot/profile/pilot_profile.dart';
 
 class PilotMainScreen extends StatefulWidget {
@@ -29,7 +29,7 @@ class _PilotMainScreenState extends State<PilotMainScreen> {
   static const _items = [
     _NavItem(icon: Icons.home_rounded,           label: 'Home'),
     _NavItem(icon: Icons.chat_bubble_rounded,    label: 'Messages'),
-    _NavItem(icon: Icons.flight_rounded,         label: 'Flights'),
+    _NavItem(icon: Icons.flight_rounded,         label: 'Forecast'),
     _NavItem(icon: Icons.calendar_month_rounded, label: 'Schedule'),
     _NavItem(icon: Icons.person_rounded,         label: 'Profile'),
   ];
@@ -57,8 +57,8 @@ class _PilotMainScreenState extends State<PilotMainScreen> {
     final screens = [
       const PilotHomeScreen(),
       const PilotMessages(),
+      const Forecast(),
       const PilotBooking(),
-      const PilotOffer(),
       PilotProfile(onSwitchToClient: widget.onSwitchToClient),
     ];
 

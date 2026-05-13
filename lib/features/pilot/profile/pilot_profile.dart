@@ -45,8 +45,8 @@ class _PilotProfileState extends ConsumerState<PilotProfile> {
       : _offers.map((o) => o.name).join(', ');
 
   Future<void> _openLanguages() async {
-    final result = await Navigator.push<List<SelectedLanguage>>(
-      context,
+    final result = await Navigator.of(context, rootNavigator: true).push<List<SelectedLanguage>>(
+
       MaterialPageRoute(
         builder: (_) => LanguagesScreen(selected: _languages),
       ),
@@ -56,8 +56,7 @@ class _PilotProfileState extends ConsumerState<PilotProfile> {
 
 
   Future<void> _openOffers() async {
-    final result = await Navigator.push<List<SelectedOffer>>(
-      context,
+    final result = await Navigator.of(context, rootNavigator: true).push<List<SelectedOffer>>(
       MaterialPageRoute(
         builder: (_) => ManageOffersScreen(offers: _offers),
       ),
